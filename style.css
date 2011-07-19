@@ -1,0 +1,107 @@
+
+body {
+	font-family: 'Kreon', serif;
+	background: #36393B url('back.png') repeat-x;
+	font-size: 20px;
+	margin: 0px;
+	padding: 0px;
+}
+
+h1 {
+	font-family: 'Wire One';
+	color: white;
+	font-weight: normal;
+	font-size: 50px;
+	margin: 0px;
+	padding: 0px;
+	border-bottom: 1px dashed white;
+	padding-bottom: 8px;
+}
+
+a:link, a:visited {
+	color: #EEE6AB;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #CFF9FF;
+}
+
+
+.nav {
+	text-align: right;
+	width: 150px;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	overflow: hidden;
+	color: white;
+}
+
+.nav ul {
+	list-style: none;
+}
+
+
+.main {
+	margin-left: 166px;
+}
+
+.message {
+	color: white;
+	padding: 0px;
+	margin: 0px;
+	font-family: sans-serif;
+	margin-bottom: 6px;
+	line-height: 60px;
+}
+
+.box {
+	width: 800px;
+
+	padding: 1em;
+	margin-bottom: 1em;
+
+	background: #eee;
+	border-top: 1px solid white;
+	box-shadow: 2px 2px 8px black;
+}
+
+
+.box a:link, .box a:visited {
+	color: #FF2500;
+	text-decoration: underline;
+}
+
+
+.text {
+	line-height: 20px;
+}
+
+.footer {
+	background: #1C1C1C;
+	color: #696758;
+	text-shadow: 1px 1px 0px #322D2D;
+	padding: 8px;
+	padding-left: 0.5em;
+}
+
+.footer a {
+	text-shadow: 0;
+}
+
+
+h2, h3, h4 {
+	color: #45484B;
+	text-shadow: 1px 1px 0px white;
+}
+
+
+pre {
+	font-size: 16px;
+	background: white;
+	border: 1px dashed #BFBFBF;
+	border-radius: 2px;
+	padding: 8px 0px;
+}
+
