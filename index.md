@@ -1,19 +1,16 @@
-## Intro
-
-MoonScript is a programmer friendly language that compiles into
+**MoonScript** is a programmer friendly language that compiles into
 [Lua](http://ww.lua.org/).  It gives you the power of the fastest scripting
-language combined with a rich set of features:
+language combined with a rich set of features.
 
- * Provides a clean syntax using significant whitespace that avoids all the
-   keyword noise typically seen in a Lua script.
- 
- * Adds table comprehensions, implicit return on functions, classes,
-   inheritance, scope management statements `import` & `export`, and a
-   convenient object creation statement called `with`.
- 
- * Can be loaded directly from a Lua script without an intermediate compile
-   step. It even knows how to tell you where errors occurred in the original
-   file when they happen.
+    class Thing
+      name: "unknown"
+    
+    class Person extends Thing
+      say_name: -> print "Hello, I am", @name
+	
+	with Person!
+	  .name = "Moonscript"
+	  \say_name!
 
 MoonScript can either be compiled into Lua and run at a later time, or it
 can be dynamically compiled and run using the *moonloader*. It's as simple
@@ -25,17 +22,14 @@ command line, like any first-class scripting language.
 
 ## Overview
 
-Creating an instance of a class and calling a method:
-
-    class Thing
-      name: "unknown"
-    
-    class Person extends Thing
-      say_name: -> print "Hello, I am", @name
-	
-	with Person!
-	  .name = "Moonscript"
-	  \say_name!
+ * Provides a clean syntax using significant whitespace that avoids all the
+   keyword noise typically seen in a Lua script.
+ * Adds table comprehensions, implicit return on functions, classes,
+   inheritance, scope management statements `import` & `export`, and a
+   convenient object creation statement called `with`.
+ * Can be loaded directly from a Lua script without an intermediate compile
+   step. It even knows how to tell you where errors occurred in the original
+   file when they happen.
 
 ## Installation
 
@@ -127,7 +121,7 @@ A more detailed overview of the syntax can be found in the
  * Implicit return on functions based on the type of last statement
  * ':' is used to separate key and value in table literals instead of `=`
  * Newlines can be used as table literal entry delimiters in addition to `,`
- * `\` is used to call a method on an object instead of `:`
+ * \ is used to call a method on an object instead of `:`
  * `+=`, `-=`, `/=`, `*=`, `%=` operators
  * `!=` is an alias for `~=`
  * Table comprehensions, with convenient slicing and iterator syntax

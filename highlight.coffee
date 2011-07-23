@@ -5,7 +5,7 @@ Set = (items) ->
   out
 
 class Lexer
-  attr_name: "style"
+  attr_name: "class"
   constructor: ->
     @match_name_table = []
     
@@ -41,8 +41,7 @@ class Lexer
       @style match, @get_style name, match
 
   get_style: (name, value) ->
-    fn = @theme[name]
-    throw Error "unknown highlight type: " + name if not fn
+    fn = @theme?[name] or "l_#{name}"
 
     if typeof fn == "function"
       fn value
@@ -58,14 +57,11 @@ class Lexer
 class Lua extends Lexer
   name: "lua"
   matches:
-    keyword: ["for", "function", "end", "local"]
+    fn_symbol: /function/
+    keyword: ["for", "end", "local", "if", "then", "return"]
+    symbol: ['=', '.', '{', '}', ':']
     number: /\d+/
     string: /"[^"]*"/
-
-  theme:
-    string: "color: orange"
-    number: "color: purple"
-    keyword: "color: red; font-weight: bold"
 
 class Moon extends Lexer
   name: "moon"
@@ -73,23 +69,16 @@ class Moon extends Lexer
     keyword: [
       "class", "extends", "if", "then"
       "do", "with", "import", "export", "while"
-      "elseif"
+      "elseif", "return"
     ]
     self: ["self"]
-    symbol: ['!', '\\', '=']
-    fn_symbol: ['->', '=>']
-    assign: /[a-zA-Z_][a-zA-Z_0-9]*:/
+    symbol: ['!', '\\', '=', ':']
+    fn_symbol: ['-&gt;', '=&gt;']
+	# assign: /[a-zA-Z_][a-zA-Z_0-9]*:/
     self_var: /@[a-zA-Z_][a-zA-Z_0-9]*/
+    proper: /[A-Z][a-zA-Z_0-9]+/
     number: /\d+/
     string: /"[^"]*"/
-
-  theme:
-    keyword: "color: green"
-    symbol: "color: red; font-weight: bold"
-    assign: "color: orange"
-    self: "color: blue"
-    self_var: "color: blue"
-    string: "color: brown"
 
 window.Lexer = Lexer
 window.Lua = Lua
