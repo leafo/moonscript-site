@@ -74,7 +74,7 @@ a:hover {
 }
 
 
-.text {
+.main p, .main ul {
 	line-height: 20px;
 }
 
@@ -94,6 +94,7 @@ a:hover {
 h2, h3, h4 {
 	color: #45484B;
 	text-shadow: 1px 1px 0px white;
+	margin: 10px 0px;
 }
 
 
@@ -102,6 +103,6 @@ pre {
 	background: white;
 	border: 1px dashed #BFBFBF;
 	border-radius: 2px;
-	padding: 8px 0px;
+	padding: 8px 6px;
 }
 
