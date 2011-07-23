@@ -1,0 +1,3 @@
+
+install:
+	sudo luarocks make

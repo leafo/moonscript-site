@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Kreon';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Kreon bold'), local('Kreon-bold'), url('http://themes.googleusercontent.com/font?kit=PlQgohaxOFuFqM4bdqkiH_esZW2xOQ-xsNqO47m55DA') format('truetype');
+}
+@font-face {
+  font-family: 'Kreon';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Kreon light'), local('Kreon-light'), url('http://themes.googleusercontent.com/font?kit=a1jgjBwEF1FcIjUj3bw8cfesZW2xOQ-xsNqO47m55DA') format('truetype');
+}
+@font-face {
+  font-family: 'Wire One';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Wire One'), local('WireOne'), url('http://themes.googleusercontent.com/static/fonts/wireone/v1/w3ot9zg2INhIrdSqwSkSt_esZW2xOQ-xsNqO47m55DA.ttf') format('truetype');
+}

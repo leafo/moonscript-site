@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="highlight.js"></script>
+</head>
+<body>
+
+	<pre class="lua-code">local x = 10212
+local function y(a,b,c)
+	print("what is this", a, b, c)
+	for i = 1,10 do
+		print [[yeah]]
+	end
+end</pre>
+
+<pre class="moon-code">class Thing
+  name: "unknown"
+
+class Person extends Thing
+  say_name: -&gt;
+    print "Hello, I am", @name
+
+with Person!
+  .name = "Moonscript"
+  \say_name!</pre>
+
+
+<script type="text/javascript">
+	window.onload = function() {
+		console.log("creating a lua");
+		lua =  new Lua();
+		console.log("creating a moon");
+		moon =  new Moon();
+	}
+</script>
+
+</body>
+</html>
