@@ -1,5 +1,5 @@
-**MoonScript** is a programmer friendly language that compiles into
-[Lua](http://ww.lua.org/).  It gives you the power of the fastest scripting
+**MoonScript** is a dynamic scripting language that compiles into
+[Lua](http://ww.lua.org/). It gives you the power of the fastest scripting
 language combined with a rich set of features.
 
     class Thing
@@ -12,24 +12,49 @@ language combined with a rich set of features.
 	  .name = "Moonscript"
 	  \say_name!
 
-MoonScript can either be compiled into Lua and run at a later time, or it
-can be dynamically compiled and run using the *moonloader*. It's as simple
-`require "moon"` in order to have Lua understand how to load and run any
+MoonScript can either be compiled into Lua and run at a later time, or it can
+be dynamically compiled and run using the *moonloader*. It's as simple as
+`require "moonscript"` in order to have Lua understand how to load and run any
 MoonScript file.
+
+Because it compiles right into Lua code, it is completely compatible with
+alternative Lua implementations like [LuaJIT](http://luajit.org), and it is
+also compatible with all existing Lua code and libraries.
 
 The command line tools also let you run MoonScript directly from the
 command line, like any first-class scripting language.
 
 ## Overview
 
- * Provides a clean syntax using significant whitespace that avoids all the
-   keyword noise typically seen in a Lua script.
- * Adds table comprehensions, implicit return on functions, classes,
-   inheritance, scope management statements `import` & `export`, and a
-   convenient object creation statement called `with`.
- * Can be loaded directly from a Lua script without an intermediate compile
-   step. It even knows how to tell you where errors occurred in the original
-   file when they happen.
+MoonScript provides a clean syntax using significant whitespace that avoids all
+the keyword noise typically seen in a Lua script. Below is a sample of some
+constructs found in the languge.
+
+	export my_func
+	x = 2323
+
+	collection =
+	  height: 32434
+	  hats: {"tophat", "bball", "bowler"}
+
+	my_func = (a) -> x + a
+
+	print my_func 100
+
+It also adds table comprehensions, implicit return on functions, classes,
+inheritance, scope management statements `import` & `export`, and a convenient
+object creation statement called `with`.
+
+	import concat, insert from table
+
+    double_args = (...) ->
+      [x * 2 for x in *{...}]
+
+    tuples = [{k, v} for k,v in ipairs my_table]
+
+It can be loaded directly from a Lua script without an intermediate compile
+step. It even knows how to tell you where errors occurred in the original file
+when they happen.
 
 ## Installation
 
@@ -42,7 +67,7 @@ manager.
 
 After it is installed, run the following in a terminal:
 
-    ~> wget https://raw.github.com/leafo/moonscript/master/moonscript-dev-1.rockspec
+    ~> wget https://moonscript.org/rocks/moonscript-dev-1.rockspec
     ~> luarocks install moonscript-dev-1.rockspec
 
 This will provide the `moon` and `moonc` tools along with the `moonscript`

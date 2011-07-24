@@ -4,6 +4,16 @@ Set = (items) ->
   out[item] = true for item in items
   out
 
+
+is_alpha = (str) ->
+  str.match /^[a-zA-Z_]+$/
+
+wrap_word = (str) ->
+  if is_alpha str
+    "\\b#{str}\\b"
+  else
+    str
+
 class Lexer
   attr_name: "class"
   constructor: ->
@@ -13,8 +23,10 @@ class Lexer
     for name, pattern of @matches
       pattern = if pattern instanceof Array
         count = pattern.length
+
+
         @match_name_table.push name for k in [1..count]
-        ("(" + @escape(key) + ")" for key in pattern).join "|"
+        ("(" + wrap_word(@escape(key)) + ")" for key in pattern).join "|"
       else
         @match_name_table.push name
         "(" + pattern.source + ")"
@@ -57,7 +69,7 @@ class Lexer
 class Lua extends Lexer
   name: "lua"
   matches:
-    fn_symbol: /function/
+    fn_symbol: ["function"]
     keyword: ["for", "end", "local", "if", "then", "return"]
     symbol: ['=', '.', '{', '}', ':']
     number: /\d+/
@@ -69,12 +81,11 @@ class Moon extends Lexer
     keyword: [
       "class", "extends", "if", "then"
       "do", "with", "import", "export", "while"
-      "elseif", "return"
+      "elseif", "return", "for", "in", "from"
     ]
     self: ["self"]
-    symbol: ['!', '\\', '=', ':']
-    fn_symbol: ['-&gt;', '=&gt;']
-	# assign: /[a-zA-Z_][a-zA-Z_0-9]*:/
+    symbol: ['!', '\\', '=', ':', '...', '*']
+    fn_symbol: ['-&gt;', '=&gt;', '}', '{']
     self_var: /@[a-zA-Z_][a-zA-Z_0-9]*/
     proper: /[A-Z][a-zA-Z_0-9]+/
     number: /\d+/
