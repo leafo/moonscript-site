@@ -40,7 +40,14 @@ a:hover {
 
 .nav ul {
 	list-style: none;
+	padding-left: 0px;
+	margin-left: 0px;
 }
+
+.nav li {
+	margin-bottom: 2px;
+}
+
 
 .offset {
 	margin-left: 166px;
@@ -69,7 +76,7 @@ a:hover {
 
 .message a:link, .message a:visited {
 	color: #333;
-	text-shadow: 0;
+	text-shadow: none;
 }
 
 .box {
@@ -90,8 +97,12 @@ a:hover {
 .l_fn_symbol { color: #9fff98; }
 
 .box a:link, .box a:visited {
-	color: #FF2500;
+	color: #D54747;
 	text-decoration: underline;
+}
+
+.box a:hover {
+	color: #C31717;
 }
 
 
@@ -108,7 +119,7 @@ a:hover {
 }
 
 .footer a {
-	text-shadow: 0;
+	text-shadow: none;
 }
 
 
@@ -138,26 +149,31 @@ p > code, li > code {
 	padding: 0px 4px;
 }
 
-pre {
-	background: #6b6b6b;
+.main pre {
+	background: #333;
 	color: white;
 	font-size: 16px;
 
 	padding: 16px 24px;
 
 	border-bottom: 1px solid white;
-	border-top: 1px solid #585858;
+	border-top: 1px solid #808080;
+	/* border-top: 1px solid #222; */
+
+	text-shadow: 0px -1px 0px #111;
+
 }
 
 .see-lua {
+	font-family: 'Kreon', serif;
+	font-size: 18px;
 	font-weight: bold;
-	font-size: 14px;
 	color: #ab1818;
 	text-shadow: 1px 1px 0px white;
-	border-radius: 6px;
+	/* border-radius: 6px; */
 	border: 0px;
 	float: right;
-	margin: 10px;
+	margin: 8px 12px 0px 0px;
 	padding: 4px 12px;
 	background-image: -webkit-gradient(
 		linear,
@@ -171,12 +187,15 @@ pre {
 		rgb(255,168,168) 44%,
 		rgb(255,212,244) 72%
 	);
-	box-shadow: 0px 0px 8px #222;
+	border-top: 1px solid white;
+	border-bottom: 4px solid #983A3A;
+	box-shadow: 0px 0px 6px rgba(0,0,0, .5);
 }
 
 .see-lua:active {
 	position: relative;
 	top: 1px;
+	border-bottom: 3px solid #983A3A;
 }
 
 .code-container {
@@ -189,5 +208,72 @@ pre {
 	top: -16px;
 	left: 0px;
 	right: 0px;
+}
+
+#shroud {
+	position: fixed;
+	display: none;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background: rgba(0,0,0, .5);
+	padding-top: 76px;
+}
+
+.lua-code {
+	display: none;
+}
+
+#shroud-popup {
+	width: 1010px;
+	background: #333;
+	border: 1px solid #999;
+	border-left: 0px;
+	color: white;
+}
+
+pre.shroud-column {
+	font-size: 14px;
+	max-height: 600px;
+	overflow: auto;
+}
+
+#left {
+	width: 400px;
+	margin-left: 16px;
+}
+
+#right {
+	border-left: 1px dashed #555;
+	padding-left: 12px;
+	width: 560px;
+}
+
+.clear {
+	clear: both;
+}
+
+.code-header {
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(148,146,148)),
+		color-stop(1, rgb(214,214,214))
+	);
+	background-image: -moz-linear-gradient(
+		center bottom,
+		rgb(148,146,148) 0%,
+		rgb(214,214,214) 100%
+	);
+}
+
+.code-header td {
+	padding: 2px;
+	font-family: monospace;
+	text-shadow: 1px 1px 0px #ddd;
+	color: #222;
+	font-size: 12px;
 }
 

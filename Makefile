@@ -4,3 +4,6 @@ all: highlight.js
 
 highlight.js: highlight.coffee
 	coffee -c $+
+
+js:
+	coffee -o www -w -c *.coffee

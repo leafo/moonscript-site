@@ -17,18 +17,19 @@ site = sitegen.create_site =>
     body = body\gsub "<h2>.-</h2>", (header) ->
         '</div><div class="box">'..header
 
+    i = 0
     body\gsub "(<pre><code>(.-)</code></pre>)", (block, code) ->
       _code = code
       code = reconvert_html code
       if is_moonscript code
         tree, e = moonscript.parse.string code
         lua = moonscript.compile.tree tree
-
+        i += 1
         table.concat {
           '<div class="code-container">'
-          '<pre class="popup"><code class="lua-code">', lua , '</code></pre>'
-          '<button class="see-lua">See Lua</button>'
-          '<pre><code class="moon-code">', _code, "</code></pre>"
+          '<code class="lua-code" id="lua-',i,'">',lua,'</code>'
+          '<button class="see-lua" code_id="',i,'">See Lua</button>'
+          '<pre><code class="moon-code" id="moon-',i,'">', _code, "</code></pre>"
           '</div>'
         }
       else

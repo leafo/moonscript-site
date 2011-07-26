@@ -6,6 +6,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Kreon:300,700|Wire+One&v2' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="style.css" />
 	<script type="text/javascript" src="highlight.js"></script>
+	<script type="text/javascript" src="client.js"></script>
 </head>
 <body>
 	<div class="nav">
@@ -35,13 +36,24 @@
 		</div>
 	</div>
 
-	<script type="text/javascript">
-		window.onload = function() {
-			new Moon();
-			new Lua();
-		}
-	</script>
+	<a href="http://github.com/you"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
 
+	<div id="shroud">
+		<div id="shroud-popup">
+			<table width="100%" cellpadding="0" cellspacing="0">
+				<tr class="code-header">
+					<td>MoonScript</td>
+					<td>Lua</td>
+				</tr>
+				<tr valign="top"><td>
+					<pre class="shroud-column" id="left"></pre>
+				</td>
+				<td>
+					<pre class="shroud-column" id="right"></pre>
+				</td></tr>
+			</table>
+		</div>
+	</div>
 
 </body>
 </html>

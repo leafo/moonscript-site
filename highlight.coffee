@@ -70,7 +70,7 @@ class Lua extends Lexer
   name: "lua"
   matches:
     fn_symbol: ["function"]
-    keyword: ["for", "end", "local", "if", "then", "return"]
+    keyword: ["for", "end", "local", "if", "then", "return", "do"]
     symbol: ['=', '.', '{', '}', ':']
     number: /\d+/
     string: /"[^"]*"/
