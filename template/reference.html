@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MoonScript</title>
+	<script type="text/javascript" src="$root/highlight.js"></script>
+	<link rel="stylesheet" href="$root/ref.css" />
+</head>
+<body>
+	<div class="header">
+		<h1>MoonScript</h1>
+	</div>
+	<ul>
+	$index[[
+		<li><a href="#$target">$name</a></li>
+	]], [[ <ul> ]] , [[ </ul> ]]
+	</ul>
+	<div class="main">
+		$main
+	</div>
+	<script type="text/javascript">
+		window.onload = function() {
+		  new Moon();
+		  new Lua();
+		}
+	</script>
+</body>
+</html>

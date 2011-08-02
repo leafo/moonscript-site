@@ -144,7 +144,7 @@ A more detailed overview of the syntax can be found in the
  * `@` can be prefixed in front of a name to refer to that name in `self`
  * `!` operator can be used to call a function with no arguments
  * Implicit return on functions based on the type of last statement
- * ':' is used to separate key and value in table literals instead of `=`
+ * `:` is used to separate key and value in table literals instead of `=`
  * Newlines can be used as table literal entry delimiters in addition to `,`
  * \ is used to call a method on an object instead of `:`
  * `+=`, `-=`, `/=`, `*=`, `%=` operators

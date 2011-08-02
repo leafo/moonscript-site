@@ -1,8 +1,8 @@
 
-all: highlight.js
+all: highlight.js client.js
 	moon site.moon
 
-highlight.js: highlight.coffee
+%.js: %.coffee
 	coffee -c $+
 
 js:
