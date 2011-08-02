@@ -9,7 +9,79 @@ util = require "moonscript.util"
 module "sitegen", package.seeall
 
 import insert, concat, sort from table
-export create_site
+export create_site, html_encode, html_decode, slugify
+export index_headers
+
+punct = "[%^$()%.%[%]*+%-?]"
+escape_patt = (str) ->
+  (str\gsub punct, (p) -> "%"..p)
+
+html_encode_entities = {
+  ['&']: '&amp;'
+  ['<']: '&lt;'
+  ['>']: '&gt;'
+  ['"']: '&quot;'
+  ["'"]: '&q#039;'
+}
+
+html_decode_entities = {}
+for key,value in pairs html_encode_entities
+  html_decode_entities[value] = key
+
+html_encode_string = "[" .. concat([escape_patt char for char in pairs html_encode_entities]) .. "]"
+html_encode = (text) ->
+  (text\gsub html_encode_string, html_encode_entities)
+
+html_decode = (text) ->
+  (text\gsub "(&[^&]-;)", (enc) ->
+    decoded = html_decode_entities[enc]
+    decoded if decoded else enc)
+
+-- filter to build index for headers
+index_headers = (body, meta) ->
+  headers = {}
+
+  current = headers
+  fn = (body, i) ->
+    i = tonumber i
+    if not current.depth
+      current.depth = i
+    else
+      if i > current.depth
+        current = parent: current, depth: i
+      else
+        while i < current.depth and current.parent
+          insert current.parent, current
+          current = current.parent
+
+    slug = slugify body
+    insert current, {body, slug}
+    concat {
+      '<h', i, '><a name="',slug,'"></a>', body, '</h', i, '>'
+    }
+
+  require "lpeg"
+  import P, R, Cmt, Cs, Cg, Cb, C from lpeg
+
+  nums = R("19")
+  open = P"<h" * Cg(nums, "num") * ">"
+
+  close = P"</h" * C(nums) * ">"
+  close_pair = Cmt close * Cb("num"), (s, i, a, b) -> a == b
+  tag = open * C((1 - close_pair)^0) * close
+
+  patt = Cs((tag / fn + 1)^0)
+  patt\match(body), headers
+
+slugify = (text) ->
+  text = text\gsub "[&+]", " and "
+  (text\lower!\gsub("%s+", "_")\gsub("[^%w_]", ""))
+
+sys =
+  mkdir: (path) ->
+    os.execute ("mkdir -p %s")\format path
+  copy: (src, dest) ->
+    os.execute ("cp %s %s")\format src, dest
 
 -- don't forget trailing /
 config =
@@ -28,9 +100,6 @@ extend = (table, index) ->
       table[k] = v
   table
 
-punct = "[%^$()%.%[%]*+-?]"
-escape_patt = (str) ->
-  (str\gsub punct, (p) -> "%"..p)
 
 create_site = (init) ->
   site = extend {
@@ -59,6 +128,11 @@ create_site = (init) ->
     fill_template meta, meta.template
 
   write_page = (meta, text) ->
+    -- pull the path
+    dir, target = meta.target\match"^(.*)/([^/]*)$"
+    if dir
+      sys.mkdir site.out_dir .. dir
+
     fname = concat { site.out_dir, meta.target, ".html" }
     with io.open fname, "w"
       print "writing", fname
@@ -74,7 +148,7 @@ create_site = (init) ->
     text = io.open(fname)\read "*a"
     meta = extend {
       target: fname\match site.page_pattern
-    }, default_meta
+    }, extend default_meta, site
 
     s, e = text\find "%-%-\n"
     if s
@@ -89,7 +163,7 @@ create_site = (init) ->
       target = site.out_dir .. file
       print "copied", target
       insert site.written_files, target
-      os.execute ("cp %s %s")\format file, target
+      sys.copy file, target
 
   site_scope =
     copy_files: (files) ->
@@ -101,6 +175,7 @@ create_site = (init) ->
   if init
     setfenv init, setmetatable site_scope, __index: getfenv init
     init site
+
 
   {
     write: =>
