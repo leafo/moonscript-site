@@ -82,6 +82,7 @@ class Lexer
 
 builtins = [
     "table.insert", "assert", "print"
+    "ipairs", "pairs"
 ]
 
 
@@ -93,6 +94,7 @@ class Lua extends Lexer
       "for", "end", "local", "if", "then", "return", "do"
       "and", "or"
     ]
+    special: ["nil", "true", "false"]
     symbol: ['=', '.', '{', '}', ':']
     builtins: builtins
     atom: /[_A-Za-z][_A-Za-z0-9]*/
@@ -107,11 +109,15 @@ class Moon extends Lexer
       "class", "extends", "if", "then"
       "do", "with", "import", "export", "while"
       "elseif", "return", "for", "in", "from", "when"
-      "using"
+      "using", "else", "and", "or"
     ]
+    special: ["nil", "true", "false"]
     builtins: builtins
     self: ["self"]
-    symbol: ['!', '\\', '=', ':', '...', '*', '>', '<', '#']
+    symbol: [
+      '!', '\\', '=', '+=', '-=', ':'
+      '...', '*', '>', '<', '#'
+    ]
     fn_symbol: ['->', '=>', '}', '{']
     self_var: /@[a-zA-Z_][a-zA-Z_0-9]*/
     atom: /[_A-Za-z][_A-Za-z0-9]*/

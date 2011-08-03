@@ -1,12 +1,14 @@
 target: reference/index
 template: reference
 --
-MoonScript compiles to Lua. For each code snippet below, the MoonScript is on
-the left and the compiled Lua is on right right.
+MoonScript is a programming language that compiles to
+[Lua](http://www.lua.org). This guide expects the reader to have basic
+familiarity with Lua. For each code snippet below, the MoonScript is on the
+left and the compiled Lua is on right right.
 
 ## Assignment
 
-Unlike Lua, there is no local keyword. All assignments to names that are not
+Unlike Lua, there is no `local` keyword. All assignments to names that are not
 already defined will be declared as local to the scope of that declaration. If
 you wish to create a global variable it must be done using the `export`
 keyword.
@@ -21,19 +23,23 @@ keyword.
 a certain amount have been added. They are aliases for their expanded
 equivalents.
 
+    x = 0
     x += 10
 
 ## Comments 
 
 Like Lua, comments start with `--` and continue to the end of the line.
+Comments are not written to the output.
+
+    -- I am a comment
 
 ## Literals & Operators
 
 MoonScript supports all the same primitive literals as Lua and uses the same
 syntax. This applies to numbers, strings, booleans, and `nil`.
 
-MoonScript also supports all the same binary and unary operators. `!=` is also
-added as an alias of `~=`.
+MoonScript also supports all the same binary and unary operators. Additionally
+`!=` is as an alias for `~=`.
 
 ## Function Literals
 
@@ -54,11 +60,10 @@ arrow, or it can be a series of statements indented on the following line:
       print "The value:", value
 
 If a function has no arguments, it can be called using the `!` operator,
-instead of empty parentheses.
+instead of empty parentheses. For example, calling the two functions from
+above:
 
-We can call the two functions above like so:
-
-    func_a! -- equivalent to `func_a()`
+    func_a!
     func_b!
 
 Functions with arguments can be created by preceding the arrow with a list of
@@ -67,44 +72,55 @@ argument names in parentheses:
     sum = (x, y) -> print "sum", x + y
 
 Functions can be called by listing the values of the arguments after the name
-of the variable where the function is stored:
+of the variable where the function is stored. When chaining together function
+calls, the arguments are applied to the closest function to the left.
 
     sum 10, 20
+	print sum 10, 20
 
-Functions will coerce the last statement in their body into a return statement,
-giving you implicit return:
+	a b c "a", "b", "c"
 
-    sum = (x, y) -> x + y
-    print "The sum is ", sum 10, 20
-
-Of course if you wanted to explicitly return, you can use the `return` keyword.
-
-    sum = (x, y) -> return x + y
-
-In order to avoid ambiguity in when calling functions, parentheses can be used
-to surround the arguments. This is required here in order to make sure the
+In order to avoid ambiguity in when calling functions, parentheses can also be
+used to surround the arguments. This is required here in order to make sure the
 right arguments get sent to the right functions.
 
     print "sum 1:", sum(10, 20), "sum 1:", sum(30, 40)
 
+Functions will coerce the last statement in their body into a return statement,
+this is called implicit return:
 
-The following are equivalent:
+    sum = (x, y) -> x + y
+    print "The sum is ", sum 10, 20
 
-    print "the value is", sum 10, get_number "decimal", "1 thousand"
+And if you need to explicitly return, you can use the `return` keyword:
 
-    print("the value is", sum(10, get_number("decimal", "1 thousand")))
+    sum = (x, y) -> return x + y
+
+Just like in Lua, functions can return multiple values. The last statement must
+be a list of values separated by commas:
+    
+    mystery = (x, y) -> x + y, x - y
+    a,b = mystery 10, 20
 
 ### Fat Arrows
 
 Because it is an idiom in Lua to send the object as the first argument when
 calling a method, a special syntax is provided for functions which
-automatically includes this `self` argument.
+automatically includes a `self` argument.
 
     func = (num) => self.value + num
 
-Produces the same function as:
+### Considerations
 
-    func = (self, num) -> self.value + num
+Negative literals:
+
+    value = x - 10
+    value = x-10
+
+Lack of whitespace:
+
+    x = func"hello" + 100
+    y = func "hello" + 100
 
 ## Table Literals
 
@@ -137,6 +153,13 @@ Newlines can be used to delimit values instead of a comma (or both):
       occupation: "crime fighting"
     }
 
+When creating a single line table literal, the curly braces can also be left
+off:
+
+    my_function dance: "Tango", partner: "none"
+
+    y = type: "dog", legs: 4, tails: 1
+
 ## Table Comprehensions
 
 Table comprehensions provide a quick way to iterate over a table's values while
@@ -155,22 +178,44 @@ The items included in the new table can be restricted with a `when` clause:
 Because it is common to iterate over the values of a numerically indexed table,
 an `*` operator is introduced. The doubled example can be rewritten as:
 
-    doubled = [item for item in *items]
+    doubled = [item * 2 for item in *items]
 
 The `for` and `when` clauses can be chained as much as desired. The only
-requirement on a comprehension is that there is at least one `for` clause.
+requirement is that a comprehension has at least one `for` clause.
 
 Using multiple `for` clauses is the same as using nested loops:
 
     x_coords = {4, 5, 6, 7}
     y_coords = {9, 2, 3}
 
-    pairs = [{x,y} for x in *x_coords for y in *y_coords]
+    points = [{x,y} for x in *x_coords for y in *y_coords]
 
+### Slicing
+
+A special syntax is provided to restrict the items that are iterated over when
+using the `*` operator. This is equivalent to setting the iteration bounds and
+a step size in a `for` loop.
+
+Here we can set the minimum and maximum bounds, taking all items with indexes
+between 1 and 5 inclusive:
+    
+    slice = [item for item in *items[1:5]]
+
+Any of the slice arguments can be left off to use a sensible default. In this
+example, if the max index is left off it defaults to the length of the table.
+This will take everything but the first element:
+
+    slice = [item for item in *items[1:]]
+
+If the minimum bound is left out, it defaults to 1. Here we only provide a step
+size and leave the other bounds blank. This takes all odd indexed items: (1, 3,
+5, ...)
+
+    slice = [item for items in *items[::2]]
 
 ## For Loop
 
-There are two for loop forms, just line in Lua. A numeric one and a generic one:
+There are two for loop forms, just like in Lua. A numeric one and a generic one:
 
     for i = 10, 20
       print i
@@ -282,11 +327,6 @@ statements at the end of the line:
 
     print "hello world" if name == "Rob"
 
-This is equivalent to:
-
-    if name == "rob"
-      print "hello world"
-
 And with basic loops:
 
     print "item: ", item for item in *items
@@ -328,7 +368,10 @@ Because the instance of the class needs to be sent to the methods when they are
 called, the '\' operator is used.
 
 All properties of a class are shared among the instances. This is fine for
-functions, but for other types of objects, undesired results may occur:
+functions, but for other types of objects, undesired results may occur.
+
+Consider the example below, the `clothes` property is shared amongst all
+instances, so modifications to it in one instance will show up in another:
 
     class Person
       clothes: {}
@@ -341,7 +384,8 @@ functions, but for other types of objects, undesired results may occur:
     a\give_item "pants"
     b\give_item "shirt"
 
-    print item for item in *a.clothes -- will print both pants and shirt
+	-- will print both pants and shirt
+    print item for item in *a.clothes
 
 ### Inheritance
 
