@@ -110,14 +110,49 @@ automatically includes a `self` argument.
 
     func = (num) => self.value + num
 
+### Argument Defaults
+
+It is possible to provide deafult values for the arguments of a function. An
+argument is determined to be empty if it's value is `nil`. Any `nil` arguments
+that have a default value will be replace before the body of the function is run.
+
+    my_function = (name="something", height=100) ->
+      print "Hello I am", name
+      print "My height is", height
+
+An argument default value expression is evaluated in the body of the function
+in the order of the argument declarations. For this reason default values have
+access to previously declared arguments.
+
+    some_args = (x=100, y=x+1000) ->
+      print x + y
+
 ### Considerations
 
-Negative literals:
+Because of the expressive parentheses-less way of calling functions, some
+restrictions must be put in place to avoid parsing ambiguity involving
+whitespace.
 
-    value = x - 10
-    value = x-10
+The minus sign plays two roles, a unary negation operator and a binary
+subtraction operator. In order to force subtraction a space must be placed
+after the `-` operator. In order to force a negation, no space must follow
+the `-`. Consider the examples below.
 
-Lack of whitespace:
+    a = x - 10
+    b = x-10
+    c = x -y
+
+The precedence of the first argument of a function call can also be controlled
+using whitespace if the argument is a literal string.In Lua, it is common to
+leave off parentheses when calling a function with a single string literal.
+
+When there is no space between a variable and a string literal, the
+function call takes precedence over any following expressions. No other
+arguments can be passed to the function when it is called this way.
+
+Where there is a space following a variable and a string literal, the function
+call acts as show above. The string literal belongs to any following
+expressions (if they exist), which serves as the argument list.
 
     x = func"hello" + 100
     y = func "hello" + 100
@@ -224,7 +259,7 @@ There are two for loop forms, just like in Lua. A numeric one and a generic one:
       print k 
 
     for key, value in pairs object
-        print key, value
+      print key, value
     
 The slicing and `*` operators can be used, just like with table comprehensions:
 
@@ -411,7 +446,6 @@ special `__class` property. This property holds the class object. The class
 object is what we call to build a new instance. We can also index the class
 object to retrieve class methods and properties.
 
-    
     b = BackPack!
     assert b.__class == BackPack
 

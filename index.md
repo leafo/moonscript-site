@@ -6,7 +6,7 @@ language combined with a rich set of features.
       name: "unknown"
     
     class Person extends Thing
-      say_name: -> print "Hello, I am", @name
+      say_name: => print "Hello, I am", @name
 	
 	with Person!
 	  .name = "Moonscript"
@@ -23,6 +23,10 @@ also compatible with all existing Lua code and libraries.
 
 The command line tools also let you run MoonScript directly from the
 command line, like any first-class scripting language.
+
+A comprehensive overview of the language can be found in the [reference
+manual](reference/), the rest of this page serves as an overview of the
+language.
 
 ## Overview
 
@@ -82,7 +86,7 @@ If you are on Linux and want to run *watch* mode, which compiles `.moon` files t
 
 ## Learning
 
-Read the [reference manual](docs/index.md).
+Read the [reference manual](reference/).
 
 ## Command Line Use
 
