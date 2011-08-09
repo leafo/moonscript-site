@@ -37,6 +37,9 @@ html_decode = (text) ->
     decoded = html_decode_entities[enc]
     decoded if decoded else enc)
 
+strip_tags = (html) ->
+  html\gsub "<[^>]+>", ""
+
 -- filter to build index for headers
 index_headers = (body, meta) ->
   headers = {}
@@ -53,6 +56,8 @@ index_headers = (body, meta) ->
         while i < current.depth and current.parent
           insert current.parent, current
           current = current.parent
+
+        current.depth = i if i < current.depth
 
     slug = slugify body
     insert current, {body, slug}
@@ -71,9 +76,17 @@ index_headers = (body, meta) ->
   tag = open * C((1 - close_pair)^0) * close
 
   patt = Cs((tag / fn + 1)^0)
-  patt\match(body), headers
+  out = patt\match(body)
+
+  while current.parent
+    insert current.parent, current
+    current = current.parent
+
+  out, headers
+
 
 slugify = (text) ->
+  text = strip_tags text
   text = text\gsub "[&+]", " and "
   (text\lower!\gsub("%s+", "_")\gsub("[^%w_]", ""))
 

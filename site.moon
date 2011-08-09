@@ -11,7 +11,7 @@ import html_decode, html_encode from sitegen
 is_moonscript = (text) ->
   not text\match "~>"
 
-compile_pre_tags = (body, action) ->
+compile_pre_tags = (body, action, default_action) ->
   body\gsub "(<pre><code>(.-)</code></pre>)", (block, code) ->
     moon_code = html_decode code
     if is_moonscript moon_code
@@ -22,9 +22,11 @@ compile_pre_tags = (body, action) ->
         print "++ Failed to compile chunk"
         print moon_code
         print!
-        block
       else
-        action html_encode(moon_code), html_encode(lua_code)
+        return action html_encode(moon_code), html_encode(lua_code)
+
+    if default_action
+      default_action code
     else
       block
 
@@ -43,12 +45,12 @@ site = sitegen.create_site =>
           yield_index item
           cosmo.yield _template: 3
         else
-            cosmo.yield name: item[1], target: item[2]
+          cosmo.yield name: item[1], target: item[2]
 
     meta.index = ->
       yield_index index
 
-    compile_pre_tags body, (moon, lua) ->
+    code_tag = (moon, lua) ->
       table.concat {
         '<table style="width: 100%;" cellspacing="0" cellpadding="1">'
         '<tr class="code-header"><td>moonscript</td><td>lua</td></tr>'
@@ -56,6 +58,11 @@ site = sitegen.create_site =>
           moon,'</code></pre></td>'
         '<td><pre><code class="lua-code">',lua,'</code></pre></td>'
         '</tr></table>'
+      }
+
+    compile_pre_tags body, code_tag, (body) ->
+      table.concat {
+        '<pre class="bare-code"><code>',body,'</code></pre>'
       }
 
   -- the homepage

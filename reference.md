@@ -1,10 +1,13 @@
 target: reference/index
 template: reference
+title: MoonScript v0.1.0
 --
 MoonScript is a programming language that compiles to
 [Lua](http://www.lua.org). This guide expects the reader to have basic
 familiarity with Lua. For each code snippet below, the MoonScript is on the
 left and the compiled Lua is on right right.
+
+# The Language
 
 ## Assignment
 
@@ -47,11 +50,11 @@ All functions are created using a function expression. A simple function is
 denoted using the arrow: `->`
 
     my_function = ->
-    my_function() -- does nothing
+    my_function() -- call the empty function
 
 
-The body of the function can either by one statement placed directly after the
-arrow, or it can be a series of statements indented on the following line:
+The body of the function can either be one statement placed directly after the
+arrow, or it can be a series of statements indented on the following lines:
 
     func_a = -> print "hello world"
 
@@ -60,11 +63,11 @@ arrow, or it can be a series of statements indented on the following line:
       print "The value:", value
 
 If a function has no arguments, it can be called using the `!` operator,
-instead of empty parentheses. For example, calling the two functions from
-above:
+instead of empty parentheses. The `!` invocation is the prefered way to call
+functions with no arguments.
 
     func_a!
-    func_b!
+    func_b()
 
 Functions with arguments can be created by preceding the arrow with a list of
 argument names in parentheses:
@@ -84,7 +87,7 @@ In order to avoid ambiguity in when calling functions, parentheses can also be
 used to surround the arguments. This is required here in order to make sure the
 right arguments get sent to the right functions.
 
-    print "sum 1:", sum(10, 20), "sum 1:", sum(30, 40)
+    print "x:", sum(10, 20), "y:", sum(30, 40)
 
 Functions will coerce the last statement in their body into a return statement,
 this is called implicit return:
@@ -104,8 +107,8 @@ be a list of values separated by commas:
 
 ### Fat Arrows
 
-Because it is an idiom in Lua to send the object as the first argument when
-calling a method, a special syntax is provided for functions which
+Because it is an idiom in Lua to send an object as the first argument when
+calling a method, a special syntax is provided for creating functions which
 automatically includes a `self` argument.
 
     func = (num) => self.value + num
@@ -296,8 +299,8 @@ return value (Instead the function will return `nil`).  Either an explicit
 `return` statement can be used, or the loop can be converted into a list
 comprehension.
 
-    func_a -> for i=1,10 do i
-    func_b -> return for i=1,10 do i
+    func_a = -> for i=1,10 do i
+    func_b = -> return for i=1,10 do i
 
     print func_a! -- prints nil
     print func_b! -- prints table object
@@ -368,6 +371,10 @@ And with basic loops:
 
 ## Object Oriented Programming
 
+In these examples, the generated Lua code may appear overwhelming. It is best
+to focus on the meaning of the MoonScript code at first, then look into the Lua
+code if you wish to know the implementation details.
+
 A simple class:
 
     class Inventory
@@ -387,7 +394,7 @@ The `new` property is special in that it will become the constructor.
 
 Notice how all the methods in the class use the fat arrow function syntax. When
 calling methods on a instance, the instance itself is sent in as the first
-argument. The fat arrow handles the creation of a `self` variable.
+argument. The fat arrow handles the creation of a `self` argument.
 
 The `@` prefix on a variable name is shorthand for `self.`. `@items` becomes
 `self.items`.
@@ -599,4 +606,132 @@ accessed, they just cant be modified:
 
     my_func(22)
     print i,k -- these have been updated
+
+
+# MoonScript API
+
+## `moonscript` Module
+
+Upon installing MoonScript, a `moonscript` module is made available. The best
+use of this module is making your Lua's require function MoonScript aware.
+
+    require "moonscript"
+
+After `moonscript` is required, Lua's package loader is updated to search for
+`.moon` files on any subsequent calls to `require`. The search path for `.moon`
+files is based on the current `package.path` value in Lua when `moonscript` is
+required. Any search paths in `package.path` ending in `.lua` are copied,
+rewritten to end in `.moon`, and then inserted in `package.moonpath`.
+
+The `moonloader` is the function that is responsible for searching
+`package.moonpath` for a file available to be included. It is inserted in the
+second position of the `package.loaders` table. This means that a matching `.moon` file
+will be loaded over a matching `.lua` file that has the same base name.
+
+For more information on Lua's `package.loaders` see [Lua Reference Manual
+&mdash;
+package.loaders](http://www.lua.org/manual/5.1/manual.html#pdf-package.loaders)
+
+The `moonloader`, when finding a valid path to a `.moon` file, will parse and
+compile the file in memory. The code is then turned into a function using the
+built in `load` function, which is run as the module.
+
+## Error Rewriting
+
+Runtime errors are given special attention when using the `moonloader`.
+Because we start off as MoonScript, but run code as Lua, errors that happen
+during runtime report their line numbers as they are in the compiled file. This
+can make debugging particularly difficult.
+
+Consider the following file with a bug:
+
+    add_numbers = (x,y) -> x + z
+    print add_numbers 10,0
+
+The following error is generated:
+
+    moon:err.moon:1: attempt to perform arithmetic on global 'z' (a nil value)
+    stack traceback:
+        err.moon:1: in function 'add_numbers'
+        err.moon:2: in main chunk
+
+Instead of the error being reported on line number 3, where it appears in the
+Lua file, it is reported on line 1, where the faulty line originated. The
+entire stack trace is rewritten in addition to the error.
+
+## Programmatically Compiling
+
+The MoonScript module also contains methods for parsing MoonScript text into an
+abstract syntax tree, and compiling an instance of a tree into Lua source code.
+
+Knowledge of this API may be useful for creating tools to aid the generation of
+Lua code from MoonScript code.
+
+Here is a quick example of how you would compile a MoonScript string to a Lua
+String.
+
+    require "moonscript.parse"
+    require "moonscript.compile"
+
+    import parse, compile from moonscript
+
+    moon_code = [[(-> print "hello world")!]]
+
+    tree, err = parse.string moon_code
+    if not tree
+      error "Parse error: " .. err
+
+    lua_code, err, pos = compile.tree tree
+    if not lua_code
+      error compile.format_error err, pos, moon_code
+
+    -- our code is ready
+    print lua_code
+
+
+# Command Line Use
+
+Two tools are installed with MoonScript, `moon` and `moonc`.
+
+`moonc` is for compiling MoonScript code to Lua.  
+`moon` is for running MoonsScript code directly.
+
+## `moon`
+
+`moon` can be used to run MoonsScript files directly from the command line,
+without needing a separate compile step. All MoonsScript files are compiled in
+memory as they are run.
+
+    ~> moon my_script.moon
+
+Any MoonScript files that are required will also be compiled and run
+automatically.
+
+When an error occurs during runtime, the stack trace is rewritten to give line
+numbers from the original `.moon` file.
+
+If you want to disable [error rewriting](#error_rewriting), you can pass the
+`-d` flag. A full list of flags can be seen by passing the `-h` or `--help`
+flag.
+
+
+## `moonc`
+
+`moonc` is used for transforming MoonsScript files into Lua files.
+It takes a list of files, compiles them all, and creates the associated `.lua`
+files in the same directories.
+
+    ~> moonc my_script1.moon my_script2.moon ...
+
+You can control where the compiled files are put using the `-t` flag, followed
+by a directory.
+
+`moonc` can also take a directory as an argument, and it will recursively scan
+for all MoonScript files and compile them.
+
+Combined with `linotify` on linux, the `-w` flag can be used to watch all files
+that match the given search path for changes, and then compile them only when
+required.
+
+A full list of flags can be seen by passing the `-h` or `--help` flag.
 

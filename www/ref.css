@@ -8,7 +8,7 @@ body {
 	background: #404142;
 }
 
-h1 {
+.header h1 {
 	margin: 0px;
 	color: #F2F6FA;
 	padding-left: 10px;
@@ -32,7 +32,7 @@ p {
 	padding-left: 1em;
 }
 
-h2, h3 {
+.main h1, .main h2, .main h3 {
 	color: #4B4B4B; 
 	text-shadow: 1px 1px 0px white;
 	padding-bottom: 2px;
@@ -41,17 +41,29 @@ h2, h3 {
 	margin-top: 1.5em;
 }
 
-h2 {
+.main h2 {
 	border-bottom: 1px solid #7E7979;
 }
 
-table {
+.main h1 {
+	margin: 0px;
+	margin-top: 1em;
+	padding: 0px;
+	font-size: 40px;
+	/* border-bottom: 1px dashed #7E7979; */
+}
+
+table, .bare-code {
 	background: white;
 	border: 1px solid #999;
 	margin: 10px 0px;
 	-webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.22);
 	-moz-box-shadow:    2px 2px 8px rgba(0, 0, 0, 0.22);
 	box-shadow:         2px 2px 8px rgba(0, 0, 0, 0.22);
+}
+
+.bare-code {
+	padding: 8px;
 }
 
 td > pre {
@@ -84,7 +96,7 @@ td {
 
 .code-header td {
 	color: white;
-	text-shadow: 0px -1px 0px #444;
+	text-shadow: 0px -1px 0px #555;
 	font-size: 12px;
 	font-weight: bold;
 
@@ -93,12 +105,11 @@ td {
 	border-bottom: 1px solid #666;
 }
 
-p > code {
+p > code , li > code {
 	background: #E1E4E8;
 	border-radius: 4px;
 	padding: 0px 4px;
 }
-
 
 .l_string { color: #2020FF; background: #E8E8FF; }
 .l_symbol { color: #EE2400; }

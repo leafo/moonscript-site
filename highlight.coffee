@@ -85,21 +85,20 @@ builtins = [
     "ipairs", "pairs"
 ]
 
-
 class Lua extends Lexer
   name: "lua"
   matches:
     fn_symbol: ["function"]
     keyword: [
       "for", "end", "local", "if", "then", "return", "do"
-      "and", "or"
+      "and", "or", "else", "not"
     ]
     special: ["nil", "true", "false"]
     symbol: ['=', '.', '{', '}', ':']
     builtins: builtins
     atom: /[_A-Za-z][_A-Za-z0-9]*/
     number: /\d+/
-    string: /"[^"]*"/
+    string: [/"[^"]*"/, /\[\[.*?]]/]
     comment: /--.*$/
 
 class Moon extends Lexer
@@ -109,7 +108,7 @@ class Moon extends Lexer
       "class", "extends", "if", "then"
       "do", "with", "import", "export", "while"
       "elseif", "return", "for", "in", "from", "when"
-      "using", "else", "and", "or"
+      "using", "else", "and", "or", "not"
     ]
     special: ["nil", "true", "false"]
     builtins: builtins
@@ -123,7 +122,7 @@ class Moon extends Lexer
     proper: /[A-Z][a-zA-Z_0-9]+/
     atom: /[_A-Za-z]\w*/
     number: /\d+/
-    string: /"[^"]*"/
+    string: [/"[^"]*"/, /\[\[.*?]]/]
     comment: /--[^\n]*\n/
 
 window.Lexer = Lexer
