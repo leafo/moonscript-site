@@ -7,6 +7,7 @@ window.onload = ->
   $ = (id) -> document.getElementById id
 
   shroud = $ "shroud"
+  popup = $ "shroud-popup"
 
   show_modal = ->
     shroud.style.display = "block"
@@ -15,6 +16,8 @@ window.onload = ->
     shroud.style.display = "none"
 
   shroud.onclick = hide_modal
+
+  popup.onclick = (e) -> e.stopPropagation()
 
   nodes = document.querySelectorAll ".see-lua"
   for node in nodes

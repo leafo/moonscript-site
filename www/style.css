@@ -2,21 +2,18 @@
 body {
 	font-family: 'Kreon', serif;
 	background: #36393B url('back.png') repeat-x;
-	background-attachment: fixed;
 	font-size: 20px;
 	margin: 0px;
 	padding: 0px;
 }
 
 h1 {
-	font-family: 'Wire One';
-	color: white;
-	font-weight: normal;
-	font-size: 50px;
-	margin: 0px;
-	padding: 0px;
+	display: none;
+}
+
+#logo {
+	margin-top: 8px;
 	border-bottom: 1px dashed white;
-	padding-bottom: 8px;
 }
 
 a:link, a:visited {
@@ -40,12 +37,13 @@ a:hover {
 
 .nav ul {
 	list-style: none;
-	padding-left: 0px;
-	margin-left: 0px;
+	margin: 0px;
+	padding: 0px;
+	margin-top: 1em;
 }
 
 .nav li {
-	margin-bottom: 2px;
+	line-height: 24px;
 }
 
 
@@ -67,6 +65,7 @@ a:hover {
 
 .message {
 	color: #00b7de;
+	color: #0091B0;
 	text-shadow: 1px 1px 0px #c4f5ff;
 	padding: 0px;
 	margin: 0px;
@@ -85,7 +84,6 @@ a:hover {
 
 	background: #eee;
 	border-top: 1px solid white;
-	/* border-bottom: 1px solid #9f9f9f; */
 
 	box-shadow: 0px 2px 8px #106b7e;
 }
@@ -158,7 +156,6 @@ p > code, li > code {
 
 	border-bottom: 1px solid white;
 	border-top: 1px solid #808080;
-	/* border-top: 1px solid #222; */
 
 	text-shadow: 0px -1px 0px #111;
 
@@ -170,7 +167,7 @@ p > code, li > code {
 	font-weight: bold;
 	color: #ab1818;
 	text-shadow: 1px 1px 0px white;
-	/* border-radius: 6px; */
+
 	border: 0px;
 	float: right;
 	margin: 8px 12px 0px 0px;
@@ -270,10 +267,14 @@ pre.shroud-column {
 }
 
 .code-header td {
-	padding: 2px;
-	font-family: monospace;
-	text-shadow: 1px 1px 0px #ddd;
-	color: #222;
+	color: #444;
+	font-family: sans-serif;
+	text-shadow: 1px 1px 0px #eee;
 	font-size: 12px;
+	font-weight: bold;
+
+	padding: 2px 6px;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #666;
 }
 

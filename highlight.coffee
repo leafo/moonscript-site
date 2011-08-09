@@ -120,8 +120,8 @@ class Moon extends Lexer
     ]
     fn_symbol: ['->', '=>', '}', '{']
     self_var: /@[a-zA-Z_][a-zA-Z_0-9]*/
-    atom: /[_A-Za-z][_A-Za-z0-9]*/
     proper: /[A-Z][a-zA-Z_0-9]+/
+    atom: /[_A-Za-z]\w*/
     number: /\d+/
     string: /"[^"]*"/
     comment: /--[^\n]*\n/

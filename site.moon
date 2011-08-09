@@ -32,6 +32,7 @@ site = sitegen.create_site =>
   @root = "/moon/www"
   copy_files {"highlight.js", "client.js"}
 
+  -- the reference manual
   filter "^reference", (body, meta) ->
     body, index = sitegen.index_headers body, meta
 
@@ -57,9 +58,12 @@ site = sitegen.create_site =>
         '</tr></table>'
       }
 
+  -- the homepage
   filter "^index", (body, meta) ->
     body = body\gsub "<h2>.-</h2>", (header) ->
         '</div><div class="box">'..header
+
+    body = sitegen.index_headers body, meta
 
     i = 0
     compile_pre_tags body, (moon, lua) ->
