@@ -68,6 +68,7 @@ table, .bare-code {
 
 td > pre {
 	padding: 0px 8px;
+	line-height: 18px;
 }
 
 .code-border {
@@ -111,19 +112,38 @@ p > code , li > code {
 	padding: 0px 4px;
 }
 
-.l_string { color: #2020FF; background: #E8E8FF; }
-.l_symbol { color: #EE2400; }
-.l_keyword { color: #008858; font-weight: bold; }
-.l_comment { color: #FF00C0; }
-.l_fn_symbol { color: #EE2400; }
-.l_proper, .l_self_var { color: #0070E6; }
-.l_builtins { color: green; }
-.l_number  {
-	color: #005858;
-	background: #CCF7EE;
+.l_string {
+	color: #A16D43;
+	/*
+	background: #F9D7BB;
+	background: #FFE9D6;
+	*/
 }
-
-
-
-
+.l_symbol, .l_bold_symbol {
+	color: #B50C0C;
+}
+.l_bold_symbol {
+	/* font-weight: bold; */
+}
+.l_keyword {
+	color: #0CB56C;
+}
+.l_comment {
+	color: #D74DBF;
+}
+.l_fn_symbol {
+	color: #8E4681;
+}
+.l_proper, .l_self_var {
+	color: #30A0BD;
+}
+.l_proper {
+	font-weight: bold;
+}
+.l_builtins {
+	color: #707A34;
+}
+.l_number  {
+	color: #4958C3;
+}
 

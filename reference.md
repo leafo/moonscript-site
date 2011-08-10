@@ -668,7 +668,7 @@ Knowledge of this API may be useful for creating tools to aid the generation of
 Lua code from MoonScript code.
 
 Here is a quick example of how you would compile a MoonScript string to a Lua
-String.
+String:
 
     require "moonscript.parse"
     require "moonscript.compile"

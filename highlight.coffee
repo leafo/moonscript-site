@@ -114,12 +114,14 @@ class Moon extends Lexer
     builtins: builtins
     self: ["self"]
     symbol: [
-      '!', '\\', '=', '+=', '-=', ':'
+      '!', '\\', '=', '+=', '-='
       '...', '*', '>', '<', '#'
     ]
-    fn_symbol: ['->', '=>', '}', '{']
+    bold_symbol: [':', '.']
+    fn_symbol: ['->', '=>', '}', '{', '[', ']']
     self_var: /@[a-zA-Z_][a-zA-Z_0-9]*/
-    proper: /[A-Z][a-zA-Z_0-9]+/
+    table_key: /[_A-Za-z][a-zA-Z_0-9]*(?=:)/
+    proper: /[A-Z][a-zA-Z_0-9]*/
     atom: /[_A-Za-z]\w*/
     number: /\d+/
     string: [/"[^"]*"/, /\[\[.*?]]/]
