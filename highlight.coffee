@@ -97,7 +97,7 @@ class Lua extends Lexer
     symbol: ['=', '.', '{', '}', ':']
     builtins: builtins
     atom: /[_A-Za-z][_A-Za-z0-9]*/
-    number: /\d+/
+    number: /-?\d+/
     string: [/"[^"]*"/, /\[\[.*?]]/]
     comment: /--.*$/
 
@@ -123,7 +123,7 @@ class Moon extends Lexer
     table_key: /[_A-Za-z][a-zA-Z_0-9]*(?=:)/
     proper: /[A-Z][a-zA-Z_0-9]*/
     atom: /[_A-Za-z]\w*/
-    number: /\d+/
+    number: /-?\d+/
     string: [/"[^"]*"/, /\[\[.*?]]/]
     comment: /--[^\n]*\n/
 

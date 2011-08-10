@@ -4,14 +4,12 @@ body {
 	margin: 0px;
 }
 
-.header {
-	background: #404142;
-}
-
 .header h1 {
+	background: #404142;
 	margin: 0px;
 	color: #F2F6FA;
 	padding-left: 10px;
+	text-shadow: -1px -1px 0px #2D2D2E;
 }
 
 a:link, a:visited {
@@ -32,7 +30,7 @@ p {
 	padding-left: 1em;
 }
 
-.main h1, .main h2, .main h3 {
+h1, .main h2, .main h3 {
 	color: #4B4B4B; 
 	text-shadow: 1px 1px 0px white;
 	padding-bottom: 2px;
@@ -45,12 +43,12 @@ p {
 	border-bottom: 1px solid #7E7979;
 }
 
-.main h1 {
+h1 {
 	margin: 0px;
 	margin-top: 1em;
-	padding: 0px;
+	padding: 10px 20px;
 	font-size: 40px;
-	/* border-bottom: 1px dashed #7E7979; */
+	background: #E1E4E8;
 }
 
 table, .bare-code {
@@ -134,7 +132,7 @@ p > code , li > code {
 .l_fn_symbol {
 	color: #8E4681;
 }
-.l_proper, .l_self_var {
+.l_proper, .l_self_var, .l_special {
 	color: #30A0BD;
 }
 .l_proper {

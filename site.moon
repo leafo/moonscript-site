@@ -38,6 +38,9 @@ site = sitegen.create_site =>
   filter "^reference", (body, meta) ->
     body, index = sitegen.index_headers body, meta
 
+    body = body\gsub "<h1>.-</h1>", (header) ->
+        table.concat {'</div>',header,'<div class="main">' }
+
     yield_index = (index) ->
       for item in *index
         if item.depth

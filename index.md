@@ -84,55 +84,30 @@ If you are on Linux and want to run *watch* mode, which compiles `.moon` files t
 [linotify](https://github.com/hoelzro/linotify).
 
 
+## Source
+
+The sourcecode to the project lives on github:  
+<https://github.com/leafo/moonscript>.
+
+Issues with the tool can be reported on the issue tracker:  
+<https://github.com/leafo/moonscript/issues>
+
+### Dependencies
+
+In addition to [Lua 5.1](http://lua.org), the following Lua modules are
+required to run the compiler and associated tools:
+
+ * [LPeg](http://www.inf.puc-rio.br/~roberto/lpeg/lpeg.html)
+ * [LuaFileSystem](http://keplerproject.github.com/luafilesystem/)
+ * [alt-getopt](http://luaforge.net/projects/alt-getopt/)
+ * and optionally on Linux [linotify](https://github.com/hoelzro/linotify)
+
+All of the required ones can be retrieved automatically using the
+[LuaRocks](#installing_with_luarocks) installation.
+
 ## Learning
 
-Read the [reference manual](reference/).
-
-## Command Line Use
-
-Two tools are installed with MoonScript, `moon` and `moonc`.
-`moonc` is used for transforming MoonsScript code into a Lua file.
-It takes a list of files, compiles them all, and creates the associated `.lua`
-files in the same directories.
-
-
-### moon
-
-`moon` can be used to run MoonsScript files directly from the command line,
-without needing a separate compile step. All MoonsScript files are compiled in
-memory as they are run.
-
-    ~> moon my_script.moon
-
-Any MoonScript files that are required will also be compiled and run
-automatically.
-
-When an error occurs during runtime, the stack trace is rewritten to give line
-numbers from the original `.moon` file.
-
-If you want to disable error rewriting, you can pass the `-d` flag. A full list
-of flags can be seen by passing the `-h` or `--help` flag.
-
-
-### moonc
-
-`moonc` is used for transforming a MoonsScript file into a Lua file.
-It takes a list of files, compiles them all, and creates the associated `.lua`
-files alongside the `.moon` files.
-
-    ~> moonc my_script1.moon my_script2.moon ...
-
-You can control where the compiled files are put using the `-t` flag, followed
-by a directory.
-
-`moonc` can also take a directory as an argument, and it will recursively scan
-for all MoonScript files and compile them.
-
-Combined with `linotify` on linux, the `-w` flag can be used to watch all files
-that match the given search path for changes, and then compile them only when
-required.
-
-A full list of flags can be seen by passing the `-h` or `--help` flag.
+A comprehensive [reference manual](reference/) is available.
 
 ## Overview of Differences & Highlights
 
@@ -164,34 +139,3 @@ A more detailed overview of the syntax can be found in the
  * `with` statement lets you access anonymous object with short syntax
 
 
-## Dependencies
-
-The following are used in MoonScript:
-
- * [Lua 5.1](http://lua.org)
- * [LPeg](http://www.inf.puc-rio.br/~roberto/lpeg/lpeg.html)
- * [LuaFileSystem](http://keplerproject.github.com/luafilesystem/)
- * [alt-getopt](http://luaforge.net/projects/alt-getopt/)
- * and optionally on Linux [linotify](https://github.com/hoelzro/linotify)
-
-## License (MIT)
-
-Copyright (C) 2011 by Leaf Corcoran
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
