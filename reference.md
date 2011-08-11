@@ -23,8 +23,7 @@ keyword.
 ## Update Assignment
 
 `+=`, `-=`, `/=`, `*=`, `%=` operators have been added for updating a value by
-a certain amount have been added. They are aliases for their expanded
-equivalents.
+a certain amount. They are aliases for their expanded equivalents.
 
     x = 0
     x += 10

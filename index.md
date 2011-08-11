@@ -1,5 +1,5 @@
 **MoonScript** is a dynamic scripting language that compiles into
-[Lua](http://ww.lua.org/). It gives you the power of the fastest scripting
+[Lua](http://www.lua.org/). It gives you the power of the fastest scripting
 language combined with a rich set of features.
 
     class Thing
@@ -72,8 +72,7 @@ manager.
 
 After it is installed, run the following in a terminal:
 
-    ~> wget http://moonscript.org/rocks/moonscript-dev-1.rockspec
-    ~> luarocks install moonscript-dev-1.rockspec
+    ~> luarocks build http://moonscript.org/rocks/moonscript-dev-1.rockspec
 
 This will provide the `moon` and `moonc` tools along with the `moonscript`
 Lua module.
@@ -139,4 +138,11 @@ A more detailed overview of the syntax can be found in the
    class method
  * `with` statement lets you access anonymous object with short syntax
 
+## About
+
+The syntax of MoonScript has been heavily inspired by syntax
+[CoffeeScript](http://jashkenas.github.com/coffee-script/). 
+
+MoonScript would not have been possible without the excellent tool
+[LPeg](http://www.inf.puc-rio.br/~roberto/lpeg/) for parsing.
 
