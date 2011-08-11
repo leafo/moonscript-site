@@ -1,5 +1,4 @@
 
-
 window.onload = ->
   new Moon()
   new Lua()
@@ -16,8 +15,10 @@ window.onload = ->
     shroud.style.display = "none"
 
   shroud.onclick = hide_modal
+  $("shroud-close").onclick = hide_modal
 
   popup.onclick = (e) -> e.stopPropagation()
+
 
   nodes = document.querySelectorAll ".see-lua"
   for node in nodes

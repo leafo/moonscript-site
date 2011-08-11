@@ -32,7 +32,7 @@ language.
 
 MoonScript provides a clean syntax using significant whitespace that avoids all
 the keyword noise typically seen in a Lua script. Below is a sample of some
-constructs found in the languge.
+constructs found in the language.
 
 	export my_func
 	x = 2323
@@ -45,9 +45,9 @@ constructs found in the languge.
 
 	print my_func 100
 
-It also adds table comprehensions, implicit return on functions, classes,
-inheritance, scope management statements `import` & `export`, and a convenient
-object creation statement called `with`.
+It also adds [table comprehensions](reference/#table_comprehensions), [implicit return](##function_literals) on functions, [classes](reference/#object_oriented_programming),
+[inheritance](reference/#inheritance), scope management statements [import](reference/#import) & [export](reference/#export), and a convenient
+object creation statement called [with](reference/#with).
 
 	import concat, insert from table
 
@@ -56,9 +56,10 @@ object creation statement called `with`.
 
     tuples = [{k, v} for k,v in ipairs my_table]
 
-It can be loaded directly from a Lua script without an intermediate compile
-step. It even knows how to tell you where errors occurred in the original file
-when they happen.
+It can be loaded directly from a Lua script [without an intermediate
+compile step](reference/#moonscript_module). It even knows how to [tell you
+where errors occurred](reference/#error_rewriting) in the original file when
+they happen.
 
 ## Installation
 
@@ -71,7 +72,7 @@ manager.
 
 After it is installed, run the following in a terminal:
 
-    ~> wget https://moonscript.org/rocks/moonscript-dev-1.rockspec
+    ~> wget http://moonscript.org/rocks/moonscript-dev-1.rockspec
     ~> luarocks install moonscript-dev-1.rockspec
 
 This will provide the `moon` and `moonc` tools along with the `moonscript`
@@ -112,7 +113,7 @@ A comprehensive [reference manual](reference/) is available.
 ## Overview of Differences & Highlights
 
 A more detailed overview of the syntax can be found in the
-[documentation](docs/index.md).
+[documentation](reference/).
 
  * Whitespace sensitive blocks defined by indenting
  * All variable declarations are local by default
