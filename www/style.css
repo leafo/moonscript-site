@@ -285,3 +285,10 @@ pre.shroud-column {
 	border-bottom: 1px solid #666;
 }
 
+#sharing {
+	padding: 16px;
+	margin-top: 8px;
+	text-align: left;
+}
+
+
