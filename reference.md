@@ -175,7 +175,8 @@ Unlike Lua, assigning a value to a key in a table is done with `:` (instead of
       ["favorite food"]: "rice"
     }
 
-The curly braces can be left off if a single table is being assigned.
+The curly braces can be left off if a single table of key value pairs is being
+assigned.
 
     profile = 
       height: "4 feet",
@@ -211,7 +212,8 @@ doubled.
 
 The items included in the new table can be restricted with a `when` clause:
 
-    slice = [item for i, item in ipairs items when i > 1 and i < 3]
+	iter = ipairs items
+    slice = [item for i, item in iter when i > 1 and i < 3]
 
 Because it is common to iterate over the values of a numerically indexed table,
 an `*` operator is introduced. The doubled example can be rewritten as:
@@ -551,8 +553,6 @@ Or...
     me = create_person "Leaf", {dad, mother, sister}
 
 ## The Using Clause; Controlling Destructive Assignment
-
-*This isn't implemented yet*
 
 While lexical scoping can be a great help in reducing the complexity of the
 code we write, things can get unwieldy as the code size increases. Consider
