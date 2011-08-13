@@ -728,6 +728,8 @@ by a directory.
 `moonc` can also take a directory as an argument, and it will recursively scan
 for all MoonScript files and compile them.
 
+`moonc` can write to standard out by passing the `-p` flag.
+
 Combined with `linotify` on linux, the `-w` flag can be used to watch all files
 that match the given search path for changes, and then compile them only when
 required.

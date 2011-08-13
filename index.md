@@ -72,7 +72,7 @@ manager.
 
 After it is installed, run the following in a terminal:
 
-    ~> luarocks build http://moonscript.org/rocks/moonscript-dev-1.rockspec
+    ~> luarocks build http://moonscript.org/rocks/moonscript-0.1.0-1.rockspec
 
 This will provide the `moon` and `moonc` tools along with the `moonscript`
 Lua module.
@@ -83,14 +83,18 @@ If you are on Linux and want to run *watch* mode, which compiles `.moon` files t
 `.lua` files as they are changed, you can install
 [linotify](https://github.com/hoelzro/linotify).
 
-
 ## Source
 
-The sourcecode to the project lives on github:  
-<https://github.com/leafo/moonscript>.
+The source code to the project lives on github:  
+<https://github.com/leafo/moonscript>
 
 Issues with the tool can be reported on the issue tracker:  
 <https://github.com/leafo/moonscript/issues>
+
+The latest development (and **possibly broken**) version can be installed with the
+dev rockspec.
+
+    ~> luarocks build http://moonscript.org/rocks/moonscript-dev-1.rockspec
 
 ### Dependencies
 
