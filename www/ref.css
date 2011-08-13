@@ -145,3 +145,9 @@ p > code , li > code {
 	color: #4958C3;
 }
 
+.footer {
+	color: #747678;
+	font-size: 80%;
+	padding: 8px;
+}
+

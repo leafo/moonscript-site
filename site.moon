@@ -31,6 +31,7 @@ compile_pre_tags = (body, action, default_action) ->
       block
 
 site = sitegen.create_site =>
+  @moon_version = require"moonscript.version".version
   @root = "/moon/www"
   @head_analytics = [[
 <script type="text/javascript">

@@ -119,6 +119,7 @@ create_site = (init) ->
     copy_files: {}
     filters: {}
     written_files: {}
+    generate_date: os.date!
   }, config
 
   template_cache = {}
