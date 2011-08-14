@@ -59,7 +59,7 @@ index_headers = (body, meta) ->
 
         current.depth = i if i < current.depth
 
-    slug = slugify body
+    slug = slugify html_decode body
     insert current, {body, slug}
     concat {
       '<h', i, '><a name="',slug,'"></a>', body, '</h', i, '>'

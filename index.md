@@ -113,6 +113,10 @@ All of the required ones can be retrieved automatically using the
 
 A comprehensive [reference manual](reference/) is available.
 
+## Extras & Addons
+
+ * Vim syntax support: <https://github.com/leafo/moonscript-vim>
+
 ## Overview of Differences & Highlights
 
 A more detailed overview of the syntax can be found in the
