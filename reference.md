@@ -1,6 +1,6 @@
 target: reference/index
 template: reference
-title: MoonScript v0.1.0
+title: MoonScript v0.2.0
 --
 MoonScript is a programming language that compiles to
 [Lua](http://www.lua.org). This guide expects the reader to have basic
