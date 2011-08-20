@@ -148,7 +148,7 @@ A more detailed overview of the syntax can be found in the
 
 ## About
 
-The syntax of MoonScript has been heavily inspired by syntax
+The syntax of MoonScript has been heavily inspired by the syntax of
 [CoffeeScript](http://jashkenas.github.com/coffee-script/). 
 
 MoonScript would not have been possible without the excellent tool

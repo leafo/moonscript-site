@@ -22,11 +22,14 @@ keyword.
 
 ## Update Assignment
 
-`+=`, `-=`, `/=`, `*=`, `%=` operators have been added for updating a value by
+`+=`, `-=`, `/=`, `*=`, `%=`, `..=` operators have been added for updating a value by
 a certain amount. They are aliases for their expanded equivalents.
 
     x = 0
     x += 10
+
+	s = "hello "
+	s ..= "world"
 
 ## Comments 
 
@@ -158,6 +161,70 @@ expressions (if they exist), which serves as the argument list.
 
     x = func"hello" + 100
     y = func "hello" + 100
+
+### Multi-line arguments
+
+When calling functions that take a large number of arguments, it is convenient
+to split the argument list over multiple lines. Because of the white-space
+sensitive nature of the language, care must be taken when splitting up the
+argument list.
+
+If an argument list is to be continued onto the next line, the current line
+must end in a comma. And the following line must be indented more than the
+current indentation. Once indented, all other argument lines must be at the
+same level of indentation to be part of the argument list
+
+    my_func 5,4,3,
+      8,9,10
+
+    cool_func 1,2,
+      3,4,
+      5,6,
+      7,8
+
+This type of invocation can be nested. The level of indentation is used to
+determine to which function the arguments belong to.
+
+
+    my_func 5,6,7,
+      6, another_func 6,7,8,
+        9,1,2,
+      5,4
+
+Because [tables](#table_literals) also use the comma as a delimiter, this
+indentation syntax is helpful for letting values be part of the argument list
+instead of being part of the table.
+
+    x = {
+      1,2,3,4, a_func 4,5,
+        5,6,
+      8,9,10
+    }
+
+Although uncommon, notice how we can give a deeper indentation for function
+arguments if we know we will be using a lower indentation futher on.
+
+    y = { my_func 1,2,3,
+       4,5,
+      5,6,7
+    }
+
+The same thing can be done with other block level statements like
+[conditionals](#Conditionals). We can use indentation level to determine what
+statement a value belongs to:
+
+    if func 1,2,3,
+      "hello",
+      "world"
+        print "hello"
+		print "I am inside if"
+
+    if func 1,2,3,
+        "hello",
+        "world"
+      print "hello"
+	  print "I am inside if"
+
 
 ## Table Literals
 
