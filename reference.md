@@ -430,6 +430,13 @@ instances, so modifications to it in one instance will show up in another:
 	-- will print both pants and shirt
     print item for item in *a.clothes
 
+The proper way to avoid this problem is to create the mutable state of the
+object in the constructor:
+
+    class Person
+	  new: =>
+	    @clothes = {}
+
 ### Inheritance
 
 The `extends` keyword can be used in a class declaration to inherit the
