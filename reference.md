@@ -62,7 +62,7 @@ arrow, or it can be a series of statements indented on the following lines:
       print "The value:", value
 
 If a function has no arguments, it can be called using the `!` operator,
-instead of empty parentheses. The `!` invocation is the prefered way to call
+instead of empty parentheses. The `!` invocation is the preferred way to call
 functions with no arguments.
 
     func_a!
@@ -114,7 +114,7 @@ automatically includes a `self` argument.
 
 ### Argument Defaults
 
-It is possible to provide deafult values for the arguments of a function. An
+It is possible to provide default values for the arguments of a function. An
 argument is determined to be empty if it's value is `nil`. Any `nil` arguments
 that have a default value will be replace before the body of the function is run.
 
@@ -321,7 +321,7 @@ The while loop also comes in two variations:
     while running == true do my_function!
 
 Like for loops, the while loop can also be used an expression. Additionally,
-for a function to return the accumlated value of a while loop, the statement
+for a function to return the accumulated value of a while loop, the statement
 must be explicitly returned.
 
 ## Conditionals
