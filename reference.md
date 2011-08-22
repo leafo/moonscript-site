@@ -244,7 +244,7 @@ Any of the slice arguments can be left off to use a sensible default. In this
 example, if the max index is left off it defaults to the length of the table.
 This will take everything but the first element:
 
-    slice = [item for item in *items[1:]]
+    slice = [item for item in *items[2:]]
 
 If the minimum bound is left out, it defaults to 1. Here we only provide a step
 size and leave the other bounds blank. This takes all odd indexed items: (1, 3,
