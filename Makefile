@@ -10,4 +10,4 @@ js:
 
 static: www/reference/index.html
 	mkdir -p static
-	./pack_html.js $+ > static/reference_manual.html
+	./pack_html.js $+ > moonscript/docs/reference_manual.html

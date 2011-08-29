@@ -31,6 +31,9 @@ compile_pre_tags = (body, action, default_action) ->
       block
 
 site = sitegen.create_site =>
+  add_file "moonscript/docs/reference.md"
+  copy_files {"highlight.js", "client.js"}
+
   @moon_version = require"moonscript.version".version
   @root = "/moon/www"
   @head_analytics = [[
@@ -47,8 +50,6 @@ site = sitegen.create_site =>
   })();
 
 </script>]]
-
-  copy_files {"highlight.js", "client.js"}
 
   -- the reference manual
   filter "^reference", (body, meta) ->

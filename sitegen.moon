@@ -117,6 +117,7 @@ extend = (table, index) ->
 create_site = (init) ->
   site = extend {
     copy_files: {}
+    additional_files: {}
     filters: {}
     written_files: {}
     generate_date: os.date!
@@ -155,13 +156,21 @@ create_site = (init) ->
       \close!
 
   get_pages = ->
-    return for path in lfs.dir"."
-      path if path\match site.page_pattern
+    set = {}
+    files = [file for file in *site.additional_files]
+    set[file] = true for file in *files
+
+    for path in lfs.dir"."
+      if path\match(site.page_pattern) and not set[path]
+        table.insert(files, path)
+
+    files
 
   parse_file = (fname) ->
     text = io.open(fname)\read "*a"
     meta = extend {
       target: fname\match site.page_pattern
+      current_page: fname
     }, extend default_meta, site
 
     s, e = text\find "%-%-\n"
@@ -185,6 +194,8 @@ create_site = (init) ->
         insert site.copy_files, file
     filter: (name, fn) ->
       insert site.filters, {name, fn}
+    add_file: (file) ->
+      table.insert(site.additional_files, file)
 
   if init
     setfenv init, setmetatable site_scope, __index: getfenv init
