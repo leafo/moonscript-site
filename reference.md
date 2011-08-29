@@ -265,6 +265,22 @@ off:
 
     y = type: "dog", legs: 4, tails: 1
 
+The keys of a table literal can be language keywords without being escaped:
+
+    tbl = {
+      do: "something"
+      end: "hunger"
+    }
+
+If you are constructing a table out of variables and wish the keys to be the
+same as the variable names, then the `:` prefix operator can be used:
+
+    hair = "golden"
+    height = 200
+    person = { :hair, :height, shoe_size: 40 }
+
+    print_table :hair, :height
+
 ## Table Comprehensions
 
 Table comprehensions provide a quick way to iterate over a table's values while
