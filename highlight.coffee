@@ -82,7 +82,7 @@ class Lexer
 
 builtins = [
     "table.insert", "assert", "print"
-    "ipairs", "pairs"
+    "ipairs", "pairs", "require"
 ]
 
 class Lua extends Lexer
@@ -91,7 +91,7 @@ class Lua extends Lexer
     fn_symbol: ["function"]
     keyword: [
       "for", "end", "local", "if", "then", "return", "do"
-      "and", "or", "else", "not"
+      "and", "or", "else", "not", "while", "elseif"
     ]
     special: ["nil", "true", "false"]
     symbol: ['=', '.', '{', '}', ':']
@@ -99,7 +99,7 @@ class Lua extends Lexer
     atom: /[_A-Za-z][_A-Za-z0-9]*/
     number: /-?\d+/
     string: [/"[^"]*"/, /\[\[.*?]]/]
-    comment: /--.*$/
+    comment: /--[^\n]*\n/
 
 class Moon extends Lexer
   name: "moon"

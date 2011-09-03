@@ -10,7 +10,7 @@ module "sitegen", package.seeall
 
 import insert, concat, sort from table
 export create_site, html_encode, html_decode, slugify
-export index_headers
+export index_headers, render_index
 
 punct = "[%^$()%.%[%]*+%-?]"
 escape_patt = (str) ->
@@ -40,24 +40,50 @@ html_decode = (text) ->
 strip_tags = (html) ->
   html\gsub "<[^>]+>", ""
 
+
+render_index = (index) ->
+  yield_index = (index) ->
+    for item in *index
+      if item.depth
+        cosmo.yield _template: 2
+        yield_index item
+        cosmo.yield _template: 3
+      else
+        cosmo.yield name: item[1], target: item[2]
+
+  tpl = [==[
+		<ul>
+		$index[[
+			<li><a href="#$target">$name</a></li>
+		]], [[ <ul> ]] , [[ </ul> ]]
+		</ul>
+  ]==]
+
+  cosmo.f(tpl) index: -> yield_index index
+
 -- filter to build index for headers
-index_headers = (body, meta) ->
+index_headers = (body, meta, opts={}) ->
   headers = {}
+
+  opts.min_depth = opts.min_depth or 1
+  opts.max_depth = opts.max_depth or 9
 
   current = headers
   fn = (body, i) ->
     i = tonumber i
-    if not current.depth
-      current.depth = i
-    else
-      if i > current.depth
-        current = parent: current, depth: i
-      else
-        while i < current.depth and current.parent
-          insert current.parent, current
-          current = current.parent
 
-        current.depth = i if i < current.depth
+    if i >= opts.min_depth and i <= opts.max_depth
+      if not current.depth
+        current.depth = i
+      else
+        if i > current.depth
+          current = parent: current, depth: i
+        else
+          while i < current.depth and current.parent
+            insert current.parent, current
+            current = current.parent
+
+          current.depth = i if i < current.depth
 
     slug = slugify html_decode body
     insert current, {body, slug}
