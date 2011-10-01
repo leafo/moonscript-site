@@ -82,7 +82,8 @@ class Lexer
 
 builtins = [
     "table.insert", "assert", "print"
-    "ipairs", "pairs", "require"
+    "ipairs", "pairs", "require", "module"
+    "package.seeall"
 ]
 
 class Lua extends Lexer
@@ -105,7 +106,7 @@ class Moon extends Lexer
   name: "moon"
   matches:
     keyword: [
-      "class", "extends", "if", "then"
+      "class", "extends", "if", "then", "super"
       "do", "with", "import", "export", "while"
       "elseif", "return", "for", "in", "from", "when"
       "using", "else", "and", "or", "not"
