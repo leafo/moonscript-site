@@ -20,6 +20,12 @@ a:hover {
 	color: #409CFF;
 }
 
+a.current {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 p {
 	line-height: 140%;
 	font-size: 16px;
@@ -30,7 +36,7 @@ p {
 	padding-left: 1em;
 }
 
-h1, .main h2, .main h3 {
+h1, h2, h3 {
 	color: #4B4B4B; 
 	text-shadow: 1px 1px 0px white;
 	padding-bottom: 2px;
@@ -51,13 +57,17 @@ h1 {
 	background: #E1E4E8;
 }
 
-table, .bare-code {
+table, .bare-code, div > pre {
 	background: white;
 	border: 1px solid #999;
 	margin: 10px 0px;
 	-webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.22);
 	-moz-box-shadow:    2px 2px 8px rgba(0, 0, 0, 0.22);
 	box-shadow:         2px 2px 8px rgba(0, 0, 0, 0.22);
+}
+
+div > pre {
+    padding: 8px;
 }
 
 .bare-code {
@@ -138,7 +148,7 @@ p > code , li > code {
 .l_proper {
 	font-weight: bold;
 }
-.l_builtins {
+.l_builtins, .nv {
 	color: #707A34;
 }
 .l_number  {
@@ -150,4 +160,31 @@ p > code , li > code {
 	font-size: 80%;
 	padding: 8px;
 }
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.column {
+    float: left;
+}
+
+.index {
+    margin-left: 20px;
+}
+
+h3 > code {
+    display: block;
+    background: #C3DFFA;
+    padding: 1em;
+    color: #0075ea;
+    text-shadow: 1px 1px 0px #e8f1fa;
+    border-bottom: 1px solid #b1cae3;
+}
+
 

@@ -8,18 +8,26 @@ html = require "sitegen.html"
 
 extra.AnalyticsPlugin.__base.analytics = -> ""
 
-reference_highlight = (code_text) ->
-  lua_text = nil
-  x = coroutine.create ->
-    lua_text = moonscript.to_lua code_text
+try_compile = (text) ->
+  out = nil
+  c = coroutine.create ->
+    out = moonscript.to_lua text
 
-  pass, err = coroutine.resume x
-  if not pass
+  pass, err = coroutine.resume c
+
+  if pass
+    out
+  else
     print err
     print!
-    print code_text
+    print text
     print!
-    return err
+    nil, err
+
+
+reference_highlight = (code_text) ->
+  lua_text, err = try_compile code_text
+  return err if not lua_text
 
   html.build ->
     tag.table {
@@ -58,41 +66,47 @@ site = sitegen.create_site =>
   @moon_version = require"moonscript.version".version
   copy "highlight.js", "client.js"
   add "moonscript/docs/reference.md"
+  add "moonscript/docs/standard_lib.md"
 
   i = 0
   with extra.PygmentsPlugin.custom_highlighters
-    .bash = (code_text) =>
-      html.build -> pre { code_text }
-
     .moon = (code_text, page) =>
       if page.source\match "reference"
         return reference_highlight code_text
 
-      lua_text = moonscript.to_lua code_text
+      lua_text, err = try_compile code_text
+      return err if not lua_text
 
       html.build ->
         i += 1
-        div {
+
+        moon_pre = pre {
           __breakclose: true
-          class: "code-container"
           code {
-            class: "lua-code"
-            id: "lua-" .. tostring i
-            lua_text
-          }
-          button {
-            class: "see-lua"
-            code_id: tostring i
-            "See Lua"
-          }
-          pre {
-            code {
-              class: "moon-code"
-              id: "moon-" .. tostring i
-              code_text
-            }
+            class: "moon-code"
+            id: "moon-" .. tostring i
+            code_text
           }
         }
+
+        if page.source\match "^index"
+          div {
+            __breakclose: true
+            class: "code-container"
+            code {
+              class: "lua-code"
+              id: "lua-" .. tostring i
+              lua_text
+            }
+            button {
+              class: "see-lua"
+              code_id: tostring i
+              "See Lua"
+            }
+            moon_pre
+          }
+        else
+          moon_pre
 
   -- split the headers
   filter "^index", (body) =>
@@ -101,10 +115,8 @@ site = sitegen.create_site =>
     body = indexer.build_from_html body
     body
 
-  filter "reference%.md$", (body) =>
-    body = body\gsub "<h1>.-</h1>", (header) ->
+  filter "docs", (body) =>
+    body\gsub "<h1>.-</h1>", (header) ->
       table.concat { '</div>', header, '<div class="main">' }
-
-    body
 
 site\write!

@@ -109,7 +109,7 @@ class Moon extends Lexer
       "class", "extends", "if", "then", "super"
       "do", "with", "import", "export", "while"
       "elseif", "return", "for", "in", "from", "when"
-      "using", "else", "and", "or", "not"
+      "using", "else", "and", "or", "not", "switch"
     ]
     special: ["nil", "true", "false"]
     builtins: builtins
