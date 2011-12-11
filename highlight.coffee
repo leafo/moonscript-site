@@ -100,7 +100,7 @@ class Lua extends Lexer
     atom: /[_A-Za-z][_A-Za-z0-9]*/
     number: /-?\d+/
     string: [/"[^"]*"/, /\[\[.*?]]/]
-    comment: /--[^\n]*\n/
+    comment: /--[^\n]*(?:\n|$)/
 
 class Moon extends Lexer
   name: "moon"
@@ -126,7 +126,7 @@ class Moon extends Lexer
     atom: /[_A-Za-z]\w*/
     number: /-?\d+/
     string: [/"[^"]*"/, /\[\[.*?]]/]
-    comment: /--[^\n]*\n/
+    comment: /--[^\n]*(?:\n|$)/
 
 window.Lexer = Lexer
 window.Lua = Lua
