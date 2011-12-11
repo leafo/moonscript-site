@@ -2,15 +2,18 @@
 [Lua](http://www.lua.org/). It gives you the power of the fastest scripting
 language combined with a rich set of features.
 
+
+    ```moon
     class Thing
       name: "unknown"
     
     class Person extends Thing
       say_name: => print "Hello, I am", @name
-	
-	with Person!
-	  .name = "Moonscript"
-	  \say_name!
+    
+    with Person!
+      .name = "Moonscript"
+      \say_name!
+    ```
 
 MoonScript can either be compiled into Lua and run at a later time, or it can
 be dynamically compiled and run using the *moonloader*. It's as simple as
@@ -34,27 +37,31 @@ MoonScript provides a clean syntax using significant whitespace that avoids all
 the keyword noise typically seen in a Lua script. Below is a sample of some
 constructs found in the language.
 
-	export my_func
-	x = 2323
+    ```moon
+    export my_func
+    x = 2323
 
-	collection =
-	  height: 32434
-	  hats: {"tophat", "bball", "bowler"}
+    collection =
+      height: 32434
+      hats: {"tophat", "bball", "bowler"}
 
-	my_func = (a) -> x + a
+    my_func = (a) -> x + a
 
-	print my_func 100
+    print my_func 100
+    ```
 
-It also adds [table comprehensions](reference/#table_comprehensions), [implicit return](##function_literals) on functions, [classes](reference/#object_oriented_programming),
+It also adds [table comprehensions](reference/#table_comprehensions), [implicit return](reference/#function_literals) on functions, [classes](reference/#object_oriented_programming),
 [inheritance](reference/#inheritance), scope management statements [import](reference/#import) & [export](reference/#export), and a convenient
 object creation statement called [with](reference/#with).
 
-	import concat, insert from table
+    ```moon
+    import concat, insert from table
 
     double_args = (...) ->
       [x * 2 for x in *{...}]
 
     tuples = [{k, v} for k,v in ipairs my_table]
+    ```
 
 It can be loaded directly from a Lua script [without an intermediate
 compile step](reference/#moonscript_module). It even knows how to [tell you
@@ -72,16 +79,26 @@ manager.
 
 After it is installed, run the following in a terminal:
 
-    ~> luarocks build http://moonscript.org/rocks/moonscript-0.1.0-1.rockspec
+    ```bash
+    $ luarocks build http://moonscript.org/rocks/moonscript-0.1.0-1.rockspec
+    ```
 
-This will provide the `moon` and `moonc` tools along with the `moonscript`
-Lua module.
+This will provide the `moon` and `moonc` executables along with the
+`moonscript` and `moon` Lua module.
+
+### Windows Binaries
+
+Procompiled Windows binaries are available to avoid the trouble of compiling:  
+<http://moonscript.org/bin/moonscript-0.2.0-dev-3.zip>
+
+Extract the contents into your `PATH`.
 
 ### Optional
 
-If you are on Linux and want to run *watch* mode, which compiles `.moon` files to
-`.lua` files as they are changed, you can install
-[linotify](https://github.com/hoelzro/linotify).
+If you are on Linux and use *watch* mode (which compiles `.moon` files to
+`.lua` files as they are changed) you can install
+[linotify](https://github.com/hoelzro/linotify) to use inotify instead of
+polling.
 
 ## Source
 
@@ -94,7 +111,9 @@ Issues with the tool can be reported on the issue tracker:
 The latest development (and **possibly broken**) version can be installed with the
 dev rockspec.
 
-    ~> luarocks build http://moonscript.org/rocks/moonscript-dev-1.rockspec
+    ```bash
+    $ luarocks build http://moonscript.org/rocks/moonscript-dev-1.rockspec
+    ```
 
 ### Dependencies
 
@@ -104,7 +123,7 @@ required to run the compiler and associated tools:
  * [LPeg](http://www.inf.puc-rio.br/~roberto/lpeg/lpeg.html)
  * [LuaFileSystem](http://keplerproject.github.com/luafilesystem/)
  * [alt-getopt](http://luaforge.net/projects/alt-getopt/)
- * and optionally on Linux [linotify](https://github.com/hoelzro/linotify)
+ * and [optionally](#optional) on Linux [linotify](https://github.com/hoelzro/linotify)
 
 All of the required ones can be retrieved automatically using the
 [LuaRocks](#installing_with_luarocks) installation.
@@ -115,7 +134,25 @@ A comprehensive [reference manual](reference/) is available.
 
 ## Extras & Addons
 
- * Vim syntax support: <https://github.com/leafo/moonscript-vim>
+### Editor Support
+
+Vim syntax and indent:  
+<https://github.com/leafo/moonscript-vim>
+
+Textmate (and Sublime Text) syntax and indent:  
+<https://github.com/leafo/moonscript-tmbundle>
+
+SciTE (with scintillua) syntax:  
+<https://github.com/leafo/moonscript/tree/master/extra/scintillua>
+
+Preconfigured and packaged version of SciTE for Windows with MoonScript
+support:  
+<http://moonscript.org/scite/>
+
+### Tools
+
+Online JavaScript Compiler:  
+<http://moonscript.org/compiler/>
 
 ## Overview of Differences & Highlights
 

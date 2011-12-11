@@ -9,16 +9,20 @@ window.onload = ->
   popup = $ "shroud-popup"
 
   show_modal = ->
+    window.onkeydown = (e) ->
+      e = e || window.event
+      hide_modal() if e.keyCode == 27
+
     shroud.style.display = "block"
 
   hide_modal = ->
+    window.onkeydown = ->
     shroud.style.display = "none"
 
   shroud.onclick = hide_modal
   $("shroud-close").onclick = hide_modal
 
   popup.onclick = (e) -> e.stopPropagation()
-
 
   nodes = document.querySelectorAll ".see-lua"
   for node in nodes
