@@ -72,7 +72,8 @@ they happen.
 
 ### Installing with LuaRocks
 
-The easiest way to install is to use Lua rocks and the provide rockspec.
+If you're on Windows, then install the [Windows binaries](#windows_binaries),
+otherwise the easiest way to install is to use LuaRocks.
 
 LuaRocks can be obtained [here](http://www.luarocks.org/) or from your package
 manager.
@@ -89,14 +90,14 @@ This will provide the `moon` and `moonc` executables along with the
 ### Windows Binaries
 
 Procompiled Windows binaries are available to avoid the trouble of compiling:  
-<http://moonscript.org/bin/moonscript-0.2.0-dev-3.zip>
+<http://moonscript.org/bin/moonscript-0.2.0.zip>
 
 Extract the contents into your `PATH`.
 
 ### Optional
 
-If you are on Linux and use *watch* mode (which compiles `.moon` files to
-`.lua` files as they are changed) you can install
+If you're on Linux and use *watch* mode (which compiles `.moon` files to `.lua`
+files as they are changed) you can install
 [linotify](https://github.com/hoelzro/linotify) to use inotify instead of
 polling.
 
