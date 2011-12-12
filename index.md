@@ -81,7 +81,7 @@ manager.
 After it is installed, run the following in a terminal:
 
     ```bash
-    $ luarocks build http://moonscript.org/rocks/moonscript-0.1.0-1.rockspec
+    $ luarocks build http://moonscript.org/rocks/moonscript-0.2.0-1.rockspec
     ```
 
 This will provide the `moon` and `moonc` executables along with the

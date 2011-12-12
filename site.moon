@@ -6,7 +6,7 @@ indexer = require"sitegen.indexer"
 extra = require"sitegen.extra"
 html = require "sitegen.html"
 
-extra.AnalyticsPlugin.__base.analytics = -> ""
+-- extra.AnalyticsPlugin.__base.analytics = -> ""
 
 try_compile = (text) ->
   out = nil
@@ -67,6 +67,8 @@ site = sitegen.create_site =>
   copy "highlight.js", "client.js"
   add "moonscript/docs/reference.md"
   add "moonscript/docs/standard_lib.md"
+
+  deploy_to "leaf@leafo.net", "www/moonscript.org"
 
   i = 0
   with extra.PygmentsPlugin.custom_highlighters
