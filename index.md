@@ -11,7 +11,7 @@ language combined with a rich set of features.
       say_name: => print "Hello, I am", @name
     
     with Person!
-      .name = "Moonscript"
+      .name = "MoonScript"
       \say_name!
     ```
 

@@ -46,7 +46,7 @@ h1, h2, h3 {
 }
 
 .main h2 {
-	border-bottom: 1px solid #7E7979;
+    border-bottom: 1px solid #CFD4D8;
 }
 
 h1 {
@@ -115,45 +115,63 @@ td {
 }
 
 p > code , li > code {
-	background: #E1E4E8;
-	border-radius: 4px;
-	padding: 0px 4px;
+    font-weight: bold;
+    font-size: 14px;
+    background: white;
+    color: #604E4E;
+
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 9px;
+    border-radius: 9px;
+
+    padding: 1px 8px;
+    border: 1px solid #E3E3E3;
 }
 
-.l_string {
-	color: #A16D43;
-	/*
-	background: #F9D7BB;
-	background: #FFE9D6;
-	*/
-}
-.l_symbol, .l_bold_symbol {
-	color: #B50C0C;
-}
-.l_bold_symbol {
-	/* font-weight: bold; */
-}
-.l_keyword {
-	color: #0CB56C;
-}
-.l_comment {
-	color: #D74DBF;
-}
-.l_fn_symbol {
-	color: #8E4681;
-}
-.l_proper, .l_self_var, .l_special {
-	color: #30A0BD;
-}
-.l_proper {
-	font-weight: bold;
-}
-.l_builtins, .nv {
+
+/* builtins */
+.nb {
 	color: #707A34;
 }
-.l_number  {
+
+/* strings */
+.s, .s1, .s2, .se {
+	color: #A16D43;
+}
+
+/* proper names, self */
+.nc, .vc, .bp, .kc {
+	color: #30A0BD;
+}
+
+/* function lit, braces, parens  */
+.nf, .kt, .p {
+	color: #8E4681;
+}
+
+/* operators */
+.o {
+	color: #B50C0C;
+}
+
+.nv {
+    color: #ff9898;
+    color: #893D8C;
+}
+
+/* keywords */
+.k, .kd {
+	color: #0CB56C;
+}
+
+.c1, .c2 {
+	color: #D74DBF;
+}
+
+.m, .mi, .mf, .mh {
 	color: #4958C3;
 }
+
 
 .footer {
 	color: #747678;
@@ -180,11 +198,12 @@ p > code , li > code {
 
 h3 > code {
     display: block;
-    background: #C3DFFA;
+    background: #ABABAB;
+    border-bottom: 1px solid #818E9B;
+
     padding: 1em;
-    color: #0075ea;
-    text-shadow: 1px 1px 0px #e8f1fa;
-    border-bottom: 1px solid #b1cae3;
+    color: white;
+    text-shadow: 1px 1px 1px #454545;
 }
 
 

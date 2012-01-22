@@ -171,9 +171,12 @@ h2, h3, h4 {
 }
 
 p > code, li > code {
-	background: #d1d1d1;
-	border-radius: 4px;
-	padding: 0px 4px;
+    font-size: 16px;
+    background: white;
+    color: #564646;
+    border-radius: 9px;
+    padding: 1px 8px;
+    border: 1px solid #CACACA;
 }
 
 .main pre {
@@ -196,6 +199,8 @@ p > code, li > code {
 	font-weight: bold;
 	color: #ab1818;
 	text-shadow: 1px 1px 0px white;
+
+    cursor: pointer;
 
 	border: 0px;
 	float: right;
@@ -340,5 +345,57 @@ pre.shroud-column {
 blockquote {
     margin-top: -0.5em;
 }
+
+
+/* builtins */
+.nb {
+    color: #FFA122;
+}
+
+/* strings */
+.s, .s1, .s2, .se {
+    color: #ffe898;
+}
+
+/* proper names, self */
+.nc, .vc, .bp {
+    color: #98d9ff;
+}
+
+/* true, false, nil */
+.kc {
+    color: #acfff0;
+}
+
+/* function lit, braces, parens  */
+.nf, .kt {
+    color: #9fff98;
+}
+
+/* operators */
+.o {
+    font-weight: bold;
+    color: #ff9898;
+}
+
+.nv {
+    color: #ff9898;
+}
+
+/* keywords */
+.k, .kd {
+    font-weight: bold;
+    color: #cb98ff;
+}
+
+.c1, .c2 {
+    color: #929292;
+}
+
+.m, .mi, .mf, .mh {
+    color: #9495ff;
+}
+
+
 
 

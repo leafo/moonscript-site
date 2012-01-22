@@ -8,6 +8,8 @@ html = require "sitegen.html"
 
 -- extra.AnalyticsPlugin.__base.analytics = -> ""
 
+highlight = extra.PygmentsPlugin\highlight
+
 try_compile = (text) ->
   out = nil
   c = coroutine.create ->
@@ -48,13 +50,13 @@ reference_highlight = (code_text) ->
           class: "code-border"
           pre code {
             class: "moon-code"
-            code_text
+            raw highlight "moon", code_text
           }
         }
 
         td pre code {
           class: "lua-code"
-          lua_text
+          raw highlight "lua", lua_text
         }
 
       }
@@ -64,7 +66,6 @@ reference_highlight = (code_text) ->
 site = sitegen.create_site =>
   @title = "MoonScript"
   @moon_version = require"moonscript.version".version
-  copy "highlight.js", "client.js"
   add "moonscript/docs/reference.md"
   add "moonscript/docs/standard_lib.md"
 
@@ -87,7 +88,7 @@ site = sitegen.create_site =>
           code {
             class: "moon-code"
             id: "moon-" .. tostring i
-            code_text
+            raw highlight "moon", code_text
           }
         }
 
@@ -98,7 +99,7 @@ site = sitegen.create_site =>
             code {
               class: "lua-code"
               id: "lua-" .. tostring i
-              lua_text
+              raw highlight "lua", lua_text
             }
             button {
               class: "see-lua"

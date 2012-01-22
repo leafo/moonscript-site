@@ -1,8 +1,5 @@
 
 window.onload = ->
-  new Moon()
-  new Lua()
-
   $ = (id) -> document.getElementById id
 
   shroud = $ "shroud"
