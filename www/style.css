@@ -31,7 +31,6 @@ a:hover {
 	position: fixed;
 	top: 0px;
 	left: 0px;
-	overflow: hidden;
 	color: white;
 }
 
@@ -340,12 +339,19 @@ pre.shroud-column {
 	padding: 16px;
 	margin-top: 8px;
 	text-align: left;
+
+    position: relative;
+    left: -4px;
+}
+
+.github-buttons {
+    padding: 0px 24px;
+    margin-bottom: -14px;
 }
 
 blockquote {
     margin-top: -0.5em;
 }
-
 
 /* builtins */
 .nb {
