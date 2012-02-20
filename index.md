@@ -136,7 +136,8 @@ All of the required ones can be retrieved automatically using the
 
 ## Learning
 
-A comprehensive [reference manual](reference/) is available.
+* [Official reference manual](reference/)
+* [Installation tutorial](http://leafo.net/posts/getting_started_with_moonscript.html)
 
 ## Extras & Addons
 
@@ -157,7 +158,7 @@ support:
 
 ### Tools
 
-Online JavaScript Compiler:  
+Online Compiler:  
 <http://moonscript.org/compiler/>
 
 ## Overview of Differences & Highlights
