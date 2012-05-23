@@ -1,10 +1,14 @@
 
 body {
-	font-family: 'Kreon', serif;
+	font-family: serif;
 	background: #36393B url('back.png') repeat-x;
 	font-size: 20px;
 	margin: 0px;
 	padding: 0px;
+}
+
+body.nice-fonts {
+	font-family: 'Kreon', serif;
 }
 
 h1 {
@@ -45,6 +49,10 @@ a:hover {
 	line-height: 24px;
 }
 
+body:not(.nice-fonts) .nav {
+    font-family: sans-serif;
+}
+
 
 .offset {
 	margin-left: 166px;
@@ -68,8 +76,14 @@ a:hover {
 	padding: 0px;
 	margin: 0px;
 	line-height: 60px;
+	font-size: 20px;
+    white-space: nowrap;
+}
+
+.nice-fonts .message {
 	font-size: 24px;
 }
+
 
 .message a:link, .message a:visited {
 	color: #333;
