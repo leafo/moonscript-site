@@ -105,13 +105,13 @@ td {
 
 .code-header td {
 	color: white;
-	text-shadow: 0px -1px 0px #555;
+	text-shadow: 0px -1px 0px #818181;
 	font-size: 12px;
 	font-weight: bold;
 
 	padding: 2px 6px;
 	border-top: 1px solid #eee;
-	border-bottom: 1px solid #666;
+	border-bottom: 1px solid #777;
 }
 
 p > code , li > code {

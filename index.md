@@ -136,8 +136,8 @@ All of the required ones can be retrieved automatically using the
 
 ## Learning
 
-* [Official reference manual](reference/)
-* [Installation tutorial](http://leafo.net/posts/getting_started_with_moonscript.html)
+ * [Official reference manual](reference/)
+ * [Installation tutorial](http://leafo.net/posts/getting_started_with_moonscript.html)
 
 ## Extras & Addons
 
@@ -193,7 +193,8 @@ A more detailed overview of the syntax can be found in the
 ## About
 
 The syntax of MoonScript has been heavily inspired by the syntax of
-[CoffeeScript](http://jashkenas.github.com/coffee-script/). 
+[CoffeeScript](http://jashkenas.github.com/coffee-script/). MoonScript is
+CoffeeScript for Lua.
 
 MoonScript would not have been possible without the excellent tool
 [LPeg](http://www.inf.puc-rio.br/~roberto/lpeg/) for parsing.
