@@ -1,0 +1,247 @@
+
+$default-width: 960px;
+$text-color: #002445;
+
+@mixin grad($top, $bottom) {
+	background-color: mix($top, $bottom);
+	background-image: linear-gradient(bottom, $bottom 0%, $top 100%);
+	background-image: -webkit-linear-gradient(bottom, $bottom 0%, $top 100%);
+	background-image: -moz-linear-gradient(bottom, $bottom 0%, $top 100%);
+	background-image: -o-linear-gradient(bottom, $bottom 0%, $top 100%);
+	background-image: -ms-linear-gradient(bottom, $bottom 0%, $top 100%);
+}
+
+body {
+	background: #F2F6FA;
+	font-family: sans-serif;
+	margin: 0px;
+}
+
+.header h1 {
+	background: #404142;
+	margin: 0px;
+	color: #F2F6FA;
+	padding-left: 10px;
+	text-shadow: -1px -1px 0px #2D2D2E;
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+
+    &:hover {
+        color: #409CFF;
+    }
+
+    &.current {
+        color: black;
+        font-weight: bold;
+        text-decoration: none;
+    }
+}
+
+p {
+	line-height: 22px;
+	font-size: 16px;
+}
+
+.main {
+	width: $default-width - 30px * 2;
+    margin: 0 30px;
+}
+
+h1, h2, h3 {
+	color: #4B4B4B; 
+	text-shadow: 1px 1px 0px white;
+	padding-bottom: 2px;
+
+    margin: 30px 0px;
+}
+
+
+h1 {
+	padding: 10px 30px;
+	font-size: 40px;
+	background: #E1E4E8;
+}
+
+h2 {
+    border-bottom: 1px solid #CFD4D8;
+}
+
+h3 {
+    margin: 20px 0px;
+}
+
+.code-split, .bare-code, .main > pre {
+    background: white;
+    border: 1px solid #999;
+    margin: 25px 0px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.22);
+    border-radius: 1px;
+
+    pre {
+        margin: 0px;
+        padding: 10px;
+    }
+
+    .lua-header {
+        display: none;
+    }
+
+    .code-split-left {
+        // border-right: 1px dashed #ddd;
+        width: 50%;
+    }
+
+    .code-header {
+        background: #ABA9AB; 
+        @include grad(rgb(214,214,214), rgb(148,146,148));
+
+        color: white;
+        text-shadow: 0px -1px 0px #818181;
+        font-size: 12px;
+        font-weight: bold;
+
+        padding: 3px 10px;
+        box-shadow: inset 0px 1px 0px #eee, inset 0px -1px 0px #777;
+    }
+}
+
+.index-list {
+    line-height: 24px;
+    margin: 20px 0px;
+    ul {
+        margin: 0px;
+    }
+}
+
+td {
+	vertical-align: top;
+}
+
+
+p, li, a {
+    > code {
+        font-weight: bold;
+        font-size: 14px;
+        background: white;
+        color: #604E4E;
+
+        -moz-border-radius: 9px;
+        -webkit-border-radius: 9px;
+        border-radius: 9px;
+
+        padding: 1px 8px;
+        border: 1px solid #E3E3E3;
+    }
+}
+
+a > code {
+    // $color: #E9FDFB;
+    $color: lighten(#007BFF, 48%);
+    background: $color;
+    border: 1px solid scale_color($color, $lightness: -20%);
+    color: scale_color($color, $lightness: -80%);
+
+    &:hover {
+        background: lighten($color, 2%);
+        border: 1px solid scale_color($color, $lightness: -18%);
+        color: scale_color($color, $lightness: -78%);
+    }
+}
+
+
+/* builtins */
+.nb {
+	color: #707A34;
+}
+
+/* strings */
+.s, .s1, .s2, .se {
+	color: #A16D43;
+}
+
+/* proper names, self */
+.nc, .vc, .bp, .kc {
+	color: #30A0BD;
+}
+
+/* function lit, braces, parens  */
+.nf, .kt, .p {
+	color: #8E4681;
+}
+
+/* operators */
+.o {
+	color: #B50C0C;
+}
+
+.nv {
+    color: #ff9898;
+    color: #893D8C;
+}
+
+/* keywords */
+.k, .kd {
+	color: #0CB56C;
+}
+
+.c1, .c2 {
+	color: #D74DBF;
+}
+
+.m, .mi, .mf, .mh {
+	color: #4958C3;
+}
+
+
+.footer {
+	color: #747678;
+	font-size: 80%;
+	padding: 8px;
+}
+
+.column {
+    float: left;
+}
+
+.index {
+    margin-left: 20px;
+    overflow: hidden;
+}
+
+h3 > code {
+    display: block;
+    background: #ABABAB;
+    border-bottom: 1px solid #818E9B;
+
+    padding: 1em;
+    color: white;
+    text-shadow: 1px 1px 1px #454545;
+}
+
+
+@media only screen and (max-width: 960px) {
+    .main {
+        width: auto;
+    }
+
+    .code-split {
+        table, tr, td {
+            display: block;
+        }
+
+        .code-split-left {
+            width: auto;
+        }
+
+        .code-header-right {
+            margin-top: 5px;
+            border-top: 1px solid #999;
+        }
+    }
+
+}
+
+

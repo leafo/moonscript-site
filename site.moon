@@ -5,10 +5,10 @@ require "moon"
 indexer = require"sitegen.indexer"
 extra = require"sitegen.extra"
 html = require "sitegen.html"
-
--- extra.AnalyticsPlugin.__base.analytics = -> ""
+tools = require"sitegen.tools"
 
 highlight = extra.PygmentsPlugin\highlight
+
 
 try_compile = (text) ->
   out = nil
@@ -36,31 +36,34 @@ reference_highlight = (code_text) ->
       __breakclose: true
       width: "100%"
       cellspacing: "0"
-      cellpadding: "1"
-
-      tr {
-        class: "code-header"
-        td "moonscript"
-        td "lua"
-      }
+      cellpadding: "0"
+      class: "code-split"
 
       tr {
         td {
-          width: "50%"
-          class: "code-border"
+          class: "code-split-left"
+          div {
+            class: "code-header"
+            "MoonScript"
+          }
           pre code {
             class: "moon-code"
             raw highlight "moon", code_text
           }
         }
 
-        td pre code {
-          class: "lua-code"
-          raw highlight "lua", lua_text
+        td {
+          class: "code-split-right"
+          div {
+            class: "code-header code-header-right"
+            "Lua"
+          }
+          pre code {
+            class: "lua-code"
+            raw highlight "lua", lua_text
+          }
         }
-
       }
-
     }
 
 site = sitegen.create_site =>
@@ -70,6 +73,15 @@ site = sitegen.create_site =>
   add "moonscript/docs/standard_lib.md"
 
   deploy_to "leaf@leafo.net", "www/moonscript.org"
+
+  scssphp = tools.system_command "pscss < %s > %s", "css"
+  coffeescript = tools.system_command "coffee -c -s < %s > %s", "js"
+
+  build scssphp, "ref.scss"
+  build scssphp, "style.scss"
+
+  build coffeescript, "highlight.coffee"
+  build coffeescript, "client.coffee"
 
   i = 0
   with extra.PygmentsPlugin.custom_highlighters
