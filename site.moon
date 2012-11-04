@@ -10,10 +10,10 @@ tools = require"sitegen.tools"
 highlight = extra.PygmentsPlugin\highlight
 
 
-try_compile = (text) ->
+try_compile = (text, options=implicitly_return_root: false) ->
   out = nil
   c = coroutine.create ->
-    out = moonscript.to_lua text
+    out = moonscript.to_lua text, options
 
   pass, err = coroutine.resume c
 
@@ -27,8 +27,8 @@ try_compile = (text) ->
     nil, err
 
 
-reference_highlight = (code_text) ->
-  lua_text, err = try_compile code_text
+split_highlight = (code_text, options) ->
+  lua_text, err = try_compile code_text, options
   return err if not lua_text
 
   html.build ->
@@ -66,6 +66,28 @@ reference_highlight = (code_text) ->
       }
     }
 
+single_highlight = (code_text) ->
+  html.build ->
+    -- this is stupid because markdown parser sucks
+    tag.table {
+      __breakclose: true
+      width: "100%"
+      cellspacing: "0"
+      cellpadding: "0"
+      class: "code-split"
+
+      tr td {
+        div {
+          class: "code-header"
+          "MoonScript"
+        }
+        pre code {
+          class: "moon-code"
+          raw highlight "moon", code_text
+        }
+      }
+    }
+
 site = sitegen.create_site =>
   @title = "MoonScript"
   @moon_version = require"moonscript.version".version
@@ -85,11 +107,11 @@ site = sitegen.create_site =>
 
   i = 0
   with extra.PygmentsPlugin.custom_highlighters
-    .moon = (code_text, page) =>
+    .moon = (code_text, page, options) =>
       if page.source\match "reference"
-        return reference_highlight code_text
+        return split_highlight code_text, options
 
-      lua_text, err = try_compile code_text
+      lua_text, err = try_compile code_text, options
       return err if not lua_text
 
       html.build ->
@@ -122,6 +144,12 @@ site = sitegen.create_site =>
           }
         else
           moon_pre
+
+    .moonret = (code_text, page) =>
+      split_highlight code_text, {}
+
+    .moononly = (code_text, page) =>
+      single_highlight code_text
 
   -- split the headers
   filter "^index", (body) =>

@@ -3,26 +3,27 @@ $default-width: 960px;
 $text-color: #002445;
 
 @mixin grad($top, $bottom) {
-	background-color: mix($top, $bottom);
-	background-image: linear-gradient(bottom, $bottom 0%, $top 100%);
-	background-image: -webkit-linear-gradient(bottom, $bottom 0%, $top 100%);
-	background-image: -moz-linear-gradient(bottom, $bottom 0%, $top 100%);
-	background-image: -o-linear-gradient(bottom, $bottom 0%, $top 100%);
-	background-image: -ms-linear-gradient(bottom, $bottom 0%, $top 100%);
+    background-color: mix($top, $bottom);
+    background-image: linear-gradient(bottom, $bottom 0%, $top 100%);
+    background-image: -webkit-linear-gradient(bottom, $bottom 0%, $top 100%);
+    background-image: -moz-linear-gradient(bottom, $bottom 0%, $top 100%);
+    background-image: -o-linear-gradient(bottom, $bottom 0%, $top 100%);
+    background-image: -ms-linear-gradient(bottom, $bottom 0%, $top 100%);
 }
 
 body {
-	background: #F2F6FA;
-	font-family: sans-serif;
-	margin: 0px;
+    background: #F2F6FA;
+    color: $text-color;
+    font-family: sans-serif;
+    margin: 0px;
 }
 
 .header h1 {
-	background: #404142;
-	margin: 0px;
-	color: #F2F6FA;
-	padding-left: 10px;
-	text-shadow: -1px -1px 0px #2D2D2E;
+    background: #404142;
+    margin: 0px;
+    color: #F2F6FA;
+    padding-left: 10px;
+    text-shadow: -1px -1px 0px #2D2D2E;
 }
 
 a {
@@ -41,50 +42,55 @@ a {
 }
 
 p {
-	line-height: 22px;
-	font-size: 16px;
+    line-height: 24px;
+    font-size: 16px;
 }
 
 .main {
-	width: $default-width - 30px * 2;
+    width: $default-width - 30px * 2;
     margin: 0 30px;
 }
 
 h1, h2, h3 {
-	color: #4B4B4B; 
-	text-shadow: 1px 1px 0px white;
-	padding-bottom: 2px;
+    color: desaturate(#425E75, 10%);
+    text-shadow: 1px 1px 0px white;
+    padding-bottom: 2px;
 
     margin: 30px 0px;
 }
 
 
 h1 {
-	padding: 10px 30px;
-	font-size: 40px;
-	background: #E1E4E8;
+    padding: 10px 30px;
+    font-size: 25px;
+    background: #E1E4E8;
 }
 
 h2 {
-    border-bottom: 1px solid #CFD4D8;
+    border-bottom: 1px solid #ADB9C4;
 }
 
-h3 {
-    margin: 20px 0px;
+h2, h3 {
+    font-weight: normal;
 }
 
-.code-split, .bare-code, .main > pre {
+
+.code-split, .main > pre {
     background: white;
     border: 1px solid #999;
     margin: 25px 0px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.22);
     border-radius: 1px;
+}
 
+.main {
     pre {
         margin: 0px;
         padding: 10px;
     }
+}
 
+.code-split {
     .lua-header {
         display: none;
     }
@@ -108,73 +114,90 @@ h3 {
     }
 }
 
-.index-list {
-    line-height: 24px;
-    margin: 20px 0px;
-    ul {
-        margin: 0px;
+
+.index {
+    h3 {
+        margin: 20px 0px;
+    }
+
+    .index-list {
+        line-height: 24px;
+        margin: 20px 0px;
+        ul {
+            margin: 0px;
+        }
     }
 }
 
 td {
-	vertical-align: top;
+    vertical-align: top;
 }
 
 
-p, li, a {
-    > code {
-        font-weight: bold;
-        font-size: 14px;
-        background: white;
-        color: #604E4E;
-
-        -moz-border-radius: 9px;
-        -webkit-border-radius: 9px;
-        border-radius: 9px;
-
-        padding: 1px 8px;
-        border: 1px solid #E3E3E3;
-    }
-}
-
-a > code {
-    // $color: #E9FDFB;
-    $color: lighten(#007BFF, 48%);
+@mixin bubble_colors($color) {
     background: $color;
     border: 1px solid scale_color($color, $lightness: -20%);
     color: scale_color($color, $lightness: -80%);
-
-    &:hover {
-        background: lighten($color, 2%);
-        border: 1px solid scale_color($color, $lightness: -18%);
-        color: scale_color($color, $lightness: -78%);
-    }
 }
 
 
+
+p, li, a, h3 {
+    > code {
+        font-size: 14px;
+        padding: 1px 8px;
+
+        font-weight: bold;
+        border-radius: 9px;
+
+        $color: desaturate(lighten(#007BFF, 48%), 70%);
+        @include bubble_colors($color);
+    }
+}
+
+h3 > code{
+    padding: 10px;
+    font-size: 18px;
+}
+
+a {
+    $color: lighten(#007BFF, 48%);
+    > code {
+        @include bubble_colors($color);
+        border-width: 2px;
+    }
+
+    &:hover {
+        > code {
+            @include bubble_colors(lighten($color, 1%));
+            border-width: 2px;
+        }
+    }
+}
+
 /* builtins */
 .nb {
-	color: #707A34;
+    color: #707A34;
 }
 
 /* strings */
 .s, .s1, .s2, .se {
-	color: #A16D43;
+    color: #A16D43;
 }
 
 /* proper names, self */
 .nc, .vc, .bp, .kc {
-	color: #30A0BD;
+    color: #30A0BD;
 }
 
 /* function lit, braces, parens  */
 .nf, .kt, .p {
-	color: #8E4681;
+    color: #8E4681;
 }
 
 /* operators */
 .o {
-	color: #B50C0C;
+    color: #B50C0C;
 }
 
 .nv {
@@ -184,22 +207,22 @@ a > code {
 
 /* keywords */
 .k, .kd {
-	color: #0CB56C;
+    color: #0CB56C;
 }
 
 .c1, .c2 {
-	color: #D74DBF;
+    color: #D74DBF;
 }
 
 .m, .mi, .mf, .mh {
-	color: #4958C3;
+    color: #4958C3;
 }
 
 
 .footer {
-	color: #747678;
-	font-size: 80%;
-	padding: 8px;
+    color: #747678;
+    font-size: 12px;
+    margin: 20px 30px;
 }
 
 .column {
@@ -210,17 +233,6 @@ a > code {
     margin-left: 20px;
     overflow: hidden;
 }
-
-h3 > code {
-    display: block;
-    background: #ABABAB;
-    border-bottom: 1px solid #818E9B;
-
-    padding: 1em;
-    color: white;
-    text-shadow: 1px 1px 1px #454545;
-}
-
 
 @media only screen and (max-width: 960px) {
     .main {

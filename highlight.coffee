@@ -93,6 +93,7 @@ class Lua extends Lexer
     keyword: [
       "for", "end", "local", "if", "then", "return", "do"
       "and", "or", "else", "not", "while", "elseif"
+      "break"
     ]
     special: ["nil", "true", "false"]
     symbol: ['=', '.', '{', '}', ':']
@@ -110,6 +111,7 @@ class Moon extends Lexer
       "do", "with", "import", "export", "while"
       "elseif", "return", "for", "in", "from", "when"
       "using", "else", "and", "or", "not", "switch"
+      "break", "continue"
     ]
     special: ["nil", "true", "false"]
     builtins: builtins
