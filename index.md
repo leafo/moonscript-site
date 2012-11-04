@@ -80,7 +80,7 @@ manager.
 After it is installed, run the following in a terminal:
 
     ```bash
-    $ luarocks build http://moonscript.org/rocks/moonscript-0.2.0-1.rockspec
+    $ luarocks build http://moonscript.org/rocks/moonscript-0.2.2-1.rockspec
     ```
 
 This will provide the `moon` and `moonc` executables along with the
@@ -89,7 +89,7 @@ This will provide the `moon` and `moonc` executables along with the
 ### Windows Binaries
 
 Procompiled Windows binaries are available to avoid the trouble of compiling:  
-<http://moonscript.org/bin/moonscript-0.2.0.zip>
+<http://moonscript.org/bin/moonscript-0.2.2.zip>
 
 Extract the contents into your `PATH`.
 
