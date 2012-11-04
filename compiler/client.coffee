@@ -1,4 +1,12 @@
 
+track_event = (cat, action, label, value=0, interactive=true) ->
+  try
+    _gaq.push ['_trackEvent', cat, action, label, value, interactive]
+  catch e
+
+track = (args...) ->
+  track_event "compiler", args...
+
 class WebCompiler
   api: "proxy.php"
 
@@ -38,6 +46,7 @@ class Page
     buttons = $("#compile, #run").prop("disabled", false)
 
     @container.on "click", "#compile", =>
+      track "code", "compile"
       buttons.prop("disabled", true)
       start_time = new Date
       @set_status "loading", "Compiling..."
@@ -55,6 +64,7 @@ class Page
       false
 
     @container.on "click", "#run", =>
+      track "code", "run"
       buttons.prop("disabled", true)
       start_time = new Date
       @set_status "loading", "Running..."
@@ -113,6 +123,7 @@ class SnippetSaver
             @error res.msg
             return
 
+          track "snippet", "load", +id, false
           @status.text "Loaded snippet ##{hash}"
           @page.editor.setValue res.input
           @page.editor.focus()
@@ -150,6 +161,8 @@ class SnippetSaver
       @url.hide()
       @status.html '<img src="img/ajax-loader.gif" /> Saving...'
 
+
+      track "snippet", "save"
       $.post "#{@api}?act=save", action, (res) =>
         button.prop "disabled", false
 
