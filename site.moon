@@ -93,6 +93,7 @@ site = sitegen.create_site =>
   @moon_version = require"moonscript.version".version
   add "moonscript/docs/reference.md"
   add "moonscript/docs/standard_lib.md"
+  add "compiler/index.html", template: false
 
   deploy_to "leaf@leafo.net", "www/moonscript.org"
 
@@ -101,9 +102,11 @@ site = sitegen.create_site =>
 
   build scssphp, "ref.scss"
   build scssphp, "style.scss"
+  build scssphp, "compiler/style.scss"
 
   build coffeescript, "highlight.coffee"
   build coffeescript, "client.coffee"
+  build coffeescript, "compiler/client.coffee"
 
   i = 0
   with extra.PygmentsPlugin.custom_highlighters
