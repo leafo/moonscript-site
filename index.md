@@ -1,7 +1,6 @@
 **MoonScript** is a dynamic scripting language that compiles into
-[Lua](http://www.lua.org/). It gives you the power of the fastest scripting
-language combined with a rich set of features.
-
+[Lua](http://www.lua.org/). It gives you the power of one of the fastest
+scripting languages combined with a rich set of features.
 
     ```moon
     class Thing

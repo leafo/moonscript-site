@@ -5,10 +5,21 @@ body {
 	font-size: 20px;
 	margin: 0px;
 	padding: 0px;
+
+    &.nice-fonts {
+        font-family: 'Kreon', serif;
+
+        .main .message {
+            font-size: 24px;
+            &.sub {
+                font-size: 16px;
+            }
+        }
+    }
 }
 
-body.nice-fonts {
-	font-family: 'Kreon', serif;
+body:not(.nice-fonts) .nav {
+    font-family: sans-serif;
 }
 
 h1 {
@@ -20,13 +31,13 @@ h1 {
 	border-bottom: 1px dashed white;
 }
 
-a:link, a:visited {
+a {
 	color: #EEE6AB;
 	text-decoration: none;
-}
 
-a:hover {
-	color: #CFF9FF;
+    &:hover {
+        color: #CFF9FF;
+    }
 }
 
 .nav {
@@ -36,21 +47,17 @@ a:hover {
 	top: 0px;
 	left: 0px;
 	color: white;
-}
 
-.nav ul {
-	list-style: none;
-	margin: 0px;
-	padding: 0px;
-	margin-top: 1em;
-}
+    ul {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        margin-top: 1em;
+    }
 
-.nav li {
-	line-height: 24px;
-}
-
-body:not(.nice-fonts) .nav {
-    font-family: sans-serif;
+    li {
+        line-height: 24px;
+    }
 }
 
 
@@ -62,62 +69,101 @@ body:not(.nice-fonts) .nav {
 	background: #8eebff;
 	padding: 0px 16px;
 	width: 800px;
+    overflow: hidden;
 
 	border-left: 2px solid #393c3e;
 	border-right: 2px solid #393c3e;
 	padding-bottom: 16px;
 
 	box-shadow: 0px 0px 8px #222;
+
+    .message {
+        color: #0091B0;
+        text-shadow: 1px 1px 0px #c4f5ff;
+        padding: 0px;
+        margin: 0px;
+        font-size: 20px;
+        white-space: nowrap;
+        text-align: center;
+        margin: 20px 0 0 0;
+
+        a {
+            color: #333;
+            text-shadow: none;
+
+            &:hover {
+                color: #555;
+            }
+        }
+
+        &.sub {
+            font-size: 13px;
+            margin: 15px 0 20px 0;
+        }
+    }
+
+    .bubbles {
+        text-align: center;
+        font-size: 0;
+    }
 }
 
-.message {
-	color: #0091B0;
-	text-shadow: 1px 1px 0px #c4f5ff;
-	padding: 0px;
-	margin: 0px;
-	line-height: 60px;
-	font-size: 20px;
-    white-space: nowrap;
+@mixin bubble-color($color) {
+    background: $color;
+    $text-color: scale_color($color, $lightness: 90%);
+    color: $text-color;
+    text-shadow: 1px 1px 0px scale_color($color, $lightness: -40%);
+
+    a {
+        color: $text-color;
+    }
+
+    &:hover {
+        background: lighten($color, 4%);
+        a {
+            color: lighten($text-color, 6%);
+        }
+    }
+
+    border-top: 1px solid scale_color($color, $lightness: 70%);
+    border-bottom: 4px solid scale_color($color, $lightness: -30%);
 }
 
-.nice-fonts .message {
-	font-size: 24px;
-}
-
-
-.message a:link, .message a:visited {
-	color: #333;
-	text-shadow: none;
-}
 
 .bubble {
-    float: right;
-    line-height: 100%;
+    display: inline-block;
+    vertical-align: bottom;
+
     background: orange;
-    padding: -10px 0px;
-    color: #7A4F00;
     font-size: 20px;
 
     margin-top: 10px;
-    padding: 8px 12px;
-    box-shadow: 0px 3px 8px rgba(0,0,0, 0.2);
+    padding: 8px 18px;
+    box-shadow: 0px 3px 8px rgba(0,0,0, 0.2), inset 0 0 10px rgba(0,0,0, 0.1);
     border-top: 1px solid #FFE8BF;
     border-bottom: 4px solid #DB8E00;
-}
 
-.bubble:active {
-    border-bottom: 3px solid #DB8E00;
-    position: relative;
-    top: 1px;
-}
+    background: #E6AC43;
 
-.bubble a, bubble a:link {
-    color: white;
-    text-shadow: 1px 1px 0px #7A4F00;
-}
+    @include bubble-color(#E6AC43);
 
-.bubble a:hover {
-    color: #FFE8BF;
+    &.center {
+        font-size: 26px;
+        @include bubble-color(orange);
+        position: relative;
+        z-index: 2;
+        top: 2px;
+
+        &:active {
+            top: 3px;
+        }
+    }
+
+    &:active {
+        z-index: 1;
+        position: relative;
+        top: 1px;
+    }
 }
 
 .box {
