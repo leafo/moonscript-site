@@ -123,7 +123,7 @@ class SnippetSaver
             @error res.msg
             return
 
-          track "snippet", "load", +id, false
+          track "snippet", "load", +hash, false
           @status.text "Loaded snippet ##{hash}"
           @page.editor.setValue res.input
           @page.editor.focus()
