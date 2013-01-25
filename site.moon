@@ -1,7 +1,6 @@
 require "sitegen"
-require "moonscript"
-require "moon"
 
+moonscript = require "moonscript"
 indexer = require"sitegen.indexer"
 extra = require"sitegen.extra"
 html = require "sitegen.html"
