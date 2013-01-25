@@ -1,8 +1,9 @@
 package = "moonscript"
-version = "dev-1"
+version = "0.2.3-1"
 
 source = {
 	url = "git://github.com/leafo/moonscript.git"
+	branch = "v0.2.3"
 }
 
 description = {
