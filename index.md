@@ -113,8 +113,7 @@ The source code to the project lives on github:
 Issues with the tool can be reported on the issue tracker:  
 <https://github.com/leafo/moonscript/issues>
 
-The latest development (and **possibly broken**) version can be installed with the
-dev rockspec.
+The latest development version can be installed with the dev rockspec:
 
     ```bash
     $ luarocks build http://moonscript.org/rocks/moonscript-dev-1.rockspec
