@@ -89,7 +89,7 @@ This will provide the `moon` and `moonc` executables along with the
 ### Windows Binaries
 
 Procompiled Windows binaries are available to avoid the trouble of compiling:  
-<http://moonscript.org/bin/moonscript-0.2.3.zip>
+<http://moonscript.org/bin/moonscript-0.2.3-2.zip>
 
 Extract the contents into your `PATH`.
 
@@ -196,4 +196,11 @@ CoffeeScript for Lua.
 
 MoonScript would not have been possible without the excellent tool
 [LPeg](http://www.inf.puc-rio.br/~roberto/lpeg/) for parsing.
+
+## Changelog
+
+ * 0.2.3-2 -- Jan 29 2013, Fixed bug with moonloader not loading anything
+ * [0.2.3](http://leafo.net/posts/moonscript_v023.html) -- Jan 24 2013
+ * [0.2.2](http://leafo.net/posts/moonscript_v022.html) -- Nov 04 2012
+ * [0.2.0](http://leafo.net/posts/moonscript_v020.html) -- Dec 11 2011
 
