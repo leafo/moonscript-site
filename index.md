@@ -136,6 +136,7 @@ All of the required ones can be retrieved automatically using the
 
  * [Official reference manual](reference/)
  * [Installation tutorial](http://leafo.net/posts/getting_started_with_moonscript.html)
+ * [MoonScript examples](https://github.com/leafo/moonscript/wiki/Moonscriptexamples)
 
 ## Extras & Addons
 
@@ -197,6 +198,7 @@ CoffeeScript for Lua.
 MoonScript would not have been possible without the excellent tool
 [LPeg](http://www.inf.puc-rio.br/~roberto/lpeg/) for parsing.
 
+<a name="change_log"></a>
 ## Changelog
 
  * 0.2.3-2 -- Jan 29 2013, Fixed bug with moonloader not loading anything
