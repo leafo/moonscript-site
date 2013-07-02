@@ -201,6 +201,7 @@ MoonScript would not have been possible without the excellent tool
 <a name="change_log"></a>
 ## Changelog
 
+ * [0.2.3](http://leafo.net/posts/moonscript_v024.html)-- July 2 2013
  * 0.2.3-2 -- Jan 29 2013, Fixed bug with moonloader not loading anything
  * [0.2.3](http://leafo.net/posts/moonscript_v023.html) -- Jan 24 2013
  * [0.2.2](http://leafo.net/posts/moonscript_v022.html) -- Nov 04 2012
