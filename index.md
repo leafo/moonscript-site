@@ -121,7 +121,7 @@ The latest development version can be installed with the dev rockspec:
 
 ### Dependencies
 
-In addition to [Lua 5.1](http://lua.org), the following Lua modules are
+In addition to [Lua 5.1 or 5.2](http://lua.org), the following Lua modules are
 required to run the compiler and associated tools:
 
  * [LPeg](http://www.inf.puc-rio.br/~roberto/lpeg/lpeg.html)
