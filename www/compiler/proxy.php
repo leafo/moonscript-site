@@ -26,11 +26,7 @@ function post($url, $payload) {
 	curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
 
 	curl_setopt($c, CURLOPT_POST, true);
-	curl_setopt($c, CURLOPT_POSTFIELDS, json_encode($payload));
-
-	curl_setopt($c, CURLOPT_HTTPHEADER, array(
-		"Content-Type: application/json",
-	));
+	curl_setopt($c, CURLOPT_POSTFIELDS, http_build_query($payload));
 
 	$out = curl_exec($c);
 	curl_close($c);
@@ -52,7 +48,7 @@ switch ($action) {
 	case 'version':
 		$c = curl_init($api."version");
 		curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
-		echo curl_exec($c);
+		echo trim(curl_exec($c));
 		curl_close($c);
 		break;
 }
