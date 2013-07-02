@@ -89,7 +89,7 @@ This will provide the `moon` and `moonc` executables along with the
 ### Windows Binaries
 
 Procompiled Windows binaries are available to avoid the trouble of compiling:  
-<http://moonscript.org/bin/moonscript-0.2.3-2.zip>
+<http://moonscript.org/bin/moonscript-0.2.4.zip>
 
 Extract the contents into your `PATH`.
 
