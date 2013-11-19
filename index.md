@@ -136,7 +136,7 @@ All of the required ones can be retrieved automatically using the
 
  * [Official reference manual](reference/)
  * [Installation tutorial](http://leafo.net/posts/getting_started_with_moonscript.html)
- * [MoonScript examples](https://github.com/leafo/moonscript/wiki/Moonscriptexamples)
+ * [MoonScript examples](https://github.com/leafo/moonscript/wiki/Moonscript-Examples)
 
 ## Extras & Addons
 
