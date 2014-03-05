@@ -92,6 +92,7 @@ site = sitegen.create_site =>
   @moon_version = require"moonscript.version".version
   add "moonscript/docs/reference.md"
   add "moonscript/docs/standard_lib.md"
+
   add "compiler/index.html", template: false
 
   deploy_to "leaf@leafo.net", "www/moonscript.org"
