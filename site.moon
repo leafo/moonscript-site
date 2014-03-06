@@ -10,25 +10,13 @@ highlight = extra.PygmentsPlugin\highlight
 
 
 try_compile = (text, options=implicitly_return_root: false) ->
-  out = nil
-  c = coroutine.create ->
-    out = moonscript.to_lua text, options
-
-  pass, err = coroutine.resume c
-
-  if pass
-    out
-  else
-    print err
-    print!
-    print text
-    print!
-    nil, err
-
+  moonscript.to_lua text, options
 
 split_highlight = (code_text, options) ->
   lua_text, err = try_compile code_text, options
-  return err if not lua_text
+
+  unless lua_text
+    error "Failed to compile moon (#{err}):\n\n#{code_text}"
 
   html.build ->
     tag.table {
