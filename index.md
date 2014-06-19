@@ -89,7 +89,7 @@ This will provide the `moon` and `moonc` executables along with the
 ### Windows Binaries
 
 Precompiled Windows binaries are available to avoid the trouble of compiling:  
-<http://moonscript.org/bin/moonscript-0.2.5.zip>
+<http://moonscript.org/bin/moonscript-0.2.6.zip>
 
 Extract the contents into your `PATH`.
 
@@ -201,6 +201,7 @@ MoonScript would not have been possible without the excellent tool
 <a name="change_log"></a>
 ## Changelog
 
+ * [0.2.6](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v026-2014-6-18)-- June 19 2014
  * [0.2.5](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v025-2014-3-5)-- March 5 2014
  * [0.2.4](http://leafo.net/posts/moonscript_v024.html)-- July 2 2013
  * 0.2.3-2 -- Jan 29 2013, Fixed bug with moonloader not loading anything
