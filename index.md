@@ -7,7 +7,7 @@ scripting languages combined with a rich set of features.
       name: "unknown"
     
     class Person extends Thing
-      say_name: => print "Hello, I am", @name
+      say_name: => print "Hello, I am #{@name}!"
     
     with Person!
       .name = "MoonScript"

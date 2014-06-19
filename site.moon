@@ -2,11 +2,11 @@ require "sitegen"
 
 import to_lua from require "moonscript.base"
 
-indexer = require"sitegen.plugins.indexer"
 html = require "sitegen.html"
-tools = require"sitegen.tools"
+tools = require "sitegen.tools"
 
 PygmentsPlugin = require "sitegen.plugins.pygments"
+IndexerPlugin = require "sitegen.plugins.indexer"
 
 highlight = PygmentsPlugin\highlight
 
@@ -79,8 +79,11 @@ single_highlight = (code_text) ->
 site = sitegen.create_site =>
   @title = "MoonScript"
   @moon_version = require"moonscript.version".version
+
   add "moonscript/docs/reference.md"
   add "moonscript/docs/standard_lib.md"
+  add "moonscript/docs/command_line.md"
+  add "moonscript/docs/api.md"
 
   add "compiler/index.html", template: false
 
@@ -89,8 +92,8 @@ site = sitegen.create_site =>
   scssphp = tools.system_command "pscss < %s > %s", "css"
   coffeescript = tools.system_command "coffee -c -s < %s > %s", "js"
 
-  build scssphp, "ref.scss"
-  build scssphp, "style.scss"
+  build scssphp, "reference.scss"
+  build scssphp, "index.scss"
   build scssphp, "compiler/style.scss"
 
   build coffeescript, "highlight.coffee"
@@ -147,7 +150,7 @@ site = sitegen.create_site =>
   filter "^index", (body) =>
     body = body\gsub "<h2>.-</h2>", (header) ->
         '</div><div class="box">'..header
-    body = indexer.build_from_html body
+    body = IndexerPlugin.build_from_html body
     body
 
   filter "docs", (body) =>
