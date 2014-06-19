@@ -1,6 +1,10 @@
 
 $default-width: 960px;
-$text-color: #002445;
+$background: #F2F6FA;
+$sub_background: #E1E4E8;
+
+$text_color: mix(black, $background, 80%);
+$line_height: 26px;
 
 @mixin grad($top, $bottom) {
     background-color: mix($top, $bottom);
@@ -12,8 +16,8 @@ $text-color: #002445;
 }
 
 body {
-    background: #F2F6FA;
-    color: $text-color;
+    background: $background;
+    color: $text_color;
     font-family: sans-serif;
     margin: 0px;
 }
@@ -22,8 +26,7 @@ body {
     background: #404142;
     margin: 0px;
     color: #F2F6FA;
-    padding-left: 10px;
-    text-shadow: -1px -1px 0px #2D2D2E;
+    font-weight: normal;
 }
 
 a {
@@ -35,15 +38,16 @@ a {
     }
 
     &.current {
-        color: black;
+        color: $text_color;
         font-weight: bold;
         text-decoration: none;
     }
 }
 
 p {
-    line-height: 24px;
     font-size: 16px;
+    line-height: 26px;
+    margin: 26px 0;
 }
 
 .main {
@@ -51,35 +55,38 @@ p {
     margin: 0 30px;
 }
 
-h1, h2, h3 {
-    color: desaturate(#425E75, 10%);
-    text-shadow: 1px 1px 0px white;
-    padding-bottom: 2px;
-
+h1, h2, h3, h4 {
+    color: mix(black, saturate($background, 100%), 70%);
     margin: 30px 0px;
-}
-
-
-h1 {
-    padding: 10px 30px;
-    font-size: 25px;
-    background: #E1E4E8;
-}
-
-h2 {
-    border-bottom: 1px solid #ADB9C4;
-}
-
-h2, h3 {
     font-weight: normal;
 }
 
 
+h1 {
+    padding: 15px 30px;
+    font-size: 28px;
+    background: $sub_background;
+}
+
+h2 {
+    border-bottom: 2px solid mix(black, $background, 20%);
+    font-size: 24px;
+    padding-bottom: 4px;
+}
+
+h3 {
+    font-size: 22px;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .code-split, .main > pre {
     background: white;
-    border: 1px solid #999;
-    margin: 25px 0px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.22);
+    border: 1px solid mix(black, $background, 20%);
+    margin: $line_height 0px;
     border-radius: 1px;
 }
 
@@ -96,26 +103,23 @@ h2, h3 {
     }
 
     .code-split-left {
-        // border-right: 1px dashed #ddd;
         width: 50%;
     }
 
     .code-header {
-        background: #ABA9AB; 
-        @include grad(rgb(214,214,214), rgb(148,146,148));
+        background: $sub_background;
+        color: mix($text_color, $sub_background, 80%);
 
-        color: white;
-        text-shadow: 0px -1px 0px #818181;
         font-size: 12px;
-        font-weight: bold;
-
-        padding: 3px 10px;
-        box-shadow: inset 0px 1px 0px #eee, inset 0px -1px 0px #777;
+        padding: 4px 10px;
     }
 }
 
 
 .index {
+    margin-left: 30px;
+    overflow: hidden;
+
     h3 {
         margin: 20px 0px;
     }
@@ -123,8 +127,10 @@ h2, h3 {
     .index-list {
         line-height: 24px;
         margin: 20px 0px;
+
         ul {
             margin: 0px;
+            padding-left: 35px;
         }
     }
 }
@@ -145,10 +151,10 @@ td {
 p, li, a, h3 {
     > code {
         font-size: 14px;
-        padding: 1px 8px;
+        padding: 2px 6px;
 
-        font-weight: bold;
-        border-radius: 9px;
+        border-radius: 4px;
+        white-space: nowrap;
 
         $color: desaturate(lighten(#007BFF, 48%), 70%);
         @include bubble_colors($color);
@@ -227,15 +233,13 @@ a {
 
 .column {
     float: left;
+    width: 450px;
+    margin-right: 20px;
 }
 
-.index {
-    margin-left: 20px;
-    overflow: hidden;
-}
 
 blockquote {
-    $color: #eee;
+    $color: lighten($sub_background, 4%);
     margin: 25px 0;
     padding: 10px;
 
@@ -246,14 +250,13 @@ blockquote {
 
     p {
         margin: 0;
-        color: lighten(#444, 10%);
+        color: mix($text_color, $color, 90%);
 
         &:first-child {
             &:before {
                 content: "Note:";
                 margin-right: 10px;
                 font-weight: bold;
-                color: #444;
             }
         }
     }
