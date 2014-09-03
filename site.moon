@@ -1,16 +1,17 @@
 require "sitegen"
 
-moonscript = require "moonscript"
-indexer = require"sitegen.indexer"
-extra = require"sitegen.extra"
+import to_lua from require "moonscript.base"
+
+indexer = require"sitegen.plugins.indexer"
 html = require "sitegen.html"
 tools = require"sitegen.tools"
 
-highlight = extra.PygmentsPlugin\highlight
+PygmentsPlugin = require "sitegen.plugins.pygments"
 
+highlight = PygmentsPlugin\highlight
 
 try_compile = (text, options=implicitly_return_root: false) ->
-  moonscript.to_lua text, options
+  to_lua text, options
 
 split_highlight = (code_text, options) ->
   lua_text, err = try_compile code_text, options
@@ -97,7 +98,7 @@ site = sitegen.create_site =>
   build coffeescript, "compiler/client.coffee"
 
   i = 0
-  with extra.PygmentsPlugin.custom_highlighters
+  with PygmentsPlugin.custom_highlighters
     .moon = (code_text, page, options) =>
       if page.source\match "reference"
         return split_highlight code_text, options
