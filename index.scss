@@ -1,7 +1,7 @@
 
 body {
     font-family: serif;
-    background: #36393B url('back.png') repeat-x;
+    background: #F0F0F0;
     font-size: 20px;
     margin: 0px;
     padding: 0px;
@@ -42,11 +42,13 @@ a {
 
 .nav {
     text-align: right;
-    width: 150px;
+    width: 200px;
     position: fixed;
     top: 0px;
     left: 0px;
+    bottom: 0;
     color: white;
+    background: #2B2B2B;
 
     ul {
         list-style: none;
@@ -61,25 +63,16 @@ a {
 }
 
 
-.offset {
-    margin-left: 166px;
-}
-
 .main {
-    background: #8eebff;
+    background: white;
     padding: 0px 16px;
     width: 800px;
     overflow: hidden;
-
-    border-left: 2px solid #393c3e;
-    border-right: 2px solid #393c3e;
+    margin-left: 200px;
     padding-bottom: 16px;
-
-    box-shadow: 0px 0px 8px #222;
 
     .message {
         color: #0091B0;
-        text-shadow: 1px 1px 0px #c4f5ff;
         padding: 0px;
         margin: 0px;
         font-size: 20px;
@@ -89,8 +82,6 @@ a {
 
         a {
             color: #333;
-            text-shadow: none;
-
             &:hover {
                 color: #555;
             }
@@ -132,9 +123,6 @@ a {
     overflow: hidden;
 
     background: #eee;
-    border-top: 1px solid white;
-
-    box-shadow: 0px 2px 8px #106b7e;
 }
 
 @mixin bubble-color($color) {
@@ -214,19 +202,13 @@ a {
 .footer {
     background: #1C1C1C;
     color: #696758;
-    text-shadow: 1px 1px 0px #322D2D;
     padding: 16px;
     padding-left: 0.5em;
-}
-
-.footer a {
-    text-shadow: none;
 }
 
 
 h2, h3, h4 {
     color: #45484B;
-    text-shadow: 1px 1px 0px white;
     margin: 10px 0px;
 }
 
@@ -248,8 +230,6 @@ p > code, li > code {
 
     border-bottom: 1px solid white;
     border-top: 1px solid #808080;
-
-    text-shadow: 0px -1px 0px #111;
 
 }
 
