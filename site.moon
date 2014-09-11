@@ -130,10 +130,14 @@ site = sitegen.create_site =>
               id: "lua-" .. tostring i
               raw highlight "lua", lua_text
             }
-            button {
-              class: "see-lua"
-              code_id: tostring i
-              "See Lua"
+            div {
+              class: "rainbow_btn_wrap"
+              a {
+                href: "#"
+                class: "see_lua rainbow_btn"
+                code_id: tostring i
+                "See Lua"
+              }
             }
             moon_pre
           }

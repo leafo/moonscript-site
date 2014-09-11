@@ -233,42 +233,6 @@ p > code, li > code {
 
 }
 
-.see-lua {
-    font-family: 'Kreon', serif;
-    font-size: 18px;
-    font-weight: bold;
-    color: #ab1818;
-    text-shadow: 1px 1px 0px white;
-
-    cursor: pointer;
-
-    border: 0px;
-    float: right;
-    margin: 8px 12px 0px 0px;
-    padding: 4px 12px;
-    background-image: -webkit-gradient(
-        linear,
-        left bottom,
-        left top,
-        color-stop(0.44, rgb(255,168,168)),
-        color-stop(0.72, rgb(255,212,244))
-    );
-    background-image: -moz-linear-gradient(
-        center bottom,
-        rgb(255,168,168) 44%,
-        rgb(255,212,244) 72%
-    );
-    border-top: 1px solid white;
-    border-bottom: 4px solid #983A3A;
-    box-shadow: 0px 0px 6px rgba(0,0,0, .5);
-}
-
-.see-lua:active {
-    position: relative;
-    top: 1px;
-    border-bottom: 3px solid #983A3A;
-}
-
 .code-container {
     position: relative;
 }
@@ -444,6 +408,61 @@ blockquote {
     color: #9495ff;
 }
 
+.rainbow_btn_wrap {
+    position: relative;
+    display: inline-block;
+    height: 36px;
+    line-height: 38px;
+    padding: 0 20px;
+    border-radius: 2px;
+    background: #f0f0f0;
+    box-shadow: 0 4px 0 #d9d9d8;
+}
 
+.rainbow_btn {
+    display: block;
+    background-image:
+    -webkit-linear-gradient(bottom, #f05a7f 0%, #f05a7f 30%, rgba(255,0,0,0) 70%, rgba(255,0,0,0) 100%),
+    -webkit-linear-gradient(left,
+        rgb(242,119,161),
+        rgb(245,138,126),
+        rgb(241,191,142),
+        rgb(176,216,156),
+        rgb(153,203,202),
+        rgb(141,153,205),
+        rgb(187,132,180),
+        rgb(242,119,161)
+    );
 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: rainbow 20s linear infinite;
 
+    background-position: 0 -12px;
+
+    color: white;
+    text-align: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-position: 0 12px;
+    }
+}
+
+@-webkit-keyframes rainbow {
+  0% {
+    background-position-x: 0;
+  }
+  25% {
+    background-position-x: 25em;
+  }
+  50% {
+    background-position-x: 50em;
+  }
+  75% {
+    background-position-x: 75em;
+  }
+  100% {
+    background-position-x: 99em;
+  }
+}

@@ -21,7 +21,7 @@ window.onload = ->
 
   popup.onclick = (e) -> e.stopPropagation()
 
-  nodes = document.querySelectorAll ".see-lua"
+  nodes = document.querySelectorAll ".see_lua"
   for node in nodes
     node.onclick = ->
       code_id = this.getAttribute("code_id")
