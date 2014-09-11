@@ -124,9 +124,9 @@ site = sitegen.create_site =>
         if page.source\match "^index"
           div {
             __breakclose: true
-            class: "code-container"
+            class: "code_container"
             code {
-              class: "lua-code"
+              class: "lua_code"
               id: "lua-" .. tostring i
               raw highlight "lua", lua_text
             }
@@ -149,13 +149,6 @@ site = sitegen.create_site =>
 
     .moononly = (code_text, page) =>
       single_highlight code_text
-
-  -- -- split the headers
-  -- filter "^index", (body) =>
-  --   body = body\gsub "<h2>.-</h2>", (header) ->
-  --       '</div><div class="box">'..header
-  --   body = IndexerPlugin.build_from_html body
-  --   body
 
   filter "docs", (body) =>
     body\gsub "<h1>.-</h1>", (header) ->

@@ -1,3 +1,39 @@
+$link_color: #f05a7f;
+$sidebar_width: 200px;
+
+@mixin border_box {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    transition: $args;
+}
+
+@mixin prefixed($prop, $args...) {
+    -webkit-#{$prop}: $args;
+    -moz-#{$prop}: $args;
+    -ms-#{$prop}: $args;
+    #{$prop}: $args;
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
 
 body {
     font-family: serif;
@@ -22,27 +58,17 @@ body:not(.nice-fonts) .nav {
     font-family: sans-serif;
 }
 
-h1 {
-    display: none;
-}
-
-#logo {
-    margin-top: 8px;
-    border-bottom: 1px dashed white;
-}
-
 a {
-    color: #EEE6AB;
+    color: $link_color;
     text-decoration: none;
 
     &:hover {
-        color: #CFF9FF;
+        color: lighten($link_color, 5%);
     }
 }
 
 .nav {
-    text-align: right;
-    width: 200px;
+    width: $sidebar_width;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -50,26 +76,45 @@ a {
     color: white;
     background: #2B2B2B;
 
+    .logo {
+        text-align: center;
+        margin: 20px 0 10px 0;
+    }
+
+    h1 {
+        display: none;
+    }
+
     ul {
         list-style: none;
         margin: 0px;
         padding: 0px;
-        margin-top: 1em;
+        margin-top: 24px;
+        margin-left: 28px;
     }
 
     li {
         line-height: 24px;
     }
+
+    a {
+        color: white;
+
+        &:before {
+            content: "»";
+            color: #E6E4E4;
+        }
+    }
 }
 
 
 .main {
+    @include border_box;
     background: white;
-    padding: 0px 16px;
     width: 800px;
     overflow: hidden;
-    margin-left: 200px;
-    padding-bottom: 16px;
+    margin-left: $sidebar_width;
+    padding: 0 100px 16px 100px;
 
     .message {
         color: #0091B0;
@@ -107,7 +152,7 @@ a {
     }
 
     p, h2, h3 {
-        margin: 20px 24px;
+        margin: 26px 0;
         text-align: justify;
     }
 
@@ -203,7 +248,7 @@ a {
     background: #1C1C1C;
     color: #696758;
     padding: 16px;
-    padding-left: 0.5em;
+    margin-left: $sidebar_width;
 }
 
 
@@ -222,18 +267,15 @@ p > code, li > code {
 }
 
 .main pre {
-    background: #333;
+    background: #3C3C3C;
     color: white;
     font-size: 16px;
+    border-radius: 4px;
 
-    padding: 16px 24px;
-
-    border-bottom: 1px solid white;
-    border-top: 1px solid #808080;
-
+    padding: 45px;
 }
 
-.code-container {
+.code_container {
     position: relative;
 }
 
@@ -257,7 +299,7 @@ p > code, li > code {
     z-index: 3;
 }
 
-.lua-code {
+.lua_code {
     display: none;
 }
 
