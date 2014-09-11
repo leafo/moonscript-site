@@ -98,11 +98,28 @@ a {
     }
 
     a {
-        color: white;
+        $time: 0.3s;
+        @include transition(all $time ease);
+        color: #7A7A7A;
+        position: relative;
+        padding-left: 0;
+
+        &:hover, &.active {
+            padding-left: 20px;
+            color: white;
+
+            &:before {
+                color: #E6E4E4;
+                left: 0;
+            }
+        }
 
         &:before {
+            @include transition(all $time ease);
             content: "»";
-            color: #E6E4E4;
+            color: rgba(#E6E4E4, 0);
+            position: absolute;
+            left: -20px;
         }
     }
 }
@@ -153,21 +170,12 @@ a {
 
     p, h2, h3 {
         margin: 26px 0;
-        text-align: justify;
     }
 
     p, ul {
         line-height: 26px;
     }
 
-}
-
-.box {
-    margin-bottom: 16px;
-    padding-bottom: 2px;
-    overflow: hidden;
-
-    background: #eee;
 }
 
 @mixin bubble-color($color) {
@@ -233,16 +241,6 @@ a {
 .l_keyword { color: #cb98ff; font-weight: bold; }
 .l_proper, .l_self_var { color: #98d9ff; }
 .l_fn_symbol { color: #9fff98; }
-
-.box a:link, .box a:visited {
-    color: #D54747;
-    text-decoration: underline;
-}
-
-.box a:hover {
-    color: #C31717;
-}
-
 
 .footer {
     background: #1C1C1C;
