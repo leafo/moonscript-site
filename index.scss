@@ -36,21 +36,14 @@ $sidebar_width: 200px;
 }
 
 body {
-    font-family: serif;
+    font-family: sans-serif;
     background: #F0F0F0;
     font-size: 20px;
     margin: 0px;
     padding: 0px;
 
     &.nice-fonts {
-        font-family: 'Kreon', serif;
-
-        .main .message {
-            font-size: 24px;
-            &.sub {
-                font-size: 16px;
-            }
-        }
+        font-family: "range";
     }
 }
 
@@ -506,3 +499,42 @@ blockquote {
     background-position-x: 99em;
   }
 }
+
+@font-face {
+    font-family: 'range_mono';
+    src: url('fonts/range-mono-medium-webfont.eot');
+    src: url('fonts/range-mono-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/range-mono-medium-webfont.woff') format('woff'),
+         url('fonts/range-mono-medium-webfont.ttf') format('truetype'),
+         url('fonts/range-mono-medium-webfont.svg#range_monomedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'range';
+    src: url('fonts/range-regular-webfont.eot');
+    src: url('fonts/range-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/range-regular-webfont.woff') format('woff'),
+         url('fonts/range-regular-webfont.ttf') format('truetype'),
+         url('fonts/range-regular-webfont.svg#rangeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+@font-face {
+    font-family: 'range';
+    src: url('fonts/range-semibold-webfont.eot');
+    src: url('fonts/range-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/range-semibold-webfont.woff') format('woff'),
+         url('fonts/range-semibold-webfont.ttf') format('truetype'),
+         url('fonts/range-semibold-webfont.svg#rangesemibold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
