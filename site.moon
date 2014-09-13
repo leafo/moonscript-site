@@ -121,7 +121,7 @@ site = sitegen.create_site =>
           }
         }
 
-        if page.source\match "^index"
+        if nil and page.source\match "^index"
           div {
             __breakclose: true
             class: "code_container"

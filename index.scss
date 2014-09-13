@@ -1,5 +1,6 @@
 $link_color: #f05a7f;
 $sidebar_width: 200px;
+$body_color: #727779;
 
 @mixin border_box {
     box-sizing: border-box;
@@ -38,7 +39,8 @@ $sidebar_width: 200px;
 body {
     font-family: sans-serif;
     background: #F0F0F0;
-    font-size: 20px;
+    color: #727779;
+    font-size: 16px;
     margin: 0px;
     padding: 0px;
 
@@ -127,34 +129,24 @@ a {
     padding: 0 100px 16px 100px;
 
     .message {
-        color: #0091B0;
-        padding: 0px;
+        color: $link_color;
         margin: 0px;
         font-size: 20px;
-        white-space: nowrap;
         text-align: center;
-        margin: 20px 0 0 0;
-
-        a {
-            color: #333;
-            &:hover {
-                color: #555;
-            }
-        }
-
-        &.sub {
-            font-size: 13px;
-            margin: 15px 0 20px 0;
-        }
+        margin: 30px 20px 0 20px;
+        padding: 0 90px 20px 90px;
+        line-height: 1.5;
+        border-bottom: 1px solid #F0F0F0;
     }
 
     .bubbles {
+        display: none;
         text-align: center;
         font-size: 0;
     }
 
     ul {
-        margin: 20px 24px;
+        margin: 20px 0px;
     }
 
     li {
@@ -244,26 +236,30 @@ a {
 
 
 h2, h3, h4 {
-    color: #45484B;
+    color: darken($body_color, 10%);
     margin: 10px 0px;
 }
 
 p > code, li > code {
-    font-size: 16px;
-    background: white;
-    color: #564646;
+    display: inline-block;
+    background: #F0F0F0;
+    color: darken($body_color, 5%);
+    font-family: "range_mono";
     border-radius: 9px;
     padding: 1px 8px;
-    border: 1px solid #CACACA;
 }
 
 .main pre {
     background: #3C3C3C;
     color: white;
-    font-size: 16px;
     border-radius: 4px;
-
+    font-family: "range_mono";
     padding: 45px;
+    font-size: 14px;
+
+    code {
+        font-family: "range_mono";
+    }
 }
 
 .code_container {
@@ -384,8 +380,7 @@ pre.shroud-column {
 }
 
 .github-buttons {
-    padding: 0px 24px;
-    margin-bottom: -14px;
+    margin-bottom: -10px;
 }
 
 blockquote {
@@ -419,7 +414,6 @@ blockquote {
 
 /* operators */
 .o, .si {
-    font-weight: bold;
     color: #ff9898;
 }
 
@@ -429,7 +423,6 @@ blockquote {
 
 /* keywords */
 .k, .kd {
-    font-weight: bold;
     color: #cb98ff;
 }
 
