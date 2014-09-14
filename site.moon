@@ -97,7 +97,7 @@ site = sitegen.create_site =>
   build scssphp, "compiler/style.scss"
 
   build coffeescript, "highlight.coffee"
-  build coffeescript, "client.coffee"
+  build coffeescript, "index.coffee"
   build coffeescript, "compiler/client.coffee"
 
   i = 0
