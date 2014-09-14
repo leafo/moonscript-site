@@ -379,13 +379,18 @@ pre.shroud-column {
     border-bottom: 1px solid #666;
 }
 
-#sharing {
-    padding: 16px;
-    margin-top: 8px;
+.sharing {
     text-align: left;
+    font-size: 0;
+    margin-left: 28px;
+    margin-top: 24px;
 
-    position: relative;
-    left: -4px;
+    img {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        margin-right: 10px;
+    }
 }
 
 .github-buttons {
