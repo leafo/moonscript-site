@@ -61,10 +61,15 @@ closest = (el, selector) ->
     el = el.parentNode
     return null if el == document
 
+remove_lightbox = (e) ->
+  document.body.classList.remove "show_lightbox"
+  document.body.classList.remove "animate_lightbox"
+  e?.preventDefault()
+
+
 document.body.addEventListener "click", (e) ->
   if matches(e.target, ".shroud") || matches(e.target, ".lightbox .close_btn")
-    document.body.classList.remove "show_lightbox"
-    document.body.classList.remove "animate_lightbox"
+    remove_lightbox e
     return
 
   lua_btn = closest e.target, ".see_lua_btn"
@@ -82,34 +87,8 @@ document.body.addEventListener "click", (e) ->
 
   e.preventDefault()
 
-return
 
-shroud = $ "shroud"
-popup = $ "shroud-popup"
-
-show_modal = ->
-  window.onkeydown = (e) ->
-    e = e || window.event
-    hide_modal() if e.keyCode == 27
-
-  shroud.style.display = "block"
-
-hide_modal = ->
-  window.onkeydown = ->
-  shroud.style.display = "none"
-
-shroud.onclick = hide_modal
-$("shroud-close").onclick = hide_modal
-
-popup.onclick = (e) -> e.stopPropagation()
-
-nodes = document.querySelectorAll ".see_lua"
-for node in nodes
-  node.onclick = ->
-    code_id = this.getAttribute("code_id")
-
-    $("left").innerHTML = $("moon-#{code_id}").innerHTML
-    $("right").innerHTML = $("lua-#{code_id}").innerHTML
-
-    show_modal()
+window.addEventListener "keydown", (e) ->
+  if e.keyCode == 27
+    remove_lightbox e
 
