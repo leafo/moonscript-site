@@ -8,6 +8,45 @@ setTimeout =>
 
 $ = (id) -> document.getElementById id
 
+debounce = (fn, wait) ->
+  timeout = null
+  ->
+    if timeout
+      clearTimeout timeout
+
+    timeout = setTimeout ->
+      timeout = null
+      fn()
+    , wait
+
+window.addEventListener "scroll", debounce (e) ->
+  h2 = window.innerHeight / 3
+  anchors = document.body.querySelectorAll "div[id]:empty"
+
+  current = anchors[0]
+  current_i = 0
+  for a, i in anchors by -1
+    rect = a.getBoundingClientRect()
+    if rect.top < h2
+      current = a
+      current_i = i
+      break
+
+  while before = anchors[current_i - 1]
+    if before.getBoundingClientRect().top >= 0
+      current = before
+      current_i -= 1
+    else
+    break
+
+  document.body.querySelectorAll(".primary_nav .active")[0]
+    .classList.remove "active"
+
+  document.body
+    .querySelectorAll(".primary_nav [data-name='#{current.id}']")[0]?.classList
+    .add "active"
+
+, 50
 
 shroud = $ "shroud"
 popup = $ "shroud-popup"

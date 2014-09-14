@@ -210,6 +210,22 @@ a {
         line-height: 26px;
     }
 
+    pre {
+        background: #3C3C3C;
+        color: white;
+        border-radius: 4px;
+        font-family: "range_mono";
+        padding: 40px 45px;
+        font-size: 14px;
+
+        code {
+            font-family: "range_mono";
+        }
+    }
+
+    .scroll_spacer {
+        height: 300px;
+    }
 }
 
 @mixin bubble-color($color) {
@@ -305,19 +321,6 @@ p > code, li > code {
     font-family: "range_mono";
     border-radius: 9px;
     padding: 1px 8px;
-}
-
-.main pre {
-    background: #3C3C3C;
-    color: white;
-    border-radius: 4px;
-    font-family: "range_mono";
-    padding: 40px 45px;
-    font-size: 14px;
-
-    code {
-        font-family: "range_mono";
-    }
 }
 
 .code_container {
