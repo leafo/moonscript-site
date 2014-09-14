@@ -1,6 +1,7 @@
 $link_color: #f05a7f;
 $sidebar_width: 200px;
 $body_color: #727779;
+$main_width: 800px;
 
 @mixin border_box {
     box-sizing: border-box;
@@ -166,7 +167,7 @@ a {
     @include border_box;
     @include transition(all 0.5s ease);
     background: white;
-    width: 800px;
+    width: $main_width;
     overflow: hidden;
     margin-left: $sidebar_width;
     padding: 0 100px 16px 100px;
@@ -294,17 +295,15 @@ a {
 .l_fn_symbol { color: #9fff98; }
 
 .footer {
-    $bg: lighten(#2B2B2B, 10%);
-    background: $bg;
-    color: mix(white, $bg, 50%);
     font-size: 13px;
-    padding: 16px;
-    margin-left: $sidebar_width;
+    margin-bottom: 8px;
+    color: lighten(#727779, 10%);
 
     a {
-        color: mix(white, $bg, 75%);
+        color: darken(#727779, 10%);
+
         &:hover {
-            color: mix(white, $bg, 90%);
+            color: darken(#727779, 20%);
         }
     }
 }
