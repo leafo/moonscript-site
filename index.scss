@@ -217,6 +217,7 @@ a {
         font-family: "range_mono";
         padding: 40px 45px;
         font-size: 14px;
+        line-height: 20px;
 
         code {
             font-family: "range_mono";
@@ -433,49 +434,50 @@ pre.shroud-column {
 
 /* builtins */
 .nb {
-    color: #FFA122;
+    color: #F69385; // new
 }
 
 /* strings */
 .s, .s1, .s2, .se {
-    color: #ffe898;
+    color: #F1BF8E; // new
 }
 
 /* proper names, self */
 .nc, .vc, .bp {
-    color: #98d9ff;
+    color: #99CBCA; // new
 }
 
 /* true, false, nil */
 .kc {
-    color: #acfff0;
+    color: #B3EFE5; // new
 }
 
 /* function lit, braces, parens  */
 .nf, .kt {
-    color: #9fff98;
+    color: #B0D89C; // new
 }
 
 /* operators */
 .o, .si {
-    color: #ff9898;
+    color: #F277A1; // new
 }
 
 .nv {
-    color: #ff9898;
+    color: #F277A1; // new
 }
 
 /* keywords */
 .k, .kd {
-    color: #cb98ff;
+    color: #BB84B4; // new
 }
 
 .c1, .c2 {
     color: #929292;
 }
 
+// numbers
 .m, .mi, .mf, .mh {
-    color: #9495ff;
+    color: #9D8FF2; // new
 }
 
 .rainbow_btn_wrap {
