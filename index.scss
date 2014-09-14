@@ -48,6 +48,14 @@ body {
     &.nice_fonts {
         font-family: "range";
     }
+
+    &.show_lightbox {
+        overflow: hidden;
+
+        .shroud {
+            display: block;
+        }
+    }
 }
 
 a {
@@ -136,7 +144,7 @@ a {
 
         img {
             width: 20px;
-            height: 20px;
+            height: 19px;
             display: inline-block;
             margin-right: 10px;
         }
@@ -189,10 +197,9 @@ a {
         border-bottom: 1px solid #F0F0F0;
     }
 
-    .bubbles {
-        display: none;
-        text-align: center;
-        font-size: 0;
+    h2, h3, h4 {
+        color: darken($body_color, 10%);
+        margin: 10px 0px;
     }
 
     ul {
@@ -209,6 +216,15 @@ a {
 
     p, ul {
         line-height: 26px;
+    }
+
+    p > code, li > code {
+        display: inline-block;
+        background: #F0F0F0;
+        color: darken($body_color, 5%);
+        font-family: "range_mono";
+        border-radius: 9px;
+        padding: 1px 8px;
     }
 
     pre {
@@ -230,70 +246,6 @@ a {
     }
 }
 
-@mixin bubble-color($color) {
-    background: $color;
-    $text-color: scale_color($color, $lightness: 90%);
-    color: $text-color;
-    text-shadow: 1px 1px 0px scale_color($color, $lightness: -40%);
-
-    a {
-        color: $text-color;
-    }
-
-    &:hover {
-        background: lighten($color, 4%);
-        a {
-            color: lighten($text-color, 6%);
-        }
-    }
-
-    border-top: 1px solid scale_color($color, $lightness: 70%);
-    border-bottom: 4px solid scale_color($color, $lightness: -30%);
-}
-
-
-.bubble {
-    display: inline-block;
-    vertical-align: bottom;
-
-    background: orange;
-    font-size: 20px;
-
-    margin-top: 10px;
-    padding: 8px 18px;
-    box-shadow: 0px 3px 8px rgba(0,0,0, 0.2), inset 0 0 10px rgba(0,0,0, 0.1);
-    border-top: 1px solid #FFE8BF;
-    border-bottom: 4px solid #DB8E00;
-
-    background: #E6AC43;
-
-    @include bubble-color(#E6AC43);
-
-    &.center {
-        font-size: 26px;
-        @include bubble-color(orange);
-        position: relative;
-        z-index: 2;
-        top: 2px;
-
-        &:active {
-            top: 3px;
-        }
-    }
-
-    &:active {
-        z-index: 1;
-        position: relative;
-        top: 1px;
-    }
-}
-
-.l_string { color: #ffe898; }
-.l_symbol { color: #ff9898; }
-.l_keyword { color: #cb98ff; font-weight: bold; }
-.l_proper, .l_self_var { color: #98d9ff; }
-.l_fn_symbol { color: #9fff98; }
-
 .footer {
     font-size: 13px;
     margin-bottom: 8px;
@@ -309,33 +261,17 @@ a {
 }
 
 
-h2, h3, h4 {
-    color: darken($body_color, 10%);
-    margin: 10px 0px;
-}
-
-p > code, li > code {
-    display: inline-block;
-    background: #F0F0F0;
-    color: darken($body_color, 5%);
-    font-family: "range_mono";
-    border-radius: 9px;
-    padding: 1px 8px;
-}
-
 .code_container {
     position: relative;
+
+    .see_lua_btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+    }
 }
 
-.popup {
-    display: none;
-    position: absolute;
-    top: -16px;
-    left: 0px;
-    right: 0px;
-}
-
-#shroud {
+.shroud {
     position: fixed;
     display: none;
     top: 0px;
@@ -345,90 +281,34 @@ p > code, li > code {
     background: rgba(0,0,0, .5);
     padding-top: 76px;
     z-index: 3;
-}
-
-.lua_code {
-    display: none;
-}
-
-#shroud-popup {
-    width: 1010px;
-    background: #333;
-    border: 1px solid #777;
-    border-left: 0px;
-    border-top: 0px;
-    color: white;
-    box-shadow: 1px 1px 8px rgba(0,0,0, 0.5);
-}
-
-#shroud-popup ::-webkit-scrollbar {
-    background: #262626;
-    width: 8px;
-    border-radius: 8px;
-}
-
-#shroud-popup ::-webkit-scrollbar-thumb {
-    background: #575757;
-    border-radius: 8px;
-}
-
-#shroud-popup ::-webkit-scrollbar-thumb:hover {
-    background: #5f5f5f;
-}
-
-#shroud-footer {
-    background: #262626;
-    border-top: 1px solid #404040;
-    text-align: right;
-    padding: 4px;
-}
-
-pre.shroud-column {
-    font-size: 14px;
-    max-height: 500px;
     overflow: auto;
-}
 
-#left {
-    width: 400px;
-    margin-left: 16px;
-}
 
-#right {
-    border-left: 1px dashed #555;
-    padding-left: 12px;
-    width: 560px;
-}
+    .lightbox {
+        width: 1010px;
+        background: #333;
+        border: 1px solid #777;
+        border-left: 0px;
+        border-top: 0px;
+        color: white;
+        box-shadow: 1px 1px 8px rgba(0,0,0, 0.5);
 
-.clear {
-    clear: both;
-}
+        ::-webkit-scrollbar {
+            background: #262626;
+            width: 8px;
+            border-radius: 8px;
+        }
 
-.code-header {
-    background-image: -webkit-gradient(
-        linear,
-        left bottom,
-        left top,
-        color-stop(0, rgb(148,146,148)),
-        color-stop(1, rgb(214,214,214))
-    );
-    background-image: -moz-linear-gradient(
-        center bottom,
-        rgb(148,146,148) 0%,
-        rgb(214,214,214) 100%
-    );
-}
+        ::-webkit-scrollbar-thumb {
+            background: #575757;
+            border-radius: 8px;
+        }
 
-.code-header td {
-    color: #444;
-    font-family: sans-serif;
-    text-shadow: 1px 1px 0px #eee;
-    font-size: 12px;
-    font-weight: bold;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5f5f5f;
+        }
+    }
 
-    padding: 2px 6px;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #666;
 }
 
 /* builtins */
@@ -492,6 +372,7 @@ pre.shroud-column {
 
 .rainbow_btn {
     display: block;
+    font-size: 14px;
     background-image:
     -webkit-linear-gradient(bottom, #f05a7f 0%, #f05a7f 30%, rgba(255,0,0,0) 70%, rgba(255,0,0,0) 100%),
     -webkit-linear-gradient(left,
@@ -507,7 +388,7 @@ pre.shroud-column {
 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    -webkit-animation: rainbow 20s linear infinite;
+    -webkit-animation: rainbow 30s linear infinite;
 
     background-position: 0 -12px;
 
@@ -561,8 +442,6 @@ pre.shroud-column {
     font-style: normal;
 
 }
-
-
 
 @font-face {
     font-family: 'range';

@@ -8,6 +8,9 @@ setTimeout =>
 
 $ = (id) -> document.getElementById id
 
+matches = (el, selector) ->
+  (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector || el.oMatchesSelector).call(el, selector)
+
 debounce = (fn, wait) ->
   timeout = null
   ->
@@ -47,6 +50,8 @@ window.addEventListener "scroll", debounce (e) ->
     .add "active"
 
 , 50
+
+return
 
 shroud = $ "shroud"
 popup = $ "shroud-popup"

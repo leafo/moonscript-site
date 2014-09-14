@@ -121,21 +121,17 @@ site = sitegen.create_site =>
           }
         }
 
-        if nil and page.source\match "^index"
+        if page.source\match "^index"
           div {
             __breakclose: true
             class: "code_container"
-            code {
-              class: "lua_code"
-              id: "lua-" .. tostring i
-              raw highlight "lua", lua_text
-            }
+            "data-compiled_lua": highlight "lua", lua_text
+
             div {
-              class: "rainbow_btn_wrap"
+              class: "see_lua_btn rainbow_btn_wrap"
               a {
                 href: "#"
-                class: "see_lua rainbow_btn"
-                code_id: tostring i
+                class: "rainbow_btn"
                 "See Lua"
               }
             }
