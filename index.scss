@@ -56,6 +56,7 @@ body {
             display: block;
         }
     }
+
 }
 
 a {
@@ -272,6 +273,8 @@ a {
 }
 
 .shroud {
+    @include transition(all 0.3s ease);
+
     position: fixed;
     display: none;
     top: 0px;
@@ -282,27 +285,49 @@ a {
     padding: 40px 40px;
     z-index: 3;
     overflow: auto;
+    opacity: 0;
+
+    .animate_lightbox & {
+        opacity: 1;
+    }
 
 }
 
 .lightbox {
+    @include transition(all 0.5s ease);
+
     width: $main_width - 40px;
     margin-left: $sidebar_width + 20px;
     overflow: hidden;
     position: relative;
 
     color: white;
-    background: rgba(#3C3C3C, 0.95);
+    background: rgba(#3C3C3C, 0.0);
+    border-radius: 4px;
+    top: 20px;
+
+    .animate_lightbox & {
+        background: rgba(#3C3C3C, 0.95);
+        top: 0;
+    }
 
     .close_btn {
         font-size: 22px;
         position: absolute;
         right: 12px;
-        top: 12px;
+        top: 16px;
+        cursor: pointer;
+        color: mix(white, #3C3C3C, 50%);
+
+        &:hover {
+            color: mix(white, #3C3C3C, 60%);
+        }
     }
 
     h2 {
-        margin: 15px 25px 0 25px;
+        background: #383838;
+        padding: 15px 25px;
+        margin: 0;
     }
 
     .lb_code_column {
@@ -392,15 +417,15 @@ a {
         rgb(242,119,161)
     );
 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-animation: rainbow 30s linear infinite;
+    @include prefixed(background-clip, text);
+    @include prefixed(text-fill-color, transparent);
+    @include prefixed(animation, rainbow 30s linear infinite);
 
     background-position: 0 -12px;
 
     color: white;
     text-align: center;
-    transition: all 0.3s ease;
+    @include transition(all 0.3s ease);
 
     &:hover {
         background-position: 0 12px;

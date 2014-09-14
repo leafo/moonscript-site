@@ -59,8 +59,9 @@ closest = (el, selector) ->
     return null if el == document
 
 document.body.addEventListener "click", (e) ->
-  if matches e.target, ".shroud"
+  if matches(e.target, ".shroud") || matches(e.target, ".lightbox .close_btn")
     document.body.classList.remove "show_lightbox"
+    document.body.classList.remove "animate_lightbox"
     return
 
   lua_btn = closest e.target, ".see_lua_btn"
@@ -72,6 +73,11 @@ document.body.addEventListener "click", (e) ->
 
   document.body.classList.add "show_lightbox"
   document.querySelector(".shroud").scrollTop = 0
+  setTimeout ->
+    document.body.classList.add "animate_lightbox"
+  , 1
+
+  e.preventDefault()
 
 return
 
