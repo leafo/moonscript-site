@@ -2,17 +2,17 @@
 [Lua](http://www.lua.org/). It gives you the power of one of the fastest
 scripting languages combined with a rich set of features.
 
-    ```moon
-    class Thing
-      name: "unknown"
-    
-    class Person extends Thing
-      say_name: => print "Hello, I am #{@name}!"
-    
-    with Person!
-      .name = "MoonScript"
-      \say_name!
-    ```
+```moon
+class Thing
+  name: "unknown"
+
+class Person extends Thing
+  say_name: => print "Hello, I am #{@name}!"
+
+with Person!
+  .name = "MoonScript"
+  \say_name!
+```
 
 MoonScript can either be compiled into Lua and run at a later time, or it can
 be dynamically compiled and run using the *moonloader*. It's as simple as
@@ -36,31 +36,31 @@ MoonScript provides a clean syntax using significant whitespace that avoids all
 the keyword noise typically seen in a Lua script. Below is a sample of some
 constructs found in the language.
 
-    ```moon
-    export my_func
-    x = 2323
+```moon
+export my_func
+x = 2323
 
-    collection =
-      height: 32434
-      hats: {"tophat", "bball", "bowler"}
+collection =
+  height: 32434
+  hats: {"tophat", "bball", "bowler"}
 
-    my_func = (a) -> x + a
+my_func = (a) -> x + a
 
-    print my_func 100
-    ```
+print my_func 100
+```
 
 It also adds [table comprehensions](reference/#table_comprehensions), [implicit return](reference/#function_literals) on functions, [classes](reference/#object_oriented_programming),
 [inheritance](reference/#inheritance), scope management statements [import](reference/#import) & [export](reference/#export), and a convenient
 object creation statement called [with](reference/#with).
 
-    ```moon
-    import concat, insert from table
+```moon
+import concat, insert from table
 
-    double_args = (...) ->
-      [x * 2 for x in *{...}]
+double_args = (...) ->
+  [x * 2 for x in *{...}]
 
-    tuples = [{k, v} for k,v in ipairs my_table]
-    ```
+tuples = [{k, v} for k,v in ipairs my_table]
+```
 
 It can be loaded directly from a Lua script [without an intermediate
 compile step](reference/#moonscript_module). It even knows how to [tell you
@@ -79,9 +79,9 @@ manager.
 
 After it is installed, run the following in a terminal:
 
-    ```bash
-    $ luarocks install moonscript
-    ```
+```bash
+$ luarocks install moonscript
+```
 
 This will provide the `moon` and `moonc` executables along with the
 `moonscript` and `moon` Lua module.
@@ -102,12 +102,7 @@ polling.
 
 ## Source
 
-<div class="github-buttons">
-<iframe src="http://ghbtns.com/github-btn.html?user=leafo&repo=moonscript&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
-<iframe src="http://ghbtns.com/github-btn.html?user=leafo&repo=moonscript&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95px" height="20px"></iframe>
-</div>
-
-The source code to the project lives on github:  
+The source code to the project lives on GitHub:  
 <https://github.com/leafo/moonscript>
 
 Issues with the tool can be reported on the issue tracker:  
@@ -115,9 +110,10 @@ Issues with the tool can be reported on the issue tracker:
 
 The latest development version can be installed with the dev rockspec:
 
-    ```bash
-    $ luarocks build http://moonscript.org/rocks/moonscript-dev-1.rockspec
-    ```
+```bash
+$ luarocks install \
+    http://moonscript.org/rocks/moonscript-dev-1.rockspec
+```
 
 ### Dependencies
 
@@ -163,7 +159,7 @@ Online Compiler:
 ## Overview of Differences & Highlights
 
 A more detailed overview of the syntax can be found in the
-[documentation](reference/).
+[reference manual](reference/).
 
  * Whitespace sensitive blocks defined by indenting
  * All variable declarations are local by default
