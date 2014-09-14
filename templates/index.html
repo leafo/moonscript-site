@@ -48,7 +48,7 @@
     </div>
   </div>
 
-  <div class="main offset">
+  <div class="main obscured">
     <div class="message">A programmer friendly language
       that compiles to <a href="http://www.lua.org">Lua</a>.</div>
 
@@ -77,10 +77,8 @@
   </div>
 
   <div class="footer">
-    <div class="offset">
-      MoonScript is licensed under the MIT License &middot; 2014 &middot;
-      by <a href="http://leafo.net">leaf corcoran</a>
-    </div>
+    MoonScript is licensed under the MIT License &middot; 2014 &middot;
+    by <a href="http://leafo.net">leaf corcoran</a>
   </div>
 
   <!--
@@ -108,8 +106,13 @@
   </div>
 
   <script type="text/javascript">
-    if (navigator.appVersion.indexOf("Win") == -1)
+    if (navigator.appVersion.indexOf("Win") == -1) {
       document.body.className = "nice-fonts";
+    }
+    setTimeout(function() {
+      document.querySelectorAll(".main")[0].classList.remove("obscured")
+    }, 10)
+
   </script>
 
 </body>

@@ -65,6 +65,7 @@ a {
 .nav {
     width: $sidebar_width;
     position: fixed;
+    z-index: 1;
     top: 0px;
     left: 0px;
     bottom: 0;
@@ -89,7 +90,8 @@ a {
     }
 
     li {
-        line-height: 24px;
+        line-height: 26px;
+        font-size: 15px;
     }
 
     a {
@@ -122,11 +124,18 @@ a {
 
 .main {
     @include border_box;
+    @include transition(all 0.5s ease);
     background: white;
     width: 800px;
     overflow: hidden;
     margin-left: $sidebar_width;
     padding: 0 100px 16px 100px;
+    opacity: 1;
+
+    &.obscured {
+        margin-left: floor($sidebar_width * 2/3);
+        opacity: 0.6;
+    }
 
     .message {
         color: $link_color;
@@ -254,7 +263,7 @@ p > code, li > code {
     color: white;
     border-radius: 4px;
     font-family: "range_mono";
-    padding: 45px;
+    padding: 40px 45px;
     font-size: 14px;
 
     code {
