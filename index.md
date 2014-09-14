@@ -1,3 +1,4 @@
+<div id="intro"></div>
 **MoonScript** is a dynamic scripting language that compiles into
 [Lua](http://www.lua.org/). It gives you the power of one of the fastest
 scripting languages combined with a rich set of features.
@@ -30,6 +31,7 @@ A comprehensive overview of the language can be found in the [reference
 manual](reference/), the rest of this page serves as an overview of the
 language.
 
+<div id="overview"></div>
 ## Overview
 
 MoonScript provides a clean syntax using significant whitespace that avoids all
@@ -67,6 +69,7 @@ compile step](reference/#moonscript_module). It even knows how to [tell you
 where errors occurred](reference/#error_rewriting) in the original file when
 they happen.
 
+<div id="installation"></div>
 ## Installation
 
 ### Installing with LuaRocks
@@ -100,6 +103,7 @@ files as they are changed) you can install
 [linotify](https://github.com/hoelzro/linotify) to use inotify instead of
 polling.
 
+<div id="source"></div>
 ## Source
 
 The source code to the project lives on GitHub:  
@@ -128,12 +132,14 @@ required to run the compiler and associated tools:
 All of the required ones can be retrieved automatically using the
 [LuaRocks](#installing_with_luarocks) installation.
 
+<div id="learning"></div>
 ## Learning
 
  * [Official reference manual](reference/)
  * [Installation tutorial](http://leafo.net/posts/getting_started_with_moonscript.html)
  * [MoonScript examples](https://github.com/leafo/moonscript/wiki/Moonscript-Examples)
 
+<div id="extras"></div>
 ## Extras & Addons
 
 ### Editor Support
@@ -185,6 +191,7 @@ A more detailed overview of the syntax can be found in the
    class method
  * `with` statement lets you access anonymous object with short syntax
 
+<div id="about"></div>
 ## About
 
 The syntax of MoonScript has been heavily inspired by the syntax of
