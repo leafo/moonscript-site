@@ -115,8 +115,7 @@ site = sitegen.create_site =>
         moon_pre = pre {
           __breakclose: true
           code {
-            class: "moon-code"
-            id: "moon-" .. tostring i
+            class: "moon_code"
             raw highlight "moon", code_text
           }
         }

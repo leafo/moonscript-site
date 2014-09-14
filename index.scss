@@ -279,37 +279,43 @@ a {
     left: 0px;
     right: 0px;
     background: rgba(0,0,0, .5);
-    padding-top: 76px;
+    padding: 40px 40px;
     z-index: 3;
     overflow: auto;
 
+}
 
-    .lightbox {
-        width: 1010px;
-        background: #333;
-        border: 1px solid #777;
-        border-left: 0px;
-        border-top: 0px;
-        color: white;
-        box-shadow: 1px 1px 8px rgba(0,0,0, 0.5);
+.lightbox {
+    width: $main_width - 40px;
+    margin-left: $sidebar_width + 20px;
+    overflow: hidden;
+    position: relative;
 
-        ::-webkit-scrollbar {
-            background: #262626;
-            width: 8px;
-            border-radius: 8px;
-        }
+    color: white;
+    background: rgba(#3C3C3C, 0.95);
 
-        ::-webkit-scrollbar-thumb {
-            background: #575757;
-            border-radius: 8px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #5f5f5f;
-        }
+    .close_btn {
+        font-size: 22px;
+        position: absolute;
+        right: 12px;
+        top: 12px;
     }
 
+    h2 {
+        margin: 15px 25px 0 25px;
+    }
+
+    .lb_code_column {
+        font-size: 14px;
+        font-family: "range_mono";
+        padding: 20px 25px;
+        margin: 0;
+        font-size: 14px;
+        line-height: 20px;
+    }
 }
+
+
 
 /* builtins */
 .nb {

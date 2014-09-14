@@ -24,7 +24,7 @@ debounce = (fn, wait) ->
 
 window.addEventListener "scroll", debounce (e) ->
   h2 = window.innerHeight / 3
-  anchors = document.body.querySelectorAll "div[id]:empty"
+  anchors = document.querySelectorAll "div[id]:empty"
 
   current = anchors[0]
   current_i = 0
@@ -42,14 +42,36 @@ window.addEventListener "scroll", debounce (e) ->
     else
     break
 
-  document.body.querySelectorAll(".primary_nav .active")[0]
+  document.querySelector(".primary_nav .active")
     .classList.remove "active"
 
   document.body
-    .querySelectorAll(".primary_nav [data-name='#{current.id}']")[0]?.classList
+    .querySelector(".primary_nav [data-name='#{current.id}']")?.classList
     .add "active"
 
 , 50
+
+
+closest = (el, selector) ->
+  while true
+    return el if matches el, selector
+    el = el.parentNode
+    return null if el == document
+
+document.body.addEventListener "click", (e) ->
+  if matches e.target, ".shroud"
+    document.body.classList.remove "show_lightbox"
+    return
+
+  lua_btn = closest e.target, ".see_lua_btn"
+  return unless lua_btn
+  container = closest(lua_btn, "[data-compiled_lua]")
+
+  lua_code = container.dataset.compiled_lua
+  document.querySelector(".lightbox .lua_col").innerHTML = lua_code
+
+  document.body.classList.add "show_lightbox"
+  document.querySelector(".shroud").scrollTop = 0
 
 return
 
