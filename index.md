@@ -52,8 +52,8 @@ print my_func 100
 ```
 
 It also adds [table comprehensions](reference/#table_comprehensions), [implicit return](reference/#function_literals) on functions, [classes](reference/#object_oriented_programming),
-[inheritance](reference/#inheritance), scope management statements [import](reference/#import) & [export](reference/#export), and a convenient
-object creation statement called [with](reference/#with).
+[inheritance](reference/#inheritance), scope management statements [import](reference/#import_statement) & [export](reference/#export_statement), and a convenient
+object creation statement called [with](reference/#with_assignment).
 
 ```moon
 import concat, insert from table
@@ -65,13 +65,14 @@ tuples = [{k, v} for k,v in ipairs my_table]
 ```
 
 It can be loaded directly from a Lua script [without an intermediate
-compile step](reference/#moonscript_module). It even knows how to [tell you
-where errors occurred](reference/#error_rewriting) in the original file when
+compile step](reference/api.html#autocompiling_with_the_moonscript_module). It even knows how to [tell you
+where errors occurred](reference/command_line.html#error_rewriting) in the original file when
 they happen.
 
 <div id="installation"></div>
 ## Installation
 
+<div id="installing_with_luarocks"></div>
 ### Installing with LuaRocks
 
 If you're on Windows, then install the [Windows binaries](#windows_binaries),
@@ -89,6 +90,8 @@ $ luarocks install moonscript
 This will provide the `moon` and `moonc` executables along with the
 `moonscript` and `moon` Lua module.
 
+
+<div id="windows_binaries"></div>
 ### Windows Binaries
 
 Precompiled Windows binaries are available to avoid the trouble of compiling:  
@@ -96,6 +99,7 @@ Precompiled Windows binaries are available to avoid the trouble of compiling:
 
 Extract the contents into your `PATH`.
 
+<div id="optional"></div>
 ### Optional
 
 If you're on Linux and use *watch* mode (which compiles `.moon` files to `.lua`
@@ -195,7 +199,7 @@ A more detailed overview of the syntax can be found in the
 ## About
 
 The syntax of MoonScript has been heavily inspired by the syntax of
-[CoffeeScript](http://jashkenas.github.com/coffee-script/). MoonScript is
+[CoffeeScript](http://jashkenas.github.io/coffee-script/). MoonScript is
 CoffeeScript for Lua.
 
 MoonScript would not have been possible without the excellent tool
