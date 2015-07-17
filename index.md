@@ -161,6 +161,9 @@ Preconfigured and packaged version of SciTE for Windows with MoonScript
 support:  
 <http://moonscript.org/scite/>
 
+MoonScript module for the Textadept editor, written in MoonScript
+<https://github.com/rgieseke/ta-moonscript>
+
 ### Tools
 
 Online Compiler:  
