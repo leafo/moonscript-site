@@ -94,10 +94,13 @@ This will provide the `moon` and `moonc` executables along with the
 <div id="windows_binaries"></div>
 ### Windows Binaries
 
-Precompiled Windows binaries are available to avoid the trouble of compiling:  
-<http://moonscript.org/bin/moonscript-0.3.0.zip>
+Precompiled Windows binaries are available to avoid the trouble of compiling:
+[win32-v0.4.0/build.zip](https://github.com/leafo/moonscript/releases/download/win32-v0.4.0/build.zip)
 
-Extract the contents into your `PATH`.
+Extract the contents into your `PATH`. You can also use the included
+`moonscript.dll`  to require the module in.
+
+This version has been compiled against Lua 5.1.
 
 <div id="optional"></div>
 ### Optional
@@ -120,7 +123,7 @@ The latest development version can be installed with the dev rockspec:
 
 ```bash
 $ luarocks install \
-    http://moonscript.org/rocks/moonscript-dev-1.rockspec
+    https://luarocks.org/manifests/leafo/moonscript-dev-1.rockspec
 ```
 
 ### Dependencies
