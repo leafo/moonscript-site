@@ -211,10 +211,13 @@ MoonScript would not have been possible without the excellent tool
 <a name="change_log"></a>
 ## Changelog
 
- * [0.3.0](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v030-2015-2-28)-- February 28 2015
- * [0.2.6](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v026-2014-6-18)-- June 19 2014
- * [0.2.5](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v025-2014-3-5)-- March 5 2014
- * [0.2.4](http://leafo.net/posts/moonscript_v024.html)-- July 2 2013
+ * [0.4.0](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v040-2015-12-06) -- December 6 2015
+ * [0.3.2](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v032-2015-6-01) -- June 1 2015
+ * [0.3.1](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v031-2015-3-07) -- March 7 2015
+ * [0.3.0](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v030-2015-2-28) -- February 28 2015
+ * [0.2.6](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v026-2014-6-18) -- June 19 2014
+ * [0.2.5](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v025-2014-3-5) -- March 5 2014
+ * [0.2.4](http://leafo.net/posts/moonscript_v024.html) -- July 2 2013
  * 0.2.3-2 -- Jan 29 2013, Fixed bug with moonloader not loading anything
  * [0.2.3](http://leafo.net/posts/moonscript_v023.html) -- Jan 24 2013
  * [0.2.2](http://leafo.net/posts/moonscript_v022.html) -- Nov 04 2012
