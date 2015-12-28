@@ -31,7 +31,6 @@ A comprehensive overview of the language can be found in the [reference
 manual](reference/), the rest of this page serves as an overview of the
 language.
 
-<div id="overview"></div>
 ## Overview
 
 MoonScript provides a clean syntax using significant whitespace that avoids all
@@ -69,10 +68,8 @@ compile step](reference/api.html#autocompiling_with_the_moonscript_module). It e
 where errors occurred](reference/command_line.html#error_rewriting) in the original file when
 they happen.
 
-<div id="installation"></div>
 ## Installation
 
-<div id="installing_with_luarocks"></div>
 ### Installing with LuaRocks
 
 If you're on Windows, then install the [Windows binaries](#windows_binaries),
@@ -90,8 +87,6 @@ $ luarocks install moonscript
 This will provide the `moon` and `moonc` executables along with the
 `moonscript` and `moon` Lua module.
 
-
-<div id="windows_binaries"></div>
 ### Windows Binaries
 
 Precompiled Windows binaries are available to avoid the trouble of compiling:
@@ -102,7 +97,6 @@ Extract the contents into your `PATH`. You can also use the included
 
 This version has been compiled against Lua 5.1.
 
-<div id="optional"></div>
 ### Optional
 
 If you're on Linux and use *watch* mode (which compiles `.moon` files to `.lua`
@@ -110,7 +104,6 @@ files as they are changed) you can install
 [linotify](https://github.com/hoelzro/linotify) to use inotify instead of
 polling.
 
-<div id="source"></div>
 ## Source
 
 The source code to the project lives on GitHub:  
@@ -139,14 +132,12 @@ required to run the compiler and associated tools:
 All of the required ones can be retrieved automatically using the
 [LuaRocks](#installing_with_luarocks) installation.
 
-<div id="learning"></div>
 ## Learning
 
  * [Official reference manual](reference/)
  * [Installation tutorial](http://leafo.net/posts/getting_started_with_moonscript.html)
  * [MoonScript examples](https://github.com/leafo/moonscript/wiki/Moonscript-Examples)
 
-<div id="extras"></div>
 ## Extras & Addons
 
 ### Editor Support
@@ -198,7 +189,6 @@ A more detailed overview of the syntax can be found in the
    class method
  * `with` statement lets you access anonymous object with short syntax
 
-<div id="about"></div>
 ## About
 
 The syntax of MoonScript has been heavily inspired by the syntax of
@@ -208,7 +198,6 @@ CoffeeScript for Lua.
 MoonScript would not have been possible without the excellent tool
 [LPeg](http://www.inf.puc-rio.br/~roberto/lpeg/) for parsing.
 
-<a name="change_log"></a>
 ## Changelog
 
  * [0.4.0](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v040-2015-12-06) -- December 6 2015

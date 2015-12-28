@@ -6,7 +6,6 @@ html = require "sitegen.html"
 tools = require "sitegen.tools"
 
 PygmentsPlugin = require "sitegen.plugins.pygments"
-IndexerPlugin = require "sitegen.plugins.indexer"
 
 highlight = PygmentsPlugin\highlight
 
@@ -76,16 +75,14 @@ single_highlight = (code_text) ->
       }
     }
 
-site = sitegen.create_site =>
+sitegen.create =>
   @title = "MoonScript"
   @moon_version = require"moonscript.version".version
 
-  add "moonscript/docs/reference.md"
-  add "moonscript/docs/standard_lib.md"
-  add "moonscript/docs/command_line.md"
-  add "moonscript/docs/api.md"
-
-  add "compiler/index.html", template: false
+  add "moonscript/docs/reference.md", index: true
+  add "moonscript/docs/standard_lib.md", index: true
+  add "moonscript/docs/command_line.md", index: true
+  add "moonscript/docs/api.md", index: true
 
   deploy_to "leaf@leafo.net", "www/moonscript.org"
 
@@ -94,11 +91,9 @@ site = sitegen.create_site =>
 
   build scssphp, "reference.scss"
   build scssphp, "index.scss"
-  build scssphp, "compiler/style.scss"
 
   build coffeescript, "highlight.coffee"
   build coffeescript, "index.coffee"
-  build coffeescript, "compiler/client.coffee"
 
   i = 0
   with PygmentsPlugin.custom_highlighters
@@ -149,4 +144,3 @@ site = sitegen.create_site =>
     body\gsub "<h1>.-</h1>", (header) ->
       table.concat { '</div>', header, '<div class="main">' }
 
-site\write!
