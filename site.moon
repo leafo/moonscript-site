@@ -79,6 +79,8 @@ sitegen.create =>
   @title = "MoonScript"
   @moon_version = require"moonscript.version".version
 
+  add "index.md", index: true
+
   add "moonscript/docs/reference.md", index: true
   add "moonscript/docs/standard_lib.md", index: true
   add "moonscript/docs/command_line.md", index: true
@@ -86,13 +88,12 @@ sitegen.create =>
 
   deploy_to "leaf@leafo.net", "www/moonscript.org"
 
-  scssphp = tools.system_command "pscss < %s > %s", "css"
+  scssphp = tools.system_command "sassc < %s > %s", "css"
   coffeescript = tools.system_command "coffee -c -s < %s > %s", "js"
 
   build scssphp, "reference.scss"
   build scssphp, "index.scss"
 
-  build coffeescript, "highlight.coffee"
   build coffeescript, "index.coffee"
 
   i = 0

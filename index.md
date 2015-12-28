@@ -145,15 +145,8 @@ All of the required ones can be retrieved automatically using the
 Vim syntax and indent:  
 <https://github.com/leafo/moonscript-vim>
 
-Textmate (and Sublime Text) syntax and indent:  
+Sublime Text (and Textmate) syntax and indent:  
 <https://github.com/leafo/moonscript-tmbundle>
-
-SciTE (with scintillua) syntax:  
-<https://github.com/leafo/moonscript/tree/master/extra/scintillua>
-
-Preconfigured and packaged version of SciTE for Windows with MoonScript
-support:  
-<http://moonscript.org/scite/>
 
 ### Tools
 
