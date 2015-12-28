@@ -1,1 +1,4 @@
 highlight.js
+www/*.css
+www/*.js
+.sitegen_cache
