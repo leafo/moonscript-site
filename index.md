@@ -170,7 +170,7 @@ A more detailed overview of the syntax can be found in the
  * `:` is used to separate key and value in table literals instead of `=`
  * Newlines can be used as table literal entry delimiters in addition to `,`
  * \ is used to call a method on an object instead of `:`
- * `+=`, `-=`, `/=`, `*=`, `%=` operators
+ * `+=`, `-=`, `/=`, `*=`, `%=`, `..=` operators
  * `!=` is an alias for `~=`
  * Table comprehensions, with convenient slicing and iterator syntax
  * Lines can be decorated with for loops and if statements at the end of the line
