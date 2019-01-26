@@ -90,7 +90,7 @@ This will provide the `moon` and `moonc` executables along with the
 ### Windows Binaries
 
 Precompiled Windows binaries are available to avoid the trouble of compiling:
-[win32-v0.4.0/build.zip](https://github.com/leafo/moonscript/releases/download/win32-v0.4.0/build.zip)
+[moonscript.zip](https://github.com/leafo/moonscript/releases/download/win32-v0.5.0/moonscript-187bac54ee5a7450013e9c38e005a0e671b76f45.zip)
 
 Extract the contents into your `PATH`. You can also use the included
 `moonscript.dll`  to require the module in.
@@ -193,6 +193,7 @@ MoonScript would not have been possible without the excellent tool
 
 ## Changelog
 
+ * [0.5.0](https://github.com/leafo/moonscript/releases/tag/v0.5.0) -- September 25 2015
  * [0.4.0](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v040-2015-12-06) -- December 6 2015
  * [0.3.2](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v032-2015-6-01) -- June 1 2015
  * [0.3.1](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v031-2015-3-07) -- March 7 2015
