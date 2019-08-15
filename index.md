@@ -142,10 +142,16 @@ All of the required ones can be retrieved automatically using the
 
 ### Editor Support
 
-Vim syntax and indent:  
+Vim:  
 <https://github.com/leafo/moonscript-vim>
 
-Sublime Text (and Textmate) syntax and indent:  
+Emacs:
+https://github.com/k2052/moonscript-mode
+
+VSCode:
+https://marketplace.visualstudio.com/items?itemName=Lynxish-Developer.moonscript
+
+Sublime Text (and Textmate):  
 <https://github.com/leafo/moonscript-tmbundle>
 
 ### Tools
