@@ -50,9 +50,13 @@ my_func = (a) -> x + a
 print my_func 100
 ```
 
-It also adds [table comprehensions](reference/#table_comprehensions), [implicit return](reference/#function_literals) on functions, [classes](reference/#object_oriented_programming),
-[inheritance](reference/#inheritance), scope management statements [import](reference/#import_statement) & [export](reference/#export_statement), and a convenient
-object creation statement called [with](reference/#with_assignment).
+It also adds [table comprehensions](reference/#the-language/comprehensions/table-comprehensions),
+[implicit return](reference/#the-language/function-literals) on functions,
+[classes](reference/#the-language/object-oriented-programming),
+[inheritance](reference/#the-language/object-oriented-programming/inheritance),
+scope management statements [import](reference/#the-language/import-statement) &
+[export](reference/#the-language/export-statement), and a convenient
+object creation statement called [with](reference/#the-language/conditionals/with-assignment).
 
 ```moon
 import concat, insert from table
@@ -64,15 +68,15 @@ tuples = [{k, v} for k,v in ipairs my_table]
 ```
 
 It can be loaded directly from a Lua script [without an intermediate
-compile step](reference/api.html#autocompiling_with_the_moonscript_module). It even knows how to [tell you
-where errors occurred](reference/command_line.html#error_rewriting) in the original file when
-they happen.
+compile step](reference/api.html#moonscript-compiler-api/autocompiling-with-the-moonscript-module).
+It even knows how to [tell you where errors occurred](reference/command_line.html#command-line-tools/moon/error-rewriting)
+in the original file when they happen.
 
 ## Installation
 
 ### Installing with LuaRocks
 
-If you're on Windows, then install the [Windows binaries](#windows_binaries),
+If you're on Windows, then install the [Windows binaries](#installation/windows-binaries),
 otherwise the easiest way to install is to use LuaRocks.
 
 LuaRocks can be obtained [here](http://www.luarocks.org/) or from your package
@@ -127,10 +131,10 @@ required to run the compiler and associated tools:
  * [LPeg](http://www.inf.puc-rio.br/~roberto/lpeg/lpeg.html)
  * [LuaFileSystem](http://keplerproject.github.com/luafilesystem/)
  * [alt-getopt](http://luaforge.net/projects/alt-getopt/)
- * and [optionally](#optional) on Linux [linotify](https://github.com/hoelzro/linotify)
+ * and [optionally](#installation/optional) on Linux [linotify](https://github.com/hoelzro/linotify)
 
 All of the required ones can be retrieved automatically using the
-[LuaRocks](#installing_with_luarocks) installation.
+[LuaRocks](#installation/installing-with-luarocks) installation.
 
 ## Learning
 
