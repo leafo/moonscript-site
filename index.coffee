@@ -1,13 +1,6 @@
 
-if navigator.appVersion.indexOf("Win") == -1
-  document.body.classList.add "nice_fonts"
-
 if navigator.appVersion.indexOf("Chrome") >= 0
   document.body.classList.add "enable_rainbow"
-
-setTimeout =>
-  document.querySelectorAll(".main")[0].classList.remove("obscured")
-, 10
 
 $ = (id) -> document.getElementById id
 

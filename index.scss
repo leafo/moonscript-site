@@ -38,16 +38,12 @@ $main_width: 800px;
 }
 
 body {
-    font-family: sans-serif;
+    font-family: "range", sans-serif;
     background: #F0F0F0;
     color: #727779;
     font-size: 16px;
     margin: 0px;
     padding: 0px;
-
-    &.nice_fonts {
-        font-family: "range";
-    }
 
     &.show_lightbox {
         overflow: hidden;
@@ -158,6 +154,14 @@ a {
             line-height: 24px;
             font-size: 13px;
         }
+
+        .chat_row {
+            display: flex;
+            align-items: center;
+            > svg {
+                margin-right: 5px;
+            }
+        }
     }
 
     .nav_bottom {
@@ -174,18 +178,12 @@ a {
 
 .main {
     @include border_box;
-    @include transition(all 0.5s ease);
     background: white;
     width: $main_width;
     overflow: hidden;
     margin-left: $sidebar_width;
     padding: 0 100px 16px 100px;
     opacity: 1;
-
-    &.obscured {
-        margin-left: floor($sidebar_width * 2/3);
-        opacity: 0.6;
-    }
 
     .message {
         color: $link_color;
@@ -341,6 +339,49 @@ a {
         margin: 0;
         font-size: 14px;
         line-height: 20px;
+    }
+}
+
+// new syntax highligher
+.highlight {
+    .sh_keyword {
+        color: #BB84B4;
+    }
+
+    .sh_string {
+        color: #F1BF8E;
+    }
+
+    &.lang_bash .sh_default {
+        color: #F277A1;
+    }
+
+    .sh_operator {
+        color: #F277A1;
+    }
+
+    .sh_fndef, .sh_preprocessor, .sh_symbol, .sh_embedded {
+        color: #B0D89C;
+    }
+
+    .sh_class, .sh_self_ref, .sh_label {
+        color: #99CBCA;
+    }
+
+    .sh_tbl_key, .sh_regex {
+        color: #F277A1; // new
+    }
+
+    .sh_comment {
+        color: #929292;
+    }
+
+    .sh_number {
+        color: #9D8FF2;
+    }
+
+    .sh_function { // builtins
+        color: #F69385;
     }
 }
 

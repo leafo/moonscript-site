@@ -119,8 +119,7 @@ Issues with the tool can be reported on the issue tracker:
 The latest development version can be installed with the dev rockspec:
 
 ```bash
-$ luarocks install \
-    https://luarocks.org/manifests/leafo/moonscript-dev-1.rockspec
+$ luarocks install --dev moonscript
 ```
 
 ### Dependencies
