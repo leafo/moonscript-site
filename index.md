@@ -1,6 +1,6 @@
 <div id="intro"></div>
 **MoonScript** is a dynamic scripting language that compiles into
-[Lua](http://www.lua.org/). It gives you the power of one of the fastest
+[Lua](https://www.lua.org/). It gives you the power of one of the fastest
 scripting languages combined with a rich set of features.
 
 ```moon
@@ -21,7 +21,7 @@ be dynamically compiled and run using the *moonloader*. It's as simple as
 MoonScript file.
 
 Because it compiles right into Lua code, it is completely compatible with
-alternative Lua implementations like [LuaJIT](http://luajit.org), and it is
+alternative Lua implementations like [LuaJIT](https://luajit.org), and it is
 also compatible with all existing Lua code and libraries.
 
 The command line tools also let you run MoonScript directly from the
@@ -79,7 +79,7 @@ in the original file when they happen.
 If you're on Windows, then install the [Windows binaries](#installation/windows-binaries),
 otherwise the easiest way to install is to use LuaRocks.
 
-LuaRocks can be obtained [here](http://www.luarocks.org/) or from your package
+LuaRocks can be obtained [here](https://www.luarocks.org/) or from your package
 manager.
 
 After it is installed, run the following in a terminal:
@@ -124,12 +124,12 @@ $ luarocks install --dev moonscript
 
 ### Dependencies
 
-In addition to [Lua 5.1 or 5.2](http://lua.org), the following Lua modules are
+In addition to [Lua 5.1 or 5.2](https://lua.org), the following Lua modules are
 required to run the compiler and associated tools:
 
- * [LPeg](http://www.inf.puc-rio.br/~roberto/lpeg/lpeg.html)
- * [LuaFileSystem](http://keplerproject.github.com/luafilesystem/)
- * [alt-getopt](http://luaforge.net/projects/alt-getopt/)
+ * [LPeg](https://www.inf.puc-rio.br/~roberto/lpeg/lpeg.html)
+ * [LuaFileSystem](https://keplerproject.github.com/luafilesystem/)
+ * [alt-getopt](https://luaforge.net/projects/alt-getopt/)
  * and [optionally](#installation/optional) on Linux [linotify](https://github.com/hoelzro/linotify)
 
 All of the required ones can be retrieved automatically using the
@@ -138,7 +138,7 @@ All of the required ones can be retrieved automatically using the
 ## Learning
 
  * [Official reference manual](reference/)
- * [Installation tutorial](http://leafo.net/posts/getting_started_with_moonscript.html)
+ * [Installation tutorial](https://leafo.net/posts/getting_started_with_moonscript.html)
  * [MoonScript examples](https://github.com/leafo/moonscript/wiki/Moonscript-Examples)
 
 ## Extras & Addons
@@ -154,7 +154,7 @@ Sublime Text (and Textmate) syntax and indent:
 ### Tools
 
 Online Compiler:  
-<http://moonscript.org/compiler/>
+<https://moonscript.org/compiler/>
 
 ## Overview of Differences & Highlights
 
@@ -188,11 +188,11 @@ A more detailed overview of the syntax can be found in the
 ## About
 
 The syntax of MoonScript has been heavily inspired by the syntax of
-[CoffeeScript](http://jashkenas.github.io/coffee-script/). MoonScript is
+[CoffeeScript](https://jashkenas.github.io/coffee-script/). MoonScript is
 CoffeeScript for Lua.
 
 MoonScript would not have been possible without the excellent tool
-[LPeg](http://www.inf.puc-rio.br/~roberto/lpeg/) for parsing.
+[LPeg](https://www.inf.puc-rio.br/~roberto/lpeg/) for parsing.
 
 ## Changelog
 
@@ -203,9 +203,9 @@ MoonScript would not have been possible without the excellent tool
  * [0.3.0](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v030-2015-2-28) -- February 28 2015
  * [0.2.6](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v026-2014-6-18) -- June 19 2014
  * [0.2.5](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v025-2014-3-5) -- March 5 2014
- * [0.2.4](http://leafo.net/posts/moonscript_v024.html) -- July 2 2013
+ * [0.2.4](https://leafo.net/posts/moonscript_v024.html) -- July 2 2013
  * 0.2.3-2 -- Jan 29 2013, Fixed bug with moonloader not loading anything
- * [0.2.3](http://leafo.net/posts/moonscript_v023.html) -- Jan 24 2013
- * [0.2.2](http://leafo.net/posts/moonscript_v022.html) -- Nov 04 2012
- * [0.2.0](http://leafo.net/posts/moonscript_v020.html) -- Dec 11 2011
+ * [0.2.3](https://leafo.net/posts/moonscript_v023.html) -- Jan 24 2013
+ * [0.2.2](https://leafo.net/posts/moonscript_v022.html) -- Nov 04 2012
+ * [0.2.0](https://leafo.net/posts/moonscript_v020.html) -- Dec 11 2011
 
