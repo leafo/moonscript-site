@@ -196,7 +196,8 @@ MoonScript would not have been possible without the excellent tool
 
 ## Changelog
 
- * [0.5.0](https://github.com/leafo/moonscript/releases/tag/v0.5.0) -- September 25 2015
+ * [0.6.0](https://github.com/leafo/moonscript/releases/tag/v0.6.0) -- January 9 2026
+ * [0.5.0](https://github.com/leafo/moonscript/releases/tag/v0.5.0) -- September 25 2016
  * [0.4.0](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v040-2015-12-06) -- December 6 2015
  * [0.3.2](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v032-2015-6-01) -- June 1 2015
  * [0.3.1](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v031-2015-3-07) -- March 7 2015
