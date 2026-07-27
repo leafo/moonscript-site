@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>MoonScript, a language that compiles to Lua</title>
-  <link rel="stylesheet" href="./index.css?Fri Feb 27 00:42:14 2026" />
+  <link rel="stylesheet" href="./index.css?Mon Jul 27 02:00:10 2026" />
   <script type="text/javascript">
   if (window.location.hostname != "localhost") {
     var _gaq = _gaq || [];
@@ -46,7 +46,7 @@
     </div>
 
     <ul class="sub_nav">
-      <li>Version <a href="#installation">0.5.0</a></li>
+      <li>Version <a href="#installation">0.7.0</a></li>
       <li>Read <a href="./reference">Manual</a></li>
       <li>Try <a href="http://moonscript.org/compiler/">Online Compiler</a></li>
       <li class="chat_row">
@@ -143,7 +143,7 @@ scripting languages combined with a rich set of features.</p>
   &lt;span class=&quot;kd&quot;&gt;local&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_with_0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;_with_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;MoonScript&amp;quot;&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;_with_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;say_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;kr&quot;&gt;end&lt;/span&gt;"><div class="see_lua_btn rainbow_btn_wrap"><a class="rainbow_btn" href="#">See Lua</a></div>
+&lt;span class=&quot;kr&quot;&gt;end&lt;/span&gt;"><div class="see_lua_btn rainbow_btn_wrap"><a href="#" class="rainbow_btn">See Lua</a></div>
 <pre><code class="moon_code"><span></span><span class="k">class</span> <span class="nc">Thing</span>
   <span class="nv">name:</span> <span class="s2">&quot;</span><span class="s">unknown</span><span class="s2">&quot;</span>
 
@@ -191,7 +191,7 @@ constructs found in the language.</p>
 &lt;span class=&quot;n&quot;&gt;my_func&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;kr&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
 &lt;span class=&quot;kr&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;"><div class="see_lua_btn rainbow_btn_wrap"><a class="rainbow_btn" href="#">See Lua</a></div>
+&lt;span class=&quot;nb&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;"><div class="see_lua_btn rainbow_btn_wrap"><a href="#" class="rainbow_btn">See Lua</a></div>
 <pre><code class="moon_code"><span></span><span class="k">export</span> <span class="n">my_func</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">2323</span>
 
@@ -245,7 +245,7 @@ object creation statement called <a href="reference/#the-language/conditionals/w
     &lt;span class=&quot;n&quot;&gt;_len_0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_len_0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
   &lt;span class=&quot;kr&quot;&gt;end&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;tuples&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_accum_0&lt;/span&gt;
-&lt;span class=&quot;kr&quot;&gt;end&lt;/span&gt;"><div class="see_lua_btn rainbow_btn_wrap"><a class="rainbow_btn" href="#">See Lua</a></div>
+&lt;span class=&quot;kr&quot;&gt;end&lt;/span&gt;"><div class="see_lua_btn rainbow_btn_wrap"><a href="#" class="rainbow_btn">See Lua</a></div>
 <pre><code class="moon_code"><span></span><span class="k">import</span> <span class="n">concat</span><span class="p">,</span> <span class="n">insert</span> <span class="k">from</span> <span class="n">table</span>
 
 <span class="n">double_args</span> <span class="o">=</span> <span class="kt">(</span><span class="o">...</span><span class="kt">)</span> <span class="nf">-&gt;</span>
@@ -265,8 +265,9 @@ in the original file when they happen.</p>
 
 <h3 id="installation/installing-with-luarocks">Installing with LuaRocks</h3>
 
-<p>If you're on Windows, then install the <a href="#installation/windows-binaries">Windows binaries</a>,
-otherwise the easiest way to install is to use LuaRocks.</p>
+<p>The easiest way to install is to use LuaRocks. Alternatively, <a href="#installation/precompiled-binaries">precompiled
+binaries</a> are available for Linux and
+Windows.</p>
 
 <p>LuaRocks can be obtained <a href="https://www.luarocks.org/">here</a> or from your package
 manager.</p>
@@ -280,15 +281,15 @@ manager.</p>
 <p>This will provide the <code>moon</code> and <code>moonc</code> executables along with the
 <code>moonscript</code> and <code>moon</code> Lua module.</p>
 
-<h3 id="installation/windows-binaries">Windows Binaries</h3>
+<h3 id="installation/precompiled-binaries">Precompiled Binaries</h3>
 
-<p>Precompiled Windows binaries are available to avoid the trouble of compiling:
-<a href="https://github.com/leafo/moonscript/releases/download/win32-v0.5.0/moonscript-187bac54ee5a7450013e9c38e005a0e671b76f45.zip">moonscript.zip</a></p>
+<p>Standalone binaries for Linux (x86_64, arm64) and Windows (x86_64) are
+attached to each release on the GitHub releases page, in both Lua and LuaJIT
+variants:</p>
 
-<p>Extract the contents into your <code>PATH</code>. You can also use the included
-<code>moonscript.dll</code>  to require the module in.</p>
+<p><a href="https://github.com/leafo/moonscript/releases">https://github.com/leafo/moonscript/releases</a></p>
 
-<p>This version has been compiled against Lua 5.1.</p>
+<p>Extract the archive and place the executables somewhere in your <code>PATH</code>.</p>
 
 <h3 id="installation/optional">Optional</h3>
 
@@ -313,13 +314,13 @@ polling.</p>
 
 <h3 id="source/dependencies">Dependencies</h3>
 
-<p>In addition to <a href="https://lua.org">Lua 5.1 or 5.2</a>, the following Lua modules are
-required to run the compiler and associated tools:</p>
+<p>In addition to <a href="https://lua.org">Lua 5.1 or later</a>, the following Lua modules
+are required to run the compiler and associated tools:</p>
 
 <ul>
 <li><a href="https://www.inf.puc-rio.br/%7Eroberto/lpeg/lpeg.html">LPeg</a></li>
-<li><a href="https://keplerproject.github.com/luafilesystem/">LuaFileSystem</a></li>
-<li><a href="https://luaforge.net/projects/alt-getopt/">alt-getopt</a></li>
+<li><a href="https://lunarmodules.github.io/luafilesystem/">LuaFileSystem</a></li>
+<li><a href="https://github.com/luarocks/argparse">argparse</a></li>
 <li>and <a href="#installation/optional">optionally</a> on Linux <a href="https://github.com/hoelzro/linotify">linotify</a></li>
 </ul>
 
@@ -395,6 +396,7 @@ CoffeeScript for Lua.</p>
 <h2 id="changelog">Changelog</h2>
 
 <ul>
+<li><a href="https://github.com/leafo/moonscript/releases/tag/v0.7.0">0.7.0</a> &mdash; July 26 2026</li>
 <li><a href="https://github.com/leafo/moonscript/releases/tag/v0.6.0">0.6.0</a> &mdash; January 9 2026</li>
 <li><a href="https://github.com/leafo/moonscript/releases/tag/v0.5.0">0.5.0</a> &mdash; September 25 2016</li>
 <li><a href="https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v040-2015-12-06">0.4.0</a> &mdash; December 6 2015</li>
@@ -416,7 +418,7 @@ CoffeeScript for Lua.</p>
     <div class="scroll_spacer"></div>
 
     <div class="footer">
-      Generated with <a href="http://leafo.net/sitegen">Sitegen</a> on Fri Feb 27 00:42:14 2026; MoonScript v0.5.0
+      Generated with <a href="http://leafo.net/sitegen">Sitegen</a> on Mon Jul 27 02:00:10 2026; MoonScript v0.7.0
     </div>
   </div>
 
@@ -427,6 +429,6 @@ CoffeeScript for Lua.</p>
       <pre class="lb_code_column lua_col"></pre>
     </div>
   </div>
-  <script type="text/javascript" src="./index.js?Fri Feb 27 00:42:14 2026"></script>
+  <script type="text/javascript" src="./index.js?Mon Jul 27 02:00:10 2026"></script>
 </body>
 </html>
