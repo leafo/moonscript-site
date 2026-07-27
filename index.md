@@ -76,8 +76,9 @@ in the original file when they happen.
 
 ### Installing with LuaRocks
 
-If you're on Windows, then install the [Windows binaries](#installation/windows-binaries),
-otherwise the easiest way to install is to use LuaRocks.
+The easiest way to install is to use LuaRocks. Alternatively, [precompiled
+binaries](#installation/precompiled-binaries) are available for Linux and
+Windows.
 
 LuaRocks can be obtained [here](https://www.luarocks.org/) or from your package
 manager.
@@ -91,15 +92,15 @@ $ luarocks install moonscript
 This will provide the `moon` and `moonc` executables along with the
 `moonscript` and `moon` Lua module.
 
-### Windows Binaries
+### Precompiled Binaries
 
-Precompiled Windows binaries are available to avoid the trouble of compiling:
-[moonscript.zip](https://github.com/leafo/moonscript/releases/download/win32-v0.5.0/moonscript-187bac54ee5a7450013e9c38e005a0e671b76f45.zip)
+Standalone binaries for Linux (x86_64, arm64) and Windows (x86_64) are
+attached to each release on the GitHub releases page, in both Lua and LuaJIT
+variants:
 
-Extract the contents into your `PATH`. You can also use the included
-`moonscript.dll`  to require the module in.
+<https://github.com/leafo/moonscript/releases>
 
-This version has been compiled against Lua 5.1.
+Extract the archive and place the executables somewhere in your `PATH`.
 
 ### Optional
 
@@ -124,12 +125,12 @@ $ luarocks install --dev moonscript
 
 ### Dependencies
 
-In addition to [Lua 5.1 or 5.2](https://lua.org), the following Lua modules are
-required to run the compiler and associated tools:
+In addition to [Lua 5.1 or later](https://lua.org), the following Lua modules
+are required to run the compiler and associated tools:
 
  * [LPeg](https://www.inf.puc-rio.br/~roberto/lpeg/lpeg.html)
- * [LuaFileSystem](https://keplerproject.github.com/luafilesystem/)
- * [alt-getopt](https://luaforge.net/projects/alt-getopt/)
+ * [LuaFileSystem](https://lunarmodules.github.io/luafilesystem/)
+ * [argparse](https://github.com/luarocks/argparse)
  * and [optionally](#installation/optional) on Linux [linotify](https://github.com/hoelzro/linotify)
 
 All of the required ones can be retrieved automatically using the
@@ -196,6 +197,7 @@ MoonScript would not have been possible without the excellent tool
 
 ## Changelog
 
+ * [0.7.0](https://github.com/leafo/moonscript/releases/tag/v0.7.0) -- July 26 2026
  * [0.6.0](https://github.com/leafo/moonscript/releases/tag/v0.6.0) -- January 9 2026
  * [0.5.0](https://github.com/leafo/moonscript/releases/tag/v0.5.0) -- September 25 2016
  * [0.4.0](https://github.com/leafo/moonscript/blob/master/CHANGELOG.md#moonscript-v040-2015-12-06) -- December 6 2015
