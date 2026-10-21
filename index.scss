@@ -486,6 +486,133 @@ a {
     }
 }
 
+@media only screen and (max-width: $sidebar_width + $main_width) {
+    .main {
+        width: auto;
+        max-width: $main_width;
+        padding: 0 40px 16px 40px;
+
+        .message {
+            padding: 0 0 20px 0;
+        }
+    }
+
+    .lightbox {
+        width: auto;
+        max-width: $main_width - 40px;
+        margin-right: 20px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .nav {
+        position: static;
+        width: auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 16px;
+
+        .logo {
+            order: -2;
+            flex: 1;
+            text-align: left;
+            margin: 0;
+
+            img {
+                width: 120px;
+                height: auto;
+                display: block;
+            }
+        }
+
+        .sharing {
+            order: -1;
+            margin: 0;
+
+            img {
+                margin: 0 0 0 16px;
+            }
+        }
+
+        ul {
+            width: 100%;
+            margin: 16px 0 0 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .primary_nav {
+            li {
+                margin-right: 16px;
+            }
+
+            a {
+                &, &:hover, &.active {
+                    padding-left: 0;
+                }
+
+                &:before {
+                    display: none;
+                }
+            }
+        }
+
+        .sub_nav {
+            margin-top: 8px;
+
+            li {
+                margin-right: 16px;
+            }
+        }
+
+        .nav_bottom {
+            display: none;
+        }
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 0 16px 16px 16px;
+
+        .message {
+            margin: 24px 0 0 0;
+            font-size: 18px;
+        }
+
+        pre {
+            padding: 20px 16px;
+            font-size: 13px;
+        }
+
+        .code_container pre {
+            padding-top: 60px;
+        }
+
+        .scroll_spacer {
+            height: 40px;
+        }
+    }
+
+    .shroud {
+        padding: 16px 0;
+    }
+
+    .lightbox {
+        margin: 0 16px;
+
+        h2 {
+            padding: 15px 16px;
+        }
+
+        .lb_code_column {
+            padding: 16px;
+            overflow: auto;
+            font-size: 13px;
+        }
+    }
+}
+
 @-webkit-keyframes rainbow {
   0% {
     background-position-x: 0;

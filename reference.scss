@@ -268,9 +268,47 @@ blockquote {
         width: auto;
     }
 
+    .header h1 {
+        font-size: 22px;
+        padding: 12px 16px;
+    }
+
+    .main {
+        margin: 0 16px;
+    }
+
+    .footer {
+        margin: 20px 16px;
+    }
+
+    .index {
+        margin: 0 16px;
+    }
+
+    .column {
+        float: none;
+        width: auto;
+        margin-right: 0;
+    }
+
+    h1 {
+        padding: 12px 16px;
+        font-size: 24px;
+    }
+
+    p, li, a, h3 {
+        > code {
+            white-space: normal;
+        }
+    }
+
     .code-split {
-        table, tr, td {
+        &, tbody, tr, td {
             display: block;
+        }
+
+        pre {
+            overflow: auto;
         }
 
         .code-split-left {
@@ -279,8 +317,11 @@ blockquote {
 
         .code-header-right {
             margin-top: 5px;
-            border-top: 1px solid #999;
         }
+    }
+
+    .main > pre {
+        overflow: auto;
     }
 
 }
