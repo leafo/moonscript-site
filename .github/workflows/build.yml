@@ -4,24 +4,27 @@ on:
   pull_request:
   push:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v7
+      with:
+        submodules: recursive
 
-    - uses: leafo/gh-actions-lua@master
+    - uses: leafo/gh-actions-lua@v13
       with:
         luaVersion: "luajit"
 
-    - name: checkout moonscript
-      run: git submodule update --init --recursive
-
-    - uses: leafo/gh-actions-luarocks@master
+    - uses: leafo/gh-actions-luarocks@v6
 
     - name: dependencies
       run: |
+        sudo apt-get update -q
         sudo apt-get install -q python3-pygments
         luarocks install sitegen
         luarocks install moonscript
@@ -35,7 +38,7 @@ jobs:
         find www -iname '.gitignore' | xargs rm
 
     - name: deploy to github pages
-      uses: JamesIves/github-pages-deploy-action@4.1.5
+      uses: JamesIves/github-pages-deploy-action@v4
       if: github.ref == 'refs/heads/master'
       with:
         branch: gh-pages
