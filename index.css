@@ -1,49 +1,19 @@
-$link_color: #f05a7f;
-$sidebar_width: 200px;
-$body_color: #727779;
-$main_width: 800px;
-
-@mixin border_box {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-}
-
-@mixin transition($args...) {
-    -webkit-transition: $args;
-    -moz-transition: $args;
-    -ms-transition: $args;
-    transition: $args;
-}
-
-@mixin prefixed($prop, $args...) {
-    -webkit-#{$prop}: $args;
-    -moz-#{$prop}: $args;
-    -ms-#{$prop}: $args;
-    #{$prop}: $args;
-}
-
-@mixin keyframes($name) {
-    @-webkit-keyframes #{$name} {
-        @content;
-    }
-    @-moz-keyframes #{$name} {
-        @content;
-    }
-    @-ms-keyframes #{$name} {
-        @content;
-    }
-    @keyframes #{$name} {
-        @content;
-    }
+:root {
+    --link-color: #f05a7f;
+    --body-color: #727779;
+    --heading-color: #595d5f;
+    --code-background: #3C3C3C;
+    --sidebar-width: 200px;
+    --main-width: 800px;
 }
 
 body {
     font-family: "range", sans-serif;
     background: #F0F0F0;
-    color: #727779;
+    color: var(--body-color);
     font-size: 16px;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 
     &.show_lightbox {
         overflow: hidden;
@@ -52,33 +22,32 @@ body {
             display: block;
         }
     }
-
 }
 
 a {
-    color: $link_color;
+    color: var(--link-color);
     text-decoration: none;
 
     &:hover {
-        color: lighten($link_color, 5%);
+        color: #f27191;
     }
 }
 
 .nav {
-    width: $sidebar_width;
+    width: var(--sidebar-width);
     position: fixed;
     z-index: 1;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     bottom: 0;
     color: white;
     background: #2B2B2B;
 
     a {
-        color: lighten(#7A7A7A, 40%);
+        color: #e0e0e0;
 
         &:hover {
-            color: lighten(#7A7A7A, 50%);
+            color: #fafafa;
         }
     }
 
@@ -93,10 +62,8 @@ a {
 
     ul {
         list-style: none;
-        margin: 0px;
-        padding: 0px;
-        margin-top: 24px;
-        margin-left: 24px;
+        margin: 24px 0 0 24px;
+        padding: 0;
     }
 
     .primary_nav {
@@ -106,8 +73,7 @@ a {
         }
 
         a {
-            $time: 0.3s;
-            @include transition(all $time ease);
+            transition: all 0.3s ease;
             color: #7A7A7A;
             position: relative;
             padding-left: 0;
@@ -116,21 +82,20 @@ a {
                 padding-left: 20px;
                 color: white;
 
-                &:before {
+                &::before {
                     color: #E6E4E4;
                     left: 0;
                 }
             }
 
-            &:before {
-                @include transition(all $time ease);
+            &::before {
+                transition: all 0.3s ease;
                 content: "»";
-                color: rgba(#E6E4E4, 0);
+                color: rgb(230 228 228 / 0);
                 position: absolute;
                 left: -20px;
             }
         }
-
     }
 
     .sharing {
@@ -158,6 +123,7 @@ a {
         .chat_row {
             display: flex;
             align-items: center;
+
             > svg {
                 margin-right: 5px;
             }
@@ -175,19 +141,16 @@ a {
     }
 }
 
-
 .main {
-    @include border_box;
+    box-sizing: border-box;
     background: white;
-    width: $main_width;
+    width: var(--main-width);
     overflow: hidden;
-    margin-left: $sidebar_width;
+    margin-left: var(--sidebar-width);
     padding: 0 100px 16px 100px;
-    opacity: 1;
 
     .message {
-        color: $link_color;
-        margin: 0px;
+        color: var(--link-color);
         font-size: 20px;
         text-align: center;
         margin: 30px 20px 0 20px;
@@ -197,12 +160,12 @@ a {
     }
 
     h2, h3, h4 {
-        color: darken($body_color, 10%);
-        margin: 10px 0px;
+        color: var(--heading-color);
+        margin: 10px 0;
     }
 
     ul {
-        margin: 20px 0px;
+        margin: 20px 0;
     }
 
     li {
@@ -220,14 +183,14 @@ a {
     p > code, li > code {
         display: inline-block;
         background: #F0F0F0;
-        color: darken($body_color, 5%);
+        color: #666a6c;
         font-family: "range_mono";
         border-radius: 9px;
         padding: 1px 8px;
     }
 
     pre {
-        background: #3C3C3C;
+        background: var(--code-background);
         color: white;
         border-radius: 4px;
         font-family: "range_mono";
@@ -249,17 +212,16 @@ a {
 .footer {
     font-size: 13px;
     margin-bottom: 8px;
-    color: lighten(#727779, 10%);
+    color: #8c9092;
 
     a {
-        color: darken(#727779, 10%);
+        color: var(--heading-color);
 
         &:hover {
-            color: darken(#727779, 20%);
+            color: #414344;
         }
     }
 }
-
 
 .code_container {
     position: relative;
@@ -268,6 +230,7 @@ a {
         position: absolute;
         top: 12px;
         right: 12px;
+
         &:active {
             top: 14px;
         }
@@ -275,35 +238,28 @@ a {
 }
 
 .shroud {
-    @include transition(all 0.3s ease);
-
+    transition: all 0.3s ease;
     position: fixed;
     display: none;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    background: rgba(0,0,0,0);
+    inset: 0;
+    background: rgb(0 0 0 / 0);
     padding: 40px 0;
     z-index: 3;
     overflow: auto;
 
     .animate_lightbox & {
-        background: rgba(0,0,0, .5);
+        background: rgb(0 0 0 / 0.5);
     }
-
 }
 
 .lightbox {
-    @include transition(all 0.5s ease);
-
-    width: $main_width - 40px;
-    margin-left: $sidebar_width + 20px;
+    transition: all 0.5s ease;
+    width: calc(var(--main-width) - 40px);
+    margin-left: calc(var(--sidebar-width) + 20px);
     overflow: hidden;
     position: relative;
-
     color: white;
-    background: rgba(#3C3C3C, 0.95);
+    background: rgb(60 60 60 / 0.95);
     border-radius: 4px;
     top: 20px;
     opacity: 0;
@@ -319,10 +275,10 @@ a {
         right: 12px;
         top: 16px;
         cursor: pointer;
-        color: mix(white, #3C3C3C, 50%);
+        color: #9e9e9e;
 
         &:hover {
-            color: mix(white, #3C3C3C, 60%);
+            color: #b1b1b1;
         }
     }
 
@@ -333,7 +289,6 @@ a {
     }
 
     .lb_code_column {
-        font-size: 14px;
         font-family: "range_mono";
         padding: 20px 25px;
         margin: 0;
@@ -342,97 +297,52 @@ a {
     }
 }
 
-// new syntax highligher
-.highlight {
-    .sh_keyword {
-        color: #BB84B4;
-    }
-
-    .sh_string {
-        color: #F1BF8E;
-    }
-
-    &.lang_bash .sh_default {
-        color: #F277A1;
-    }
-
-    .sh_operator {
-        color: #F277A1;
-    }
-
-    .sh_fndef, .sh_preprocessor, .sh_symbol, .sh_embedded {
-        color: #B0D89C;
-    }
-
-    .sh_class, .sh_self_ref, .sh_label {
-        color: #99CBCA;
-    }
-
-    .sh_tbl_key, .sh_regex {
-        color: #F277A1; // new
-    }
-
-    .sh_comment {
-        color: #929292;
-    }
-
-    .sh_number {
-        color: #9D8FF2;
-    }
-
-    .sh_function { // builtins
-        color: #F69385;
-    }
-}
-
-
-
 /* builtins */
 .nb {
-    color: #F69385; // new
+    color: #F69385;
 }
 
 /* strings */
 .s, .s1, .s2, .se {
-    color: #F1BF8E; // new
+    color: #F1BF8E;
 }
 
 /* proper names, self */
 .nc, .vc, .bp {
-    color: #99CBCA; // new
+    color: #99CBCA;
 }
 
 /* true, false, nil */
 .kc {
-    color: #B3EFE5; // new
+    color: #B3EFE5;
 }
 
-/* function lit, braces, parens  */
+/* function lit, braces, parens */
 .nf, .kt {
-    color: #B0D89C; // new
+    color: #B0D89C;
 }
 
 /* operators */
 .o, .si {
-    color: #F277A1; // new
+    color: #F277A1;
 }
 
 .nv {
-    color: #F277A1; // new
+    color: #F277A1;
 }
 
 /* keywords */
 .k, .kd {
-    color: #BB84B4; // new
+    color: #BB84B4;
 }
 
 .c1, .c2 {
     color: #929292;
 }
 
-// numbers
+/* numbers */
 .m, .mi, .mf, .mh {
-    color: #9D8FF2; // new
+    color: #9D8FF2;
 }
 
 .rainbow_btn_wrap {
@@ -446,8 +356,8 @@ a {
     box-shadow: 0 4px 0 #d9d9d8;
 
     &:active {
-        background: darken(#f0f0f0, 5%);
-        box-shadow: 0 2px 0 darken(#d9d9d8, 5%);
+        background: #e3e3e3;
+        box-shadow: 0 2px 0 #cccccb;
         top: 2px;
     }
 }
@@ -458,27 +368,14 @@ a {
 
     .enable_rainbow & {
         background-image:
-        -webkit-linear-gradient(bottom, #f05a7f 0%, #f05a7f 30%, rgba(255,0,0,0) 70%, rgba(255,0,0,0) 100%),
-        -webkit-linear-gradient(left,
-            rgb(242,119,161),
-            rgb(245,138,126),
-            rgb(241,191,142),
-            rgb(176,216,156),
-            rgb(153,203,202),
-            rgb(141,153,205),
-            rgb(187,132,180),
-            rgb(242,119,161)
-        );
-
-        @include prefixed(background-clip, text);
-        @include prefixed(text-fill-color, transparent);
-        @include prefixed(animation, rainbow 30s linear infinite);
-
+            linear-gradient(to top, #f05a7f 0%, #f05a7f 30%, rgb(255 0 0 / 0) 70%, rgb(255 0 0 / 0) 100%),
+            linear-gradient(to right, #f277a1, #f58a7e, #f1bf8e, #b0d89c, #99cbca, #8d99cd, #bb84b4, #f277a1);
+        background-clip: text;
+        color: transparent;
+        animation: rainbow 30s linear infinite;
         background-position: 0 -12px;
-
-        color: white;
         text-align: center;
-        @include transition(all 0.3s ease);
+        transition: all 0.3s ease;
 
         &:hover {
             background-position: 0 12px;
@@ -486,10 +383,28 @@ a {
     }
 }
 
-@media only screen and (max-width: $sidebar_width + $main_width) {
+@keyframes rainbow {
+    0% {
+        background-position-x: 0;
+    }
+    25% {
+        background-position-x: 25em;
+    }
+    50% {
+        background-position-x: 50em;
+    }
+    75% {
+        background-position-x: 75em;
+    }
+    100% {
+        background-position-x: 99em;
+    }
+}
+
+@media (max-width: 1000px) {
     .main {
         width: auto;
-        max-width: $main_width;
+        max-width: var(--main-width);
         padding: 0 40px 16px 40px;
 
         .message {
@@ -499,12 +414,12 @@ a {
 
     .lightbox {
         width: auto;
-        max-width: $main_width - 40px;
+        max-width: calc(var(--main-width) - 40px);
         margin-right: 20px;
     }
 }
 
-@media only screen and (max-width: 700px) {
+@media (max-width: 700px) {
     .nav {
         position: static;
         width: auto;
@@ -552,7 +467,7 @@ a {
                     padding-left: 0;
                 }
 
-                &:before {
+                &::before {
                     display: none;
                 }
             }
@@ -613,57 +528,26 @@ a {
     }
 }
 
-@-webkit-keyframes rainbow {
-  0% {
-    background-position-x: 0;
-  }
-  25% {
-    background-position-x: 25em;
-  }
-  50% {
-    background-position-x: 50em;
-  }
-  75% {
-    background-position-x: 75em;
-  }
-  100% {
-    background-position-x: 99em;
-  }
-}
-
 @font-face {
-    font-family: 'range_mono';
-    src: url('fonts/range-mono-medium-webfont.eot');
-    src: url('fonts/range-mono-medium-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/range-mono-medium-webfont.woff') format('woff'),
-         url('fonts/range-mono-medium-webfont.ttf') format('truetype'),
-         url('fonts/range-mono-medium-webfont.svg#range_monomedium') format('svg');
+    font-family: "range_mono";
+    src: url("fonts/range-mono-medium-webfont.woff") format("woff"),
+         url("fonts/range-mono-medium-webfont.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
-    font-family: 'range';
-    src: url('fonts/range-regular-webfont.eot');
-    src: url('fonts/range-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/range-regular-webfont.woff') format('woff'),
-         url('fonts/range-regular-webfont.ttf') format('truetype'),
-         url('fonts/range-regular-webfont.svg#rangeregular') format('svg');
+    font-family: "range";
+    src: url("fonts/range-regular-webfont.woff") format("woff"),
+         url("fonts/range-regular-webfont.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
-    font-family: 'range';
-    src: url('fonts/range-semibold-webfont.eot');
-    src: url('fonts/range-semibold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/range-semibold-webfont.woff') format('woff'),
-         url('fonts/range-semibold-webfont.ttf') format('truetype'),
-         url('fonts/range-semibold-webfont.svg#rangesemibold') format('svg');
+    font-family: "range";
+    src: url("fonts/range-semibold-webfont.woff") format("woff"),
+         url("fonts/range-semibold-webfont.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
-
 }
-

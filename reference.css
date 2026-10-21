@@ -1,0 +1,282 @@
+:root {
+    --background: #F2F6FA;
+    --sub-background: #E1E4E8;
+    --text-color: #303132;
+    --border-color: #c2c5c8;
+    --link-color: #007BFF;
+}
+
+body {
+    background: var(--background);
+    color: var(--text-color);
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.header h1 {
+    background: #404142;
+    margin: 0;
+    color: var(--background);
+    font-weight: normal;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+
+    &:hover {
+        color: #409CFF;
+    }
+
+    &.current {
+        color: var(--text-color);
+        font-weight: bold;
+        text-decoration: none;
+    }
+}
+
+p {
+    font-size: 16px;
+    line-height: 26px;
+    margin: 26px 0;
+}
+
+.main {
+    width: 900px;
+    margin: 0 30px;
+}
+
+h1, h2, h3, h4 {
+    color: #474a4d;
+    margin: 30px 0;
+    font-weight: normal;
+}
+
+h1 {
+    padding: 15px 30px;
+    font-size: 28px;
+    background: var(--sub-background);
+}
+
+h2 {
+    border-bottom: 2px solid var(--border-color);
+    font-size: 24px;
+    padding-bottom: 4px;
+}
+
+h3 {
+    font-size: 22px;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.code-split, .main > pre {
+    background: white;
+    border: 1px solid var(--border-color);
+    margin: 26px 0;
+    border-radius: 1px;
+}
+
+.main pre {
+    margin: 0;
+    padding: 10px;
+}
+
+.code-split {
+    .code-split-left {
+        width: 50%;
+    }
+
+    .code-header {
+        background: var(--sub-background);
+        color: #535556;
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+}
+
+.index {
+    margin-left: 30px;
+    overflow: hidden;
+
+    h3 {
+        margin: 20px 0;
+    }
+
+    .index-list {
+        line-height: 24px;
+        margin: 20px 0;
+
+        ul {
+            margin: 0;
+            padding-left: 35px;
+        }
+    }
+}
+
+td {
+    vertical-align: top;
+}
+
+:is(p, li, a, h3) > code {
+    font-size: 14px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    background: #f8fafb;
+    border: 1px solid #b7c7d8;
+    color: #233141;
+}
+
+h3 > code {
+    padding: 10px;
+    font-size: 18px;
+}
+
+a {
+    > code {
+        background: #f5faff;
+        border: 2px solid #91c6ff;
+        color: #003064;
+    }
+
+    &:hover > code {
+        background: #fafcff;
+        border: 2px solid #95c8ff;
+        color: #003165;
+    }
+}
+
+/* builtins */
+.nb {
+    color: #707A34;
+}
+
+/* strings */
+.s, .s1, .s2, .se {
+    color: #A16D43;
+}
+
+/* proper names, self */
+.nc, .vc, .bp, .kc {
+    color: #30A0BD;
+}
+
+/* function lit, braces, parens */
+.nf, .kt, .p {
+    color: #8E4681;
+}
+
+/* operators */
+.o, .si {
+    color: #B50C0C;
+}
+
+.nv {
+    color: #893D8C;
+}
+
+/* keywords */
+.k, .kd {
+    color: #0CB56C;
+}
+
+.c1, .c2 {
+    color: #D74DBF;
+}
+
+.m, .mi, .mf, .mh {
+    color: #4958C3;
+}
+
+.footer {
+    color: #747678;
+    font-size: 12px;
+    margin: 20px 30px;
+}
+
+.column {
+    float: left;
+    width: 450px;
+    margin-right: 20px;
+}
+
+blockquote {
+    margin: 25px 0;
+    padding: 10px;
+    background: #edeef1;
+    border: 1px solid #d0d4db;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.1), inset 0 0 0 1px rgb(255 255 255 / 0.3);
+
+    p {
+        margin: 0;
+        color: #434445;
+
+        &:first-child::before {
+            content: "Note:";
+            margin-right: 10px;
+            font-weight: bold;
+        }
+    }
+}
+
+@media (max-width: 960px) {
+    .main {
+        width: auto;
+        margin: 0 16px;
+    }
+
+    .header h1 {
+        font-size: 22px;
+        padding: 12px 16px;
+    }
+
+    .footer {
+        margin: 20px 16px;
+    }
+
+    .index {
+        margin: 0 16px;
+    }
+
+    .column {
+        float: none;
+        width: auto;
+        margin-right: 0;
+    }
+
+    h1 {
+        padding: 12px 16px;
+        font-size: 24px;
+    }
+
+    :is(p, li, a, h3) > code {
+        white-space: normal;
+    }
+
+    .code-split {
+        &, tbody, tr, td {
+            display: block;
+        }
+
+        pre {
+            overflow: auto;
+        }
+
+        .code-split-left {
+            width: auto;
+        }
+
+        .code-header-right {
+            margin-top: 5px;
+        }
+    }
+
+    .main > pre {
+        overflow: auto;
+    }
+}

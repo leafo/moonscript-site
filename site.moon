@@ -88,11 +88,9 @@ sitegen.create =>
 
   deploy_to "leaf@leafo.net", "www/moonscript.org"
 
-  scssphp = tools.system_command "sassc < %s > %s", "css"
   coffeescript = tools.system_command "coffee -c -s < %s > %s", "js"
 
-  build scssphp, "reference.scss"
-  build scssphp, "index.scss"
+  copy "index.css", "reference.css"
 
   build coffeescript, "index.coffee"
 
