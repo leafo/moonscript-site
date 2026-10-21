@@ -1,8 +1,8 @@
 # MoonScript Site
 
-This is what builds <http://moonscript.org>, including the [reference
-manual](http://moonscript.org/reference) and the [online
-compiler](http://moonscript.org/compiler).
+This is what builds <https://moonscript.org>, including the [reference
+manual](https://moonscript.org/reference) and the [online
+compiler](https://moonscript.org/compiler).
 
 The entire page is built using [Sitegen](https://github.com/leafo/sitegen), a
 static site generator written in MoonScript.
