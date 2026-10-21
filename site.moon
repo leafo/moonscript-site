@@ -3,7 +3,6 @@ require "sitegen"
 import to_lua from require "moonscript.base"
 
 html = require "sitegen.html"
-tools = require "sitegen.tools"
 
 PygmentsPlugin = require "sitegen.plugins.pygments"
 
@@ -88,11 +87,7 @@ sitegen.create =>
 
   deploy_to "leaf@leafo.net", "www/moonscript.org"
 
-  coffeescript = tools.system_command "coffee -c -s < %s > %s", "js"
-
-  copy "index.css", "reference.css"
-
-  build coffeescript, "index.coffee"
+  copy "index.css", "reference.css", "index.js"
 
   i = 0
   with PygmentsPlugin.custom_highlighters

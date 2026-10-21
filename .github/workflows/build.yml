@@ -23,7 +23,6 @@ jobs:
     - name: dependencies
       run: |
         sudo apt-get install -q python3-pygments
-        sudo npm install -g coffee-script
         luarocks install sitegen
         luarocks install moonscript
 

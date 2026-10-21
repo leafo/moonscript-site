@@ -365,21 +365,18 @@ a {
 .rainbow_btn {
     display: block;
     font-size: 14px;
+    background-image:
+        linear-gradient(to top, #f05a7f 0%, #f05a7f 30%, rgb(255 0 0 / 0) 70%, rgb(255 0 0 / 0) 100%),
+        linear-gradient(to right, #f277a1, #f58a7e, #f1bf8e, #b0d89c, #99cbca, #8d99cd, #bb84b4, #f277a1);
+    background-clip: text;
+    color: transparent;
+    animation: rainbow 30s linear infinite;
+    background-position: 0 -12px;
+    text-align: center;
+    transition: all 0.3s ease;
 
-    .enable_rainbow & {
-        background-image:
-            linear-gradient(to top, #f05a7f 0%, #f05a7f 30%, rgb(255 0 0 / 0) 70%, rgb(255 0 0 / 0) 100%),
-            linear-gradient(to right, #f277a1, #f58a7e, #f1bf8e, #b0d89c, #99cbca, #8d99cd, #bb84b4, #f277a1);
-        background-clip: text;
-        color: transparent;
-        animation: rainbow 30s linear infinite;
-        background-position: 0 -12px;
-        text-align: center;
-        transition: all 0.3s ease;
-
-        &:hover {
-            background-position: 0 12px;
-        }
+    &:hover {
+        background-position: 0 12px;
     }
 }
 
