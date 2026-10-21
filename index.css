@@ -530,7 +530,7 @@ a {
 
 @font-face {
     font-family: "range_mono";
-    src: url("fonts/range-mono-medium-webfont.woff") format("woff"),
+    src: url("fonts/range-mono-medium-webfont.woff2") format("woff2"),
          url("fonts/range-mono-medium-webfont.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
@@ -538,7 +538,7 @@ a {
 
 @font-face {
     font-family: "range";
-    src: url("fonts/range-regular-webfont.woff") format("woff"),
+    src: url("fonts/range-regular-webfont.woff2") format("woff2"),
          url("fonts/range-regular-webfont.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
@@ -546,7 +546,7 @@ a {
 
 @font-face {
     font-family: "range";
-    src: url("fonts/range-semibold-webfont.woff") format("woff"),
+    src: url("fonts/range-semibold-webfont.woff2") format("woff2"),
          url("fonts/range-semibold-webfont.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
