@@ -104,11 +104,26 @@ a {
         margin-left: 24px;
         margin-top: 24px;
 
-        img {
+        a {
+            color: #7A7A7A;
+
+            &:hover {
+                color: #E6E4E4;
+            }
+        }
+
+        svg {
             width: 20px;
-            height: 19px;
+            height: 20px;
             display: inline-block;
+            vertical-align: middle;
             margin-right: 10px;
+        }
+
+        /* the round logo reads smaller than the X glyph at the same box size */
+        .github_link svg {
+            width: 23px;
+            height: 23px;
         }
     }
 
@@ -442,7 +457,7 @@ a {
             order: -1;
             margin: 0;
 
-            img {
+            svg {
                 margin: 0 0 0 16px;
             }
         }
