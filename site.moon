@@ -4,9 +4,9 @@ import to_lua from require "moonscript.base"
 
 html = require "sitegen.html"
 
-PygmentsPlugin = require "sitegen.plugins.pygments"
+SyntaxhighlightPlugin = require "sitegen.plugins.syntaxhighlight"
 
-highlight = PygmentsPlugin\highlight
+highlight = SyntaxhighlightPlugin\highlight
 
 try_compile = (text, options=implicitly_return_root: false) ->
   to_lua text, options
@@ -90,7 +90,7 @@ sitegen.create =>
   copy "index.css", "reference.css", "index.js"
 
   i = 0
-  with PygmentsPlugin.custom_highlighters
+  with SyntaxhighlightPlugin.custom_highlighters
     .moon = (code_text, page, options) =>
       if page.source\match "reference"
         return split_highlight code_text, options

@@ -24,8 +24,6 @@ jobs:
 
     - name: dependencies
       run: |
-        sudo apt-get update -q
-        sudo apt-get install -q python3-pygments
         luarocks install sitegen
         luarocks install moonscript
 
