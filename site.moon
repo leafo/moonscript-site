@@ -78,12 +78,38 @@ sitegen.create =>
   @title = "MoonScript"
   @moon_version = require"moonscript.version".version
 
-  add "index.md", index: true
+  @site_url = "https://moonscript.org"
+  @build_date = os.date "!%Y-%m-%dT%H:%M:%SZ"
 
-  add "moonscript/docs/reference.md", index: true
-  add "moonscript/docs/standard_lib.md", index: true
-  add "moonscript/docs/command_line.md", index: true
-  add "moonscript/docs/api.md", index: true
+  add "index.md", {
+    index: true
+    canonical_path: "/"
+    description: "MoonScript is a dynamic scripting language that compiles to Lua. It adds classes, comprehensions, whitespace-significant syntax, and implicit returns while running anywhere Lua does."
+  }
+
+  add "moonscript/docs/reference.md", {
+    index: true
+    canonical_path: "/reference/"
+    description: "The MoonScript language guide: syntax, functions, tables, classes, comprehensions, destructuring, and more, with every example shown alongside its compiled Lua."
+  }
+
+  add "moonscript/docs/standard_lib.md", {
+    index: true
+    canonical_path: "/reference/standard_lib.html"
+    description: "Reference for the moon standard library module bundled with MoonScript: debugging, class helpers, function and table utilities."
+  }
+
+  add "moonscript/docs/command_line.md", {
+    index: true
+    canonical_path: "/reference/command_line.html"
+    description: "How to use the moon and moonc command line tools to run MoonScript, compile it to Lua, watch directories, and lint code."
+  }
+
+  add "moonscript/docs/api.md", {
+    index: true
+    canonical_path: "/reference/api.html"
+    description: "Using MoonScript from Lua: the moonscript module, autocompiling require, and the compiler API for converting MoonScript to Lua at runtime."
+  }
 
   deploy_to "leaf@leafo.net", "www/moonscript.org"
 

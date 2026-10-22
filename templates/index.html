@@ -4,6 +4,62 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MoonScript, a language that compiles to Lua</title>
+  <meta name="description" content="$description" />
+  <link rel="canonical" href="$site_url$canonical_path" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MoonScript" />
+  <meta property="og:title" content="MoonScript, a language that compiles to Lua" />
+  <meta property="og:description" content="$description" />
+  <meta property="og:url" content="$site_url$canonical_path" />
+  <meta property="og:image" content="$site_url/images/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@moonscript" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "$site_url/#website",
+        "name": "MoonScript",
+        "url": "$site_url/"
+      },
+      {
+        "@type": "ComputerLanguage",
+        "@id": "$site_url/#language",
+        "name": "MoonScript",
+        "description": "$description",
+        "url": "$site_url/",
+        "version": "$moon_version",
+        "license": "https://opensource.org/licenses/MIT",
+        "image": "$site_url/images/og.png",
+        "creator": {
+          "@type": "Person",
+          "name": "Leaf Corcoran",
+          "url": "https://leafo.net"
+        },
+        "sameAs": [
+          "https://github.com/leafo/moonscript",
+          "https://luarocks.org/modules/leafo/moonscript"
+        ]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "MoonScript compiler",
+        "codeRepository": "https://github.com/leafo/moonscript",
+        "programmingLanguage": ["MoonScript", "Lua"],
+        "runtimePlatform": "Lua 5.1 and above, LuaJIT",
+        "version": "$moon_version",
+        "license": "https://opensource.org/licenses/MIT",
+        "targetProduct": { "@id": "$site_url/#language" }
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="$root/index.css?$generate_date" />
   $analytics{"G-81QT54GPEZ"}
 </head>

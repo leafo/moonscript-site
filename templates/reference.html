@@ -5,6 +5,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>$title - MoonScript $moon_version</title>
+  <meta name="description" content="$description" />
+  <link rel="canonical" href="$site_url$canonical_path" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="MoonScript" />
+  <meta property="og:title" content="MoonScript $title" />
+  <meta property="og:description" content="$description" />
+  <meta property="og:url" content="$site_url$canonical_path" />
+  <meta property="og:image" content="$site_url/images/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@moonscript" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "headline": "MoonScript $title",
+        "description": "$description",
+        "url": "$site_url$canonical_path",
+        "image": "$site_url/images/og.png",
+        "dateModified": "$build_date",
+        "proficiencyLevel": "Beginner",
+        "about": { "@type": "ComputerLanguage", "@id": "$site_url/#language", "name": "MoonScript" },
+        "author": { "@type": "Person", "name": "Leaf Corcoran", "url": "https://leafo.net" },
+        "isPartOf": { "@type": "WebSite", "@id": "$site_url/#website", "name": "MoonScript", "url": "$site_url/" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "MoonScript", "item": "$site_url/" },
+          { "@type": "ListItem", "position": 2, "name": "Reference", "item": "$site_url/reference/" },
+          { "@type": "ListItem", "position": 3, "name": "$title", "item": "$site_url$canonical_path" }
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="$root/reference.css?$generate_date" />
   $analytics{"G-81QT54GPEZ"}
 </head>
