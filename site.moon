@@ -270,7 +270,6 @@ sitegen.create =>
       single_highlight code_text
 
   filter "CHANGELOG", (body) =>
-    body = body\gsub "^# MoonScript dev\n", "# Unreleased (in development)\n"
     -- link issue numbers, also stops a wrapped "#123" from parsing as a header
     body = body\gsub "#(%d+)", "[#%1](https://github.com/leafo/moonscript/issues/%1)"
     convert_tables body

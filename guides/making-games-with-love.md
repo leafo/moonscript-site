@@ -147,7 +147,7 @@ A few things to notice:
 Compile everything and run it:
 
 ```bash
-$ moonc *.moon
+$ moonc --correlate *.moon
 $ love .
 ```
 
@@ -155,18 +155,20 @@ $ love .
 
 Use a `Makefile` so building and running is a single command. Use `moonc
 *.moon` rather than `moonc .`, so that libraries in subdirectories aren't
-compiled by accident:
+compiled by accident. The `--correlate` flag keeps line numbers in error
+messages matching your MoonScript files, as explained
+[below](#finding-the-line-of-an-error):
 
     GAME = star-catcher
 
     build:
-    	moonc *.moon
+    	moonc --correlate *.moon
 
     run: build
     	love .
 
     watch:
-    	moonc -w *.moon
+    	moonc -w --correlate *.moon
 
     lint:
     	moonc -l *.moon
@@ -190,19 +192,31 @@ file once with `moonc lint_config.moon`:
 ## Finding the line of an error
 
 LÖVE runs the compiled Lua, so errors report line numbers in the `.lua` file.
-If `@speed` were misspelled as `@sped` in `player.moon`, the game would crash
-with:
+Normally the compiled Lua has a different number of lines than the
+MoonScript. If `@speed` were misspelled as `@sped` in `player.moon`, line 11,
+the game would crash with:
 
     Error: player.lua:15: attempt to perform arithmetic on field 'sped' (a nil value)
     stack traceback:
     	player.lua:15: in function 'update'
     	main.lua:11: in function 'update'
 
-Since the compiled `player.lua` sits next to `player.moon`, you can open it
-and look at line 15. The generated code is readable and keeps your names, so
-the matching MoonScript line is usually easy to find. To have the compiler
-look it up for you, pass `-X` to print the map from Lua lines to MoonScript
-lines:
+Compiling with
+[`--correlate`](../reference/command_line.html#command-line-tools/moonc)
+places each line of generated Lua on the same line number as the MoonScript
+it came from. The same crash then points straight at the MoonScript source:
+
+    Error: player.lua:11: attempt to perform arithmetic on field 'sped' (a nil value)
+    stack traceback:
+    	player.lua:11: in function 'update'
+    	main.lua:13: in function 'update'
+
+Line 11 of `player.moon` has the typo, and line 13 of `main.moon` is the
+`player\update dt` call. The cost is that correlated Lua is harder to read,
+since several statements can share a line.
+
+Without `--correlate`, pass `-X` to have the compiler print the map from Lua
+lines to MoonScript lines:
 
 ```bash
 $ moonc -X player.moon
@@ -215,15 +229,21 @@ came from:
 
 ## Compiling ahead vs. loading MoonScript at runtime
 
-The setup in this guide compiles MoonScript before running the game. It is
-also possible to bundle the MoonScript compiler with your game and `require
-"moonscript"` so that `.moon` files are compiled when they are loaded. This
-lets an error handler rewrite tracebacks to MoonScript line numbers, but it
-has costs:
+We recommend compiling your MoonScript to Lua ahead of time and shipping the
+`.lua` files, as this guide does. The game starts without first compiling its
+code, and it doesn't need the MoonScript compiler to run.
 
-* The compiler depends on [LPeg](https://www.inf.puc-rio.br/~roberto/lpeg/),
-  a C module that LÖVE doesn't include. You have to ship a compiled LPeg for
-  every platform, or fall back to a slower pure Lua port.
+It is also possible to bundle the MoonScript compiler with your game and
+`require "moonscript"` so that `.moon` files are compiled when they are loaded.
+This lets an error handler rewrite tracebacks to MoonScript line numbers, but
+it has costs:
+
+* Every file is compiled each time the game starts, which delays startup.
+* The compiler uses C modules that LÖVE doesn't include: its parser, and
+  [LPeg](https://www.inf.puc-rio.br/~roberto/lpeg/). A pure Lua version of the
+  parser is available as `moonscript.parse.slow`, but LPeg is still required,
+  so you have to ship a compiled LPeg for every platform or use a pure Lua port
+  of it.
 * The MoonScript loader reads files with Lua's `io` library, which can't see
   inside a zipped `.love` file. Released games need to be compiled ahead of
   time anyway.
@@ -236,8 +256,10 @@ tracebacks to MoonScript line numbers.
 ## Packaging a `.love` file
 
 A `.love` file is a zip of your game directory with `main.lua` at the top
-level. Only the compiled Lua and your assets go in it, not the MoonScript
-source:
+level. It needs the compiled Lua and your assets. LÖVE only loads the `.lua`
+files, so any `.moon` files in the archive are ignored. You can include them
+so that players who open up your game can read the MoonScript source. This
+target leaves them out; add `*.moon` to the `zip` command to include them:
 
     $(GAME).love: build
     	rm -f $@
