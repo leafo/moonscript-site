@@ -171,6 +171,7 @@ sitegen.create =>
 
   add "guides/index.html", {
     index: false
+    hide_page_index: true
     template: "reference"
     short_name: "guides"
     section_title: "Guides"
