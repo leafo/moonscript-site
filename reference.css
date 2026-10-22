@@ -306,3 +306,37 @@ blockquote {
         overflow: auto;
     }
 }
+
+.guide_list {
+    list-style: none;
+    padding: 0;
+
+    li {
+        margin: 26px 0;
+    }
+
+    a {
+        font-size: 20px;
+    }
+
+    p {
+        margin: 6px 0 0;
+    }
+}
+
+.quick_ref {
+    border-collapse: collapse;
+    width: 100%;
+    background: white;
+
+    th, td {
+        text-align: left;
+        padding: 8px 12px;
+        border: 1px solid var(--border-color);
+    }
+
+    th {
+        background: var(--sub-background);
+        font-weight: normal;
+    }
+}

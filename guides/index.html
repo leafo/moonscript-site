@@ -1,0 +1,21 @@
+{
+  title: "Guides"
+  description: "Practical guides to MoonScript, the language that compiles to Lua: calling methods, classes, scoping, installation, and using MoonScript with LÖVE, Lapis, and OpenResty."
+}
+
+<p>
+  These guides each answer one practical question about writing MoonScript.
+  For a complete description of the language, see the
+  <a href="$root/reference/">Language Guide</a>. Every MoonScript example in
+  these guides is compiled when the site is built, and the Lua shown next to it
+  is the real output of the compiler.
+</p>
+
+<ul class="guide_list">
+$query_pages{is_a = "guide"}[[
+  <li>
+    <a href="$root$canonical_path">$title</a>
+    <p>$description</p>
+  </li>
+]]
+</ul>

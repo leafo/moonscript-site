@@ -25,8 +25,8 @@
     "@graph": [
       {
         "@type": "TechArticle",
-        "headline": "MoonScript $title",
-        "description": "$description",
+        "headline": "MoonScript $json_field{"title"}",
+        "description": "$json_field{"description"}",
         "url": "$site_url$canonical_path",
         "image": "$site_url/images/og.png",
         "dateModified": "$build_date",
@@ -39,8 +39,8 @@
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "MoonScript", "item": "$site_url/" },
-          { "@type": "ListItem", "position": 2, "name": "Reference", "item": "$site_url/reference/" },
-          { "@type": "ListItem", "position": 3, "name": "$title", "item": "$site_url$canonical_path" }
+          { "@type": "ListItem", "position": 2, "name": "$section_title", "item": "$site_url$section_path" },
+          { "@type": "ListItem", "position": 3, "name": "$json_field{"title"}", "item": "$site_url$canonical_path" }
         ]
       }
     ]
@@ -55,12 +55,12 @@
   </div>
 
   <div class="index">
-    <details class="column page_index">
+    $if{"index"}[[<details class="column page_index">
       <summary><h3>On This Page</h3></summary>
       <div class="index-list">
         $index
       </div>
-    </details>
+    </details>]]
 
     <div class="column">
       <h3>All Pages</h3>
@@ -70,6 +70,11 @@
           <li><a href="$root/reference/standard_lib.html"$eq{"stdlib", short_name}[[ class="current"]]>Standard Library</a></li>
           <li><a href="$root/reference/command_line.html"$eq{"command_line", short_name}[[ class="current"]]>Command Line Tools</a></li>
           <li><a href="$root/reference/api.html"$eq{"api", short_name}[[ class="current"]]>Compiler API</a></li>
+        </ul>
+        <ul>
+          <li><a href="$root/guides/"$eq{"guides", short_name}[[ class="current"]]>Guides</a></li>
+          <li><a href="$root/changelog.html"$eq{"changelog", short_name}[[ class="current"]]>Changelog</a></li>
+          <li><a href="$root/">MoonScript Home</a></li>
         </ul>
       </div>
     </div>
